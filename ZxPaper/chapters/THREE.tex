@@ -1,0 +1,503 @@
+% !Mode:: "TeX:UTF-8"
+
+\chapter{基于UKF的磷酸铁锂电池SOC估计方法的研究}
+电池荷电状态的估计是纯电动物流汽车电池管理系统(BMS)的基础，提高电池组SOC估计的准确度可以防止电池过度充电或者放电。电池荷电状态估计的精确度直接影响了电池管理系统的安全性以及整个汽车电池组能量的利用率。本章在上一章关于电池组等效电路模型研究的基础上，对于适用于纯电动物流汽车电池的SOC估计算法进行研究，探寻和改进适合于纯电动物流汽车的SOC估计方法。
+\section{引言}
+电池的荷电状态(SOC)是指电池的当前容量与其完全充满电状态下容量的比值，磷酸铁锂电池和其他一般的锂电池一样，其性能也会受到温度、充放电电流等因素的影响，因此本节首先对磷酸铁锂电池SOC估计算法影响因子进行概述。
+
+(一)	温度因子
+
+	电池组的温度因子主要受环境温度和电池组自身化学反应热量影响，在不同的温度条件下，电池的容量参数、开路电压参数和内阻参数也会相应的产生变化。当电池组温度或者环境温度降低时，电池组电解液的活性减弱，表现为电池的欧姆内阻和极化内阻增加，这是因为电解液中锂离子的迁移速度会随着温度的降低而减小，发生化学反应的速度减慢。当温度在一定范围内升高时，电池组的容量随之增大，因为温度越高电池组的内阻越小，在内阻上消耗的能量就越少，则根据能量守恒定律，能放出的能量就越大。
+
+(二)	放电因子
+
+	影响电池组SOC估计的放电因子主要包括电池自放电影响和电池放电电流倍率影响。电池自放电与电池自身的化学反应相关，温度越高电池自身的化学反应越迅速，则电池组的自放电量越大；反之，电池的自放电速率就越缓慢。电池组的放电量也与电池组的放电电流倍率相关，锂电池组的放电电流倍率越大，能放出的电量就越少。因为大电流放电时，电池组的极化就越严重，电池组电压提前达到截止放电值，所以放出的电量减少。针对同一锂电池组经过高倍率电流放电后，还可以经过低倍率电流进行放电。
+
+(三)	寿命因子
+
+	电池组的使用寿命有一定的循环次数，电池组在一次完整的充电和放电过程中都伴随着锂离子和电解液大量的副反应，这些副反应是不可逆的，发生副反应会对电解液有所消耗。随着电池组循环次数的增加，电池组负极表面附着的锂增加，从而影响活性锂离子的嵌入，电池组的容量会相应减少。
+\section{卡尔曼滤波器相关理论}
+卡尔曼滤波器源于匈牙利数学家Rudolf Emil Kalman在1960年发表的论文《A New Approach to Linear Filtering and Prediction Problems》，论文里针对于线性系统的提出了一种新的预测和滤波方法。然而在实际的工程中，系统大多是非线性的，所以在传统的卡尔曼滤波器的基础上进行了改进，根据处理方式的不同得到两种滤波，一种是扩展的卡尔曼滤波算法，另一种是无迹卡尔曼滤波算法。并且将两种改进的算法用于处理非线性系统。
+\subsection{线性系统卡尔曼滤波器}
+卡尔曼滤波算法是一种最优状态估计方法，它是采用递推的方式实现的。卡尔曼滤波要求估计值的均方差值最小，所以传统的卡尔曼滤波器是一种线性最小方差估计器。线性的卡尔曼滤波包括连续系统的卡尔曼滤波和离散系统的卡尔曼滤波，其中对于连续系统卡尔曼滤波的处理方式是将连续系统离散化，然后按照离散系统的卡尔曼滤波方程对系统进行处理，因此本文主要对离散系统的卡尔曼滤波进行研究。
+
+带有噪声的线性离散型系统的卡尔曼滤波方程如下所示：
+
+状态预测方程：
+\begin{equation}
+{{X}_{k}}={{\phi }_{k,k-1}}{{X}_{k}}+{{\Gamma }_{k-1}}{{w}_{k-1}}+{{B}_{k-1}}{{u}_{k-1}}
+\end{equation}
+
+状态实测方程：
+\begin{equation}
+{{Z}_{k}}={{C}_{k}}{{X}_{k}}+{{v}_{k}}
+\end{equation}
+
+其中${{\phi }_{k,k-1}}$是系统已知的转移矩阵， ${{\Gamma }_{k-1}}$是系统噪声干扰矩阵，${{w}_{k-1}}$是零均值的噪声向量，${{B}_{k-1}}$是系统控制输入矩阵，${{u}_{k-1}}$是系统控制向量，${{C}_{k}}$是系统观测矩阵，$v(k)$是零均值的观测噪声向量。
+
+噪声的均值和方差满足的条件是$E\left[ {{w}_{k}} \right]=0$，$Cov\left[ {{w}_{k}},{{w}_{j}} \right]={{Q}_{k}}{{\delta }_{kj}}$，$E\left[ {{v}_{k}} \right]=0$，$Cov\left[ {{v}_{k}},{{v}_{j}} \right]={{R}_{k}}{{\delta }_{kj}}$，$Cov\left[ {{w}_{k}},{{v}_{j}} \right]=0$。${{Q}_{k}}$为估计过程噪声的协方差，${{R}_{k}}$为测量过程噪声的协方差。
+
+
+均方误差的递推更新方程为：
+\begin{equation}
+{{P}_{k/k-1}}={{\phi }_{k,k-1}}*{{P}_{k-1}}*\phi _{k,k-1}^{T}+{{\Gamma }_{k-1}}{{Q}_{k-1}}\Gamma _{k-1}^{T}
+\end{equation}
+
+卡尔曼滤波的增益方程为：
+\begin{equation}
+{{H}_{k}}={{P}_{k/k-1}}*C_{k}^{T}{{\left[ {{C}_{k}}*{{P}_{k/k-1}}*C_{k}^{T}+{{R}_{k}} \right]}^{-1}}
+\end{equation}
+
+滤波k时刻的最优估计值为：
+\begin{equation}
+{{X}_{k}}={{X}_{k/k-1}}+{{H}_{k}}\left[ {{Z}_{k}}-{{C}_{k}}*{{X}_{k/k-1}}-{{C}_{k}}{{B}_{k-1}}{{u}_{k-1}} \right]
+\end{equation}
+
+K时刻均方差的最优估计值为：
+\begin{equation}
+{{P}_{k}}=\left[ I-{{H}_{k}}*{{C}_{k}} \right]*{{P}_{k/k-1}}
+\end{equation}
+
+其中I为单位矩阵。
+
+卡尔曼滤波要求输入两个初值${{X}_{0}}$和${{P}_{0}}$，卡尔曼滤波器在同一时刻会有一个预估值和一个测量值，然后再根据预估值和测量值算出一个最优估计值，然后根据预估值和测量值方差的大小对下一时刻的最优方差进行预估。增益因子 直接反应的是预估值和测量值之间方差的大小关系，观测噪声越大则增益因子越小，最优估计值就越靠近预估值；反之，最优估计值就越靠近测量值。卡尔曼滤波器具有很好的性能，很快就能使估计值收敛于真实值。
+
+\subsection{扩展卡尔曼滤波器}
+对于一般的线性系统，传统的卡尔曼滤波可以通过递推的状态提供一个无偏的最小方差估计，并且能通过估计的协方差值标示估计的不确定度，然而在许多的实际工程应用中，比较典型的系统是动态的非线性系统。首先将非线性系统模型做线性化的处理，然后再根据传统卡尔曼滤波的思想进行处理，以此来实现非线性系统的卡尔曼滤波，则称为扩展卡尔曼滤波(EKF)。扩展卡尔曼滤波是在测量和估计值结果附近进行泰勒级数的展开并且忽略二阶以上的高阶项，得到卡尔曼滤波线性化的方程。扩展卡尔曼滤波对于非线性程度不高的动态系统具有较好的估计效果。
+
+典型的非线性动态系统模型方程：
+\begin{equation}\label{3-7}
+\left\{ \begin{array}{l}
+   {{X}_{k+1}}=f\left( {{X}_{k}},{{u}_{k-1}},{{w}_{k-1}} \right) \\ 
+  {{Z}_{k}}=h\left( {{X}_{k}},{{v}_{k}} \right) \\ 
+\end{array} \right.
+\end{equation}
+
+上式中，$f\left( {{X}_{k}},{{u}_{k-1}},{{w}_{k-1}} \right)$是与系统状态相关的非线性函数，$h\left( {{X}_{k}},{{v}_{k}} \right)$是与系统观测量相关的非线性函数。将式\ref{3-7}在$\widehat{{{X}_{k}}}$处按照一阶泰勒展开进行线性变换，可得：
+\begin{equation}
+\left\{ \begin{array}{l}
+  f\left( {{X}_{k}},{{u}_{k-1}},{{w}_{k-1}} \right)=f\left( \widehat{{{X}_{k}}},{{u}_{k-1}},{{w}_{k-1}} \right)+A\left( {{X}_{k}}-\widehat{{{X}_{k}}} \right)+W{{w}_{k-1}} \\ 
+ h\left( {{X}_{k}},{{v}_{k}} \right)=h\left( \widehat{{{X}_{k}}},{{v}_{k}} \right)+B\left( {{X}_{k}}-\widehat{{{X}_{k}}} \right)+T{{v}_{k}} \\ 
+\end{array} \right.
+\end{equation}
+
+式中：
+\begin{equation}
+\begin{array}{l}
+   A=\frac{\partial f\left( \widehat{{{X}_{k}}},{{u}_{k-1}},{{w}_{k-1}} \right)}{\partial \widehat{{{X}_{k}}}} \\ 
+ W=\frac{\partial f\left( \widehat{{{X}_{k}}},{{u}_{k-1}},{{w}_{k-1}} \right)}{\partial \widehat{{{X}_{k}}}} \\ 
+  B=\frac{\partial h\left( \widehat{{{X}_{k}}},{{v}_{k}} \right)}{\partial \widehat{{{X}_{k}}}} \\ 
+  T=\frac{\partial h\left( \widehat{{{X}_{k}}},{{v}_{k}} \right)}{\partial \widehat{{{X}_{k}}}} \\ 
+\end{array}
+\end{equation}
+
+在非线性系统状态方程和测量方程的基础上，可以得到扩展卡尔曼滤波算法的递推方程为：
+
+1) 滤波的初始化条件
+\begin{equation}
+\left\{ \begin{array}{l}
+   {{\widehat{X}}_{0/0}}=E\left[ {{X}_{0}} \right] \\ 
+  {{P}_{0/0}}=E\left[ \left( {{X}_{0}}-{{\widehat{X}}_{0/0}} \right){{\left( {{X}_{0}}-{{\widehat{X}}_{0/0}} \right)}^{T}} \right] \\ 
+\end{array} \right.
+\end{equation}
+
+2) 当前状态预测方程
+\begin{equation}
+{{\widehat{X}}_{k/k-1}}=f\left( {{X}_{k-1/k-1}},{{u}_{k-1}},0 \right)
+\end{equation}
+
+3) 误差协方差预测方程
+\begin{equation}
+{{P}_{k/k-1}}={{A}_{k}}{{P}_{k-1/k-1}}A_{k}^{T}+{{W}_{k}}{{w}_{k-1}}W_{k}^{T}
+\end{equation}  
+
+4) 卡尔曼增益矩阵
+\begin{equation}
+{{H}_{k}}={{P}_{k/k-1}}B_{k}^{T}{{[{{B}_{k}}{{P}_{k/k-1}}B_{k}^{T}+{{T}_{k}}{{v}_{k}}T_{k}^{T}]}^{-1}}
+\end{equation}  
+	  
+5) 状态估计方程
+\begin{equation}
+{{\widehat{X}}_{k}}={{\widehat{X}}_{k/k-1}}+{{H}_{k}}\times \left( {{Z}_{k}}-h\left( {{X}_{k/k-1}},0 \right) \right)a
+\end{equation}  
+	  
+6) 当前误差协方差矩阵
+\begin{equation}
+{{P}_{k}}={{P}_{k/k-1}}-{{H}_{k}}{{B}_{k}}{{P}_{k/k-1}}
+\end{equation}  
+
+从上面的递推公式可以看出，扩展卡尔曼滤波算法的思想和步骤同普通的卡尔曼滤波是一致的，都是先进行预测值的估算，然后通过观测值和卡尔曼增益对预测值进行修正，不同的是通过泰勒公式展开并且忽略高阶项的方法实现了非线性系统的线性化。但是由于在线性化的过程中忽略了高阶项，导致了误差的引入，所以扩展卡尔曼滤波在处理非线性化程度不高的系统能够取得比较好的估计效果，对于动态性比较突出的系统会使得估计误差过大。
+\subsection{无迹卡尔曼滤波器}
+由于扩展卡尔曼滤波必须对非线性系统进行线性化处理，引入了线性化误差，对于非线性程度高的系统容易导致滤波的效果下降，并且对于复杂的动态系统，非线性函数的雅可比矩阵求解非常复杂而且容易出错，所以为了提高非线性系统卡尔曼滤波的精度，扩大卡尔曼滤波器的适用面，寻找一种新的逼近处理方法是必要的。由于根据随机过程的基本理论可以知道近似非线性函数的概率分布与直接近似非线性函数相比更加的简单容易，所以考虑到直接通过近似非线性函数而不需要进行线性化的处理。无迹卡尔曼滤波估计算法就是直接采用确定性采样的方法来近似非线性函数的概率分布，以此解决非线性系统的卡尔曼滤波问题。
+
+(一)	无迹(UT)变换
+	UT变换是无迹卡尔曼滤波算法的基础，在此基础上运用卡尔曼滤波算法的框架则称为无迹卡尔曼滤波。UT变换是使用采样的多个粒子点对非线性函数的概率分布进行逼近的一种变换方法。UT变换的基本原理是根据k时刻状态${{X}_{k}}$的均值$\overline{{{X}_{k}}}$和方差${{P}_{{{X}_{k}}}}$，选取一组均值和方差该时刻相符的采样点集合，将该集合中的点集进行相应的非线性变换得到最终的目标点集，并且可以计算得到目标点集的均值和方差。 UT变换的示意图如图\ref{3-UT}所示。
+\pic[htbp]{UT变换示意图}{}{3-UT} 
+
+UT变换的具体步骤如下：
+
+1) 构造Sigma点集
+
+根据随机向量X的均值$\overline{X}$和方差${{P}_{X}}$，通过对称采样的方式构造Sigma点集 $\left\{ {{X}_{i}} \right\},i=1,..,n$，如下式所示：
+\begin{equation}\label{3-24}
+{{X}_{i}}=\left\{ \begin{array}{l}
+   \overline{X}+\sqrt{(n+\Delta ){{P}_{X}}},i=1,...,n \\ 
+  \overline{X}-\sqrt{(n+\Delta ){{P}_{X}}},i=n+1,...,2n \\ 
+  \overline{X},i=0 \\ 
+\end{array} \right.
+\end{equation}  
+
+并且通过计算得到点${{X}_{i}}$的计算UT变换后值的均值权值$W_{i}^{m}$和方差权值$W_{i}^{c}$，权值可以通过以下的方程得到：
+\begin{equation}
+\left\{ \begin{array}{l}
+   W_{0}^{m}=\frac{\Delta }{n+\Delta } \\ 
+  W_{0}^{c}=\frac{\Delta }{n+\Delta }+(1-{{\omega }^{2}}+\nu ) \\ 
+\end{array} \right.
+\end{equation}  
+\begin{equation}
+W_{i}^{m}=W_{i}^{c}=\frac{\Delta }{2\left( n+\Delta  \right)},i=1,2...,2n
+\end{equation}
+
+式中$\Delta $称为尺度参数$\Delta ={{\omega }^{2}}(n+\lambda )-n$，$\omega $确定了均值$\overline{X}$周围Sigma点的分布，是一个取值范围为$\left( {{e}^{-4}}\le \omega \le 1 \right)$的正整数， 通常设置为0或3-n， $\nu $是状态分布参数，对于正态分布的随机变量$\nu =2$可以达到最优值，$\omega $和 $\lambda $决定了估计均值的精度，$\nu $决定了估计方差的精度。
+
+2) 采样点的非线性变换
+
+	对于采样的Sigma点集$\left\{ {{X}_{i}} \right\}$进行$f\left( {{X}_{i}} \right)$的非线性变换，可以得到变换后的Sigma点集$\left\{ {{Y}_{i}} \right\}$：
+\begin{equation}
+{{Y}_{i}}=f\left( {{X}_{i}} \right),i=0,1,2...,2n
+\end{equation}
+
+通过变换后的Sigma点集$\left\{ {{Y}_{i}} \right\}$可以近似的表示非线性函数$Y=f(X)$的分布。
+
+3) 计算Y的均值和方差
+
+根据步骤1）的均值权值和方差权值对非线性变换后的Sigma点集$\left\{ {{Y}_{i}} \right\}$进行加权处理，从而计算出Y的均值和方差。
+\begin{equation}\label{3-28}
+\begin{array}{l}
+   \overline{Y}=\sum\limits_{i=0}^{2n}{W_{i}^{m}{{Y}_{i}}} \\ 
+  {{P}_{Y}}=\sum\limits_{i=0}^{2n}{W_{i}^{c}({{Y}_{i}}-\overline{Y}){{({{Y}_{i}}-\overline{Y})}^{T}}} \\ 
+\end{array}
+\end{equation}
+
+UT变换通过采样的方式近似非线性函数的概率分布，而不是像扩展卡尔曼滤波算法一样近似直接对非线性函数进行近似，因此即使非线性系统模型复杂，UT变换也不会增加算法实现的难度；并且相比于扩展卡尔曼滤波忽略泰勒展开的高阶项，UT变换的准确度可以达到三阶的泰勒展开；UT变换不需要计算非线性函数的雅可比矩阵，所以也可以用来处理不可导得非线性函数。
+
+(二)	无迹卡尔曼滤波-UKF
+
+	无迹卡尔曼滤波是基于UT变换技术运用卡尔曼滤波思想的一种滤波技术。在当前状态预测方程中，UKF运用UT变换来近似的表示k时刻经过非线性变换后再k+1时刻的估计值，借此来处理随机变量X均值和方差的非线性传递。无迹卡尔曼滤波算法的步骤如下：
+
+1)滤波状态变量的初始化
+\begin{equation}
+\begin{array}{l}
+   {{\overline{X}}_{0}}=E\left( {{X}_{0}} \right) \\ 
+  {{P}_{0}}=E\left[ \left( {{X}_{0}}-{{\overline{X}}_{0}} \right){{\left( {{X}_{0}}-{{\overline{X}}_{0}} \right)}^{T}} \right] \\ 
+\end{array}
+\end{equation}
+
+因为存在测量噪声和过程噪声，所以需要对随机变量X的初值状态进行扩展，得到初始化变量的增广矩阵如下：
+\begin{equation}
+{{\widehat{X}}_{0}}=E\left[ \begin{matrix}
+   {{X}_{0}} & {{u}_{0}} & {{w}_{0}}  \\
+\end{matrix} \right]=\left[ \begin{matrix}
+   {{\overline{X}}_{0}} & 0 & 0  \\
+\end{matrix} \right]
+\end{equation}
+\begin{equation}
+{{\widehat{P}}_{0}}=E\left[ \left( {{X}_{0}}-{{\widehat{X}}_{0}} \right){{\left( {{X}_{0}}-{{\widehat{X}}_{0}} \right)}^{T}} \right]=\left[ \begin{matrix}
+   {{P}_{0}} & 0 & 0  \\
+   0 & {{Q}_{0}} & 0  \\
+   0 & 0 & {{R}_{0}}  \\
+\end{matrix} \right]
+\end{equation}
+
+2)计算Sigma采样点
+
+根据随机变量X在k时刻的均值和方差，构造k时刻采样的Sigma点集：
+\begin{equation}
+X_{k}^{i}={{\widehat{X}}_{k}}+\sqrt{(n+\Delta ){{\widehat{P}}_{k}}},i=1,...,n
+\end{equation}    
+\begin{equation}
+X_{k}^{i}={{\widehat{X}}_{k}}-\sqrt{(n+\Delta ){{\widehat{P}}_{k}}},i=n+1,...,2n
+\end{equation} 
+
+上式中$\Delta $的定义以及权值的计算方法如式\ref{3-24}-式\ref{3-28}所示。
+
+3)状态预测方程
+\begin{equation}
+X_{k+1,k}^{i}=f\left( X_{k}^{i},u_{k}^{i},0 \right)
+\end{equation} 
+\begin{equation}
+\begin{array}{l}
+   \widehat{X}_{k+1}^{-}=\sum\limits_{i=0}^{2n}{W_{i}^{m}X_{k+1,k}^{i}} \\ 
+  \widehat{P}_{k+1}^{-}=\sum\limits_{i=0}^{2n}{W_{i}^{c}\left[ X_{k+1,k}^{i}-{{\widehat{X}}_{k+1}} \right]}{{\left[ X_{k+1,k}^{i}-{{\widehat{X}}_{k+1}} \right]}^{T}} \\ 
+\end{array}
+\end{equation} 
+
+4)状态测量更新方程
+\begin{equation}
+Z_{k+1,k}^{i}=h\left( X_{k+1,k}^{i},v_{k}^{i} \right)
+\end{equation} 
+\begin{equation}
+{\widehat Z_{k + 1}} = \sum\limits_{i = 0}^{2n} {W_i^mZ_{k + 1,k}^i}
+\end{equation} 
+
+5)协方差更新方程
+\begin{equation}
+P_{k + 1}^z = \sum\limits_{i = 0}^{2n} {W_i^c\left[ {Z_{k + 1,k}^i - {{\widehat Z}_{k + 1}}} \right]} {\left[ {Z_{k + 1,k}^i - {{\widehat Z}_{k + 1}}} \right]^T}
+\end{equation} 
+
+\begin{equation}
+P_{k + 1}^{zx} = \sum\limits_{i = 0}^{2n} {W_i^c\left[ {Z_{k + 1,k}^i - {{\widehat Z}_{k + 1}}} \right]} {\left[ {X_{k + 1,k}^i - {{\widehat X}_{k + 1}}} \right]^T}
+\end{equation} 
+
+6)无迹卡尔曼滤波增益
+\begin{equation}
+{H_k} = P_{k + 1}^{zx}{\left( {P_{k + 1}^z} \right)^{ - 1}}
+\end{equation} 
+
+7)状态估计方程
+\begin{equation}
+{\widehat X_{k + 1}} = \widehat X_{k + 1}^ -  + {H_{k + 1}}({Z_{k + 1}} - {\widehat Z_{k + 1}})
+\end{equation} 
+
+8)当前最优协方差矩阵
+\begin{equation}
+{P_{X,k + 1}} = \widehat P_{k + 1}^ -  - {H_{k + 1}}P_{k + 1}^zH_{k + 1}^T
+\end{equation} 
+
+由上文可见，UKF与扩展卡尔曼滤波算法相比，计算量要求有所提升，但是仍然在可以接受的范围之内。无迹卡尔曼滤波在运用到非线性系统的状态估计中在精度方面可以达到泰勒级数的三阶次，相比于扩展卡尔曼滤波的忽略高阶次也有明显的提升。同时，UKF降低了对模型的要求并且不需要计算复杂模型的雅可比矩阵，所以UKF具有更广的适用范围。
+\section{基于扩展卡尔曼滤波的SOC估计算法研究}
+以上文介绍的扩展卡尔曼滤波理论作为基本依据，引入第二章磷酸铁锂电池的状态空间方程来描述电池在噪声作用下的随机过程。并且针对电池非线性的状态特点，通过进行泰勒展开将其进行线性化处理，再运用卡尔曼滤波的思想公式对电池自身的下一状态进行估计，即为扩展卡尔曼滤波算法(EKF)。
+\subsection{基于EKF的锂电池SOC估计方法}
+根据第二章磷酸铁锂电池的电路方程和电池的$OCV - SOC$函数，选择电池的浓差极化电压${V_1}$、电化学极化电压${V_2}$和电池的SOC作为系统的状态变量：$X = {\left[ {\begin{array}{*{20}{c}}
+{SOC}&{{V_1}}&{{V_2}}
+\end{array}} \right]^T}$将锂电池等效电路控制方程进行离散化处理得到电路的离散滤波方程，系统的输入电流为 ，则根据如下的模型方程：
+\begin{equation}
+X\left( {k + 1} \right) = f\left[ {X\left( k \right),I\left( k \right)} \right] + u\left( k \right)
+\end{equation} 
+
+\begin{equation}
+Z\left( k \right) = h\left[ {X\left( k \right),I\left( k \right)} \right] + w\left( k \right)
+\end{equation} 
+
+可以得到锂电池的离散状态方程为：
+\begin{equation}
+\left( {\begin{array}{*{20}{c}}
+{SOC\left( {k + 1} \right)}\\
+{{V_1}\left( {k + 1} \right)}\\
+{{V_2}\left( {k + 1} \right)}
+\end{array}} \right) = \left[ {\begin{array}{*{20}{c}}
+1&0&0\\
+0&{1 - \frac{T}{{{\tau _1}}}}&0\\
+0&0&{1 - \frac{T}{{{\tau _2}}}}
+\end{array}} \right]\left( {\begin{array}{*{20}{c}}
+{SOC\left( k \right)}\\
+{{V_1}\left( k \right)}\\
+{{V_2}\left( k \right)}
+\end{array}} \right) + \left( {\begin{array}{*{20}{c}}
+{ - \frac{T}{Q}}\\
+{\frac{T}{{{C_1}}}}\\
+{\frac{T}{{{C_2}}}}
+\end{array}} \right)I\left( k \right)
+\end{equation} 
+
+\begin{equation}
+V\left( k \right) = {V_{oc}}\left( {SOC,k} \right) - {V_1}\left( k \right) - {V_2}\left( k \right) - {R_0}I\left( k \right)a
+\end{equation} 
+
+其中，${\tau _1}{\rm{ = }}{R_1}{C_1}$~ ${\tau _2}{\rm{ = }}{R_2}{C_2}$分别表示电池两种极化的时间常数， $Q$表示锂电池的额定容量，$T$表示系统的采样周期，${V_{oc}}\left( {SOC,k} \right)$表示系统的开路电压与电池的荷电状态之间的高阶非线性函数。
+
+(一)	锂电池SOC估计系统的初始化
+
+选定系统的采样周期$T = 1s$，估计系统的噪声$u\left( k \right)$和$w\left( k \right)$都为均值为零的高斯随机噪声，根据32650号磷酸铁锂电池的技术指标可以得到$Q = 18000C$，将电池在常温下静置24小时后，锂电池两端的电压趋于稳定，测得锂电池的电压为电池的开路电压${U_0}{\rm{ = }}3.12V$，根据2.5.1节中拟合的SOC-OCV方程可以求得此时锂电池的初始$SO{C_0} = 92.46\% $，则估计系统的初始状态：${\widehat X_{0/0}} = {\left( {\begin{array}{*{20}{c}}
+{92.46\% }&0&0
+\end{array}} \right)^T}$~$P\left[ {u\left( k \right)} \right] = P\left[ {v\left( k \right)} \right] = 1$
+\[{P_{0/0}} = \left[ {\begin{array}{*{20}{c}}
+1&0&0\\
+0&1&0\\
+0&0&1
+\end{array}} \right]\]
+
+(二)	估计系统的线性化处理
+
+	扩展卡尔曼滤波算法需要把非线性系统做线性化的处理，即将动态系统模型方程和测量模型方程在测量点进行泰勒级数的展开，并且忽略二阶以上的高阶项。可以得到系统的雅可比矩阵的形式如下：
+
+$A = \frac{{\partial f\left( {\widehat {{X_k}},{I_k}} \right)}}{{\partial \widehat {{X_k}}}}{\rm{ = }}\left[ {\begin{array}{*{20}{c}}
+1&0&0\\
+0&{1{\rm{ - }}\frac{T}{{{\tau _1}}}}&0\\
+0&0&{1{\rm{ - }}\frac{T}{{{\tau _2}}}}
+\end{array}} \right]$~$W = \frac{{\partial f\left( {\widehat {{X_k}},{I_k}} \right)}}{{\partial {I_k}}}{\rm{ = }}\left[ {\begin{array}{*{20}{c}}
+{ - \frac{T}{Q}}\\
+{\frac{T}{{{C_1}}}}\\
+{\frac{T}{{{C_2}}}}
+\end{array}} \right]$
+\[B = \frac{{\partial h\left( {\widehat {{X_k}},{I_k}} \right)}}{{\partial \widehat {{X_k}}}} = \left( {\begin{array}{*{20}{c}}
+{\frac{{\partial {V_{oc}}\left( {SOC,k} \right)}}{{\partial \widehat {{X_k}}}}}&{\frac{{\partial V\left( k \right)}}{{\partial {V_1}}}}&{\frac{{\partial V\left( k \right)}}{{\partial {V_2}}}}
+\end{array}} \right){\rm{ = }}\left( {\begin{array}{*{20}{c}}
+{\frac{{\partial {V_{oc}}\left( {SOC,k} \right)}}{{\partial \widehat {{X_k}}}}}&{{\rm{ - }}1}&{{\rm{ - }}1}
+\end{array}} \right)\]
+\[T = \frac{{\partial h\left( {\widehat {{X_k}},{I_k}} \right)}}{{\partial {I_k}}}{\rm{ = }}{R_0}\]
+根据估计系统的雅可比矩阵可以得到锂电池模型的离散模型方程为：
+\begin{equation}
+X\left( {k + 1} \right) = A(k){X_k} + W\left( k \right)I\left( k \right) + u\left( k \right)
+\end{equation}
+\begin{equation}
+Z\left( k \right) = B\left( k \right)X(k) + D(k)I(k) + w\left( k \right)
+\end{equation}
+则考虑到噪声为均值为零的高斯白噪声以及锂电池系统的初值，可以求得锂电池估计的扩展卡尔曼滤波模型参数如下：\\
+状态预测值：
+\begin{equation}
+{\widehat X_{k/k - 1}} = A(k){X_k} + W\left( k \right)I\left( k \right)
+\end{equation}
+误差协方差预测值：
+\begin{equation}
+{P_{k/k - 1}} = A(k){P_{k - 1/k - 1}}A{(k)^T} + W(k){w_{k - 1}}W{(k)^T}
+\end{equation}
+卡尔曼滤波增益：
+\begin{equation}
+{H_k} = {P_{k/k - 1}}B{(k)^T}{[B(k){P_{k/k - 1}}B{(k)^T} + T(k){v_k}T{(k)^T}]^{ - 1}}
+\end{equation}
+状态估计值：
+\begin{equation}
+{\widehat X_k} = {\widehat X_{k/k - 1}} + {H_k} \times \left( {h\left( {{X_{k/k - 1}},I(k)} \right) + w(k) - h\left( {{X_{k/k - 1}},0} \right)} \right)
+\end{equation}
+误差协方差矩阵：
+\begin{equation}
+{P_k} = {P_{k/k - 1}} - {H_k}{B_k}{P_{k/k - 1}}
+\end{equation}
+根据以上的模型差数求解，就可以实现对磷酸铁锂电池SOC的估计。
+\subsection{EKF实验仿真}
+在上节磷酸铁锂电池荷电状态估计算法推导的公式上，根据实际的工况实验数据基于扩展卡尔曼滤波算法进行锂电池SOC估计的实验设计。估计系统的框图如图\ref{3-EKF}所示：
+\pic[htbp]{EKF估计系统框图}{}{3-EKF} 
+
+从估计框图中可以看出，测得的电流值和电压值作为估计系统的输入，在输入端会添加系统的输入噪声，添加噪声后电流和电压趋势图如图\ref{IVtable}所示：
+\begin{pics}[htbp]{带噪声的电压和电流波形}{IVtable}
+\addsubpic{电流波形}{width=0.4\textwidth}{3-A-EKF}
+\addsubpic{电压波形}{width=0.4\textwidth}{3-V-EKF}
+\end{pics}
+
+根据输入电流和电压数据得到锂电池基于扩展卡尔曼滤波算法的SOC估计效果如图\ref{3-Result-EKF}，并且对估计算法的误差进行了分析。
+\pic[htbp]{扩展卡尔曼滤波算法估计效果图}{}{3-Result-EKF} 
+从估计与参考曲线的对比可以看出，在实验开始阶段荷电状态的估计效果与真实值比较接近，估计的误差较小，但是随着电池温度的升高，放电量的加大，锂电池荷电状态的估计效果有所下降，具体的误差状况如图\ref{3-Error-EKF}所示。
+\pic[htbp]{扩展卡尔曼滤波算法估计误差曲线}{}{3-Error-EKF} 
+扩展卡尔曼滤波算法的估计误差随着工况时间的增长，误差也累积增大，这是因为随着电池温度的升高，电池内部的极化反应导致的动态损耗也随之增大。可以从曲线中看出，电池估计误差最高能达到4.5$\% $，基于分数阶电路模型的扩展卡尔曼滤波算法在锂电池荷电状态估计方面还是具有较高的精度。
+\section{基于无迹卡尔曼滤波的SOC估计算法研究}
+根据无迹卡尔曼滤波理论的基本理论，采用多个粒子点近似函数概率密度分布的方式来解决锂电池方程的非线性情况，从而避免了锂电池状态方程线性化所产生的误差，可以使电池SOC估计获得更高的精度。基于无迹卡尔曼滤波的SOC估计算法主要包括离散状态空间方程的建立、SOC估计系统参数值的初始化以及SOC估计的迭代流程。
+\subsection{基于UKF的锂电池SOC估计算法}
+由于无迹卡尔曼滤波的SOC估计不需要对锂电池的离散状态方程做线性化处理，所以根据UKF的算法原理和锂电池等效电路模型方程可以直接建立电池的离散状态空间方程，方程中SOC为待估计参数，在已知电池开路电压和电流作为估计系统的输入参数，得到锂电池系统的模型方程如下：
+\begin{equation}
+X\left( {k + 1} \right) = f\left[ {X\left( k \right),I\left( k \right)} \right] + u\left( k \right){\rm{ = }}\left( {\begin{array}{*{20}{c}}
+{SOC\left( {k + 1} \right)}\\
+{{V_1}\left( {k + 1} \right)}\\
+{{V_2}\left( {k + 1} \right)}
+\end{array}} \right) = \left( {\begin{array}{*{20}{c}}
+{SOC\left( k \right) - \frac{T}{Q}I\left( k \right)}\\
+{\left( {1 - \frac{T}{{{\tau _1}}}} \right){V_1}\left( k \right){\rm{ + }}\frac{T}{{{C_1}}}I\left( k \right)}\\
+{\left( {1 - \frac{T}{{{\tau _2}}}} \right){V_2}\left( k \right){\rm{ + }}\frac{T}{{{C_2}}}I\left( k \right)}
+\end{array}} \right) + u\left( k \right)
+\end{equation}
+\begin{equation}
+V\left( k \right) = {V_{oc}}\left( {SOC,k} \right) - {V_1}\left( k \right) - {V_2}\left( k \right) - {R_0}I\left( k \right)
+\end{equation}
+
+在锂电池离散状态空间模型的基础上，基于无迹卡尔曼滤波的SOC估算流程如下：
+
+(一)	UKF系统的初始化
+
+	无迹卡尔曼滤波估计系统的初始化与扩展卡尔曼滤波估计系统的初始化相同，采样周期$T = 1s$，$u\left( k \right)$和$w\left( k \right)$都为均值为零并且方差为1的高斯随机白噪声，磷酸铁锂电池的额定电量$Q = 18000C$，实验锂电池的初始开路电压为${U_0}{\rm{ = }}3.12V$，锂电池的初始$SO{C_0} = 92.46\% $则：${\widehat X_{0/0}} = {\left( {\begin{array}{*{20}{c}}
+{92.46\% }&0&0
+\end{array}} \right)^T}$~$P\left[ {u\left( k \right)} \right] = P\left[ {v\left( k \right)} \right] = 1$
+\[{P_{0/0}} = \left[ {\begin{array}{*{20}{c}}
+1&0&0\\
+0&1&0\\
+0&0&1
+\end{array}} \right]\]
+
+(二)	Sigma采样点以及权值
+
+本实验采用对称采样的方式构造Sigma点集$\left\{ {{X_i}} \right\},i = 1,..,n$，如下式所示：
+\begin{equation}
+{X_i} = \left\{ \begin{array}{l}
+\hat X + \sqrt {(n + \Delta ){P_X}} ,i = 1,...,n\\
+\hat X - \sqrt {(n + \Delta ){P_X}} ,i = n + 1,...,2n\\
+\hat X,i = 0
+\end{array} \right.
+\end{equation}
+
+取 $\Delta  = 3{\rm{ - }}n$，$\lambda {\rm{ = }}3{\rm{ - }}n$ ，$\nu {\rm{ = }}2$ ，点 ${X_i}$ 的计算UT变换后值的均值权值 $W_i^m$和方差权值 $W_i^c$，	
+\begin{equation}
+\left\{ \begin{array}{l}
+W_0^m = 1 - \frac{n}{3}\\
+W_0^c = 3 - \frac{n}{3}
+\end{array} \right.
+\end{equation}
+\begin{equation}
+W_i^m = W_i^c = \frac{{3{\rm{ - }}n}}{6},i = 1,2...,2n
+\end{equation}
+
+(三)	SOC状态预测
+\begin{equation}
+X_{k + 1,k}^i = \left( {\begin{array}{*{20}{c}}
+{SO{C^i}(k) - \frac{T}{Q}I\left( k \right)}\\
+{\left( {1 - \frac{1}{{{\tau _1}}}} \right)V_1^i\left( k \right){\rm{ + }}\frac{1}{{{C_1}}}I\left( k \right)}\\
+{\left( {1 - \frac{1}{{{\tau _2}}}} \right)V_2^i\left( k \right){\rm{ + }}\frac{1}{{{C_2}}}I\left( k \right)}
+\end{array}} \right) + {u^i}\left( k \right)
+\end{equation}
+
+\begin{equation}
+\begin{array}{l}
+\widehat X_{k + 1}^ -  = \sum\limits_{i = 0}^{2n} {\frac{{3{\rm{ - }}n}}{6}X_{k + 1,k}^i} \\
+\widehat P_{k + 1}^ -  = \sum\limits_{i = 0}^{2n} {\frac{{3{\rm{ - }}n}}{6}\left[ {X_{k + 1,k}^i - {{\widehat X}_{k + 1}}} \right]} {\left[ {X_{k + 1,k}^i - {{\widehat X}_{k + 1}}} \right]^T}
+\end{array}
+\end{equation}
+
+(四)	SOC状态测量更新
+\begin{equation}
+Z_{k + 1,k}^i{\rm{ = }}{V_{oc}}\left( {SO{C^i},k} \right) - V_1^i\left( k \right) - V_2^i\left( k \right) - {R_0}I\left( k \right) + w_k^i
+\end{equation}
+
+\begin{equation}
+{\widehat Z_{k + 1}} = \sum\limits_{i = 0}^{2n} {\frac{{3{\rm{ - }}n}}{6}Z_{k + 1,k}^i} 
+\end{equation}
+
+(五)	协方差的测量更新
+\begin{equation}
+P_{k + 1}^z = \sum\limits_{i = 0}^{2n} {\frac{{3{\rm{ - }}n}}{6}\left[ {Z_{k + 1,k}^i - {{\widehat Z}_{k + 1}}} \right]} {\left[ {Z_{k + 1,k}^i - {{\widehat Z}_{k + 1}}} \right]^T}
+\end{equation}
+\begin{equation}
+P_{k + 1}^{zx} = \sum\limits_{i = 0}^{2n} {\frac{{3{\rm{ - }}n}}{6}\left[ {Z_{k + 1,k}^i - {{\widehat Z}_{k + 1}}} \right]} {\left[ {X_{k + 1,k}^i - {{\widehat X}_{k + 1}}} \right]^T}
+\end{equation}
+
+(六)	无迹卡尔曼滤波SOC估计的增益
+\begin{equation}
+{H_k} = P_{k + 1}^{zx}{\left( {P_{k + 1}^z} \right)^{ - 1}}
+\end{equation} 
+
+(七)	无迹卡尔曼滤波的状态估计方程
+\begin{equation}
+{\widehat X_{k + 1}} = \widehat X_{k + 1}^ -  + {H_{k + 1}}({Z_{k + 1}} - {\widehat Z_{k + 1}})
+\end{equation} 
+
+(八)	当前最优协方差矩阵
+\begin{equation}
+{P_{X,k + 1}} = \widehat P_{k + 1}^ -  - {H_{k + 1}}P_{k + 1}^zH_{k + 1}^T
+\end{equation} 
+
+通过以上的无迹卡尔曼滤波离散状态空间方程，就可以迭代实现磷酸铁锂电池SOC的估计。
+
+\subsection{UKF实验仿真}
+基于UT变换处理非线性系统的传递问题，并且采用卡尔曼滤波的思想对锂电池的SOC估计系统进行设计，估计系统的框图如图\ref{3-UKF}所示。
+\pic[htbp]{UKF估计系统框图}{}{3-UKF}
+
+同样的测得的带噪声的电流值和电压值作为估计系统的输入，带噪声输入的曲线如\ref{IVUKFtable}所示。
+\begin{pics}[htbp]{带噪声的电压和电流波形}{IVUKFtable}
+\addsubpic{电流波形}{width=0.4\textwidth}{3-A-UKF}
+\addsubpic{电压波形}{width=0.4\textwidth}{3-V-UKF}
+\end{pics}
+
+以电流和电压数据作为估计系统的输入数据，基于无迹卡尔曼滤波算法的估计效果和估计误差如图\ref{3-Result-UKF}和图\ref{3-Error-UKF}所示。
+\pic[htbp]{无迹卡尔曼滤波算法估计效果图}{}{3-Result-UKF}
+\pic[htbp]{UKF和EKF估计误差对比曲线}{}{3-Error-UKF}
+
+从图\ref{3-Error-UKF}中可以看出，将UKF和EKF的荷电状态估计算法进行对比时，无迹卡尔曼滤波算法并不是在每一个时刻点上都比扩展卡尔曼滤波算法更加精确，但是总体的趋势是基于无迹卡尔曼滤波的SOC估计算法误差更小，具有更高的估计精度。
+\section{本章小结}
+本章在引言部分介绍了磷酸铁锂电池荷电状态估计的影响因子，并且引出了卡尔曼滤波估计系统的相关理论，然后对卡尔曼滤波的思想步骤进行了介绍并且比较分析了扩展卡尔曼滤波器和无迹卡尔曼滤波器的的优缺点，再根据32650号磷酸铁锂电池的离散状态空间模型进行了基于EKF和基于UKF的锂电池SOC估计算法的设计，并且在MATLAB下进行实际的仿真实验，对比分析了扩展卡尔曼滤波和无迹卡尔曼滤波的实验结果，结果表明无迹卡尔曼滤波在估计的精确度上要优于扩展卡尔曼滤波，基于无迹卡尔曼滤波的电池SOC估计算法具有优越性和可行性。

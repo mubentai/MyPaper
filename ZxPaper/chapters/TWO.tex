@@ -1,0 +1,604 @@
+% !Mode:: "TeX:UTF-8"
+
+\chapter{磷酸铁锂电池数学模型以及参数辨识的研究}
+本文所研究的纯电动物流汽车主要使用的磷酸铁锂电池组，所以本章针对磷酸铁锂电池的内阻、极化电阻和电池容量等参数进行实验分析，并且比较研究电池的各种参数在不同温度和放电情况下的变化。在理论分析的基础上，对磷酸铁锂电池进行建模，建立电池的状态输出方程，作为下一章电池SOC估计的基础。因此合适精确的电池数学模型可以提高磷酸铁锂电池SOC估计的精度，是实现电池SOC估计的关键。
+\section{磷酸铁锂电池工作原理与基本特性}
+磷酸铁锂电池与钴酸锂和锰酸锂等锂电池相比具有更高的安全性能，这也是现在磷酸铁锂被广泛用于电动汽车的主要原因，并且磷酸铁锂电池不含任何的重金属，能够有效减少对于环境的污染，更加环保。电池是由正极、负极、电池隔膜、电解质和电池外壳等部分组成的，电池各部分组成的材料或者工艺不同导致了对电池价格和性能参数的差异性。磷酸铁锂电池是由橄榄石结构的磷酸铁锂($LiFeP{O_4}$)材料作为锂电池的正极，由石墨材料作为锂电池的负极，中间一般由高强度薄膜化的聚烯烃多孔膜作为锂离子电池的隔膜。磷酸铁锂电池主要依靠锂离子Li+在正极与负极之间来回的移动来实现电池的充电和放电反应，在锂电池发生放电现象的过程中，锂离子Li+通过电池中间部分的隔膜从负极向正极移动，在锂电池发生充电反应的过程中，锂离子Li+与放电相反的通过电池中间的隔膜从正极方向向负极方向移动。磷酸铁锂电池的正极和负极反应如下：
+
+正极化学式：
+\begin{equation}
+L{i_{1 - x}}FeP{O_4} + xL{i^ + } + x{e^ - } \Leftrightarrow LiFeP{O_4}
+\end{equation}
+
+负极化学式：
+\begin{equation}
+L{i_x}{C_6} \Leftrightarrow xL{i^ + } + x{e^ - } + {C_6}
+\end{equation}
+
+总反应化学式：
+\begin{equation}
+LiFeP{O_4} + x{C_6} \Leftrightarrow L{i_{1 - x}}FeP{O_4} + L{i_x}{C_6}
+\end{equation}
+
+	电池的电化学特性可以通过电池的电化学模型来表征，主要包括了锂离子扩散的过程、对电解液迁移过程的描述、电池热量的产生与传导以及锂电池电流和电动势之间的变化。锂电池的电动势反应了电池对外做工的能力，电池的电动势主要由电池的正负极电势、电解液电势和电池的极化电势组成，电池的极化是由电池内部有电流流过时损耗所产生的。根据电池组的电化学参数直接建模在实践中是有极大的困难的，但是通过对锂电池组电化学特性的分析，可以辅助电池等效电路模型的设计。
+\begin{enumerate}
+\item容量特性
+
+	电池的容量特性是进行锂电池SOC估计的重要参数，它与电池的环境温度、充放电次数、电池的充放电电流倍率等因素直接相关。磷酸铁锂电池的容量特性会随着放电倍率的提高而呈现下降规律，但是与铅酸等锂电池相比，磷酸铁锂电池的容量变化相对平缓。
+\item内阻特性
+
+	当锂电池电极上没有电流通过时，电池正负极件的电势差称为开路电压。当锂电池接通负载放电时，电池会有电流通过导致锂电池电压下降。这是由于锂电池内部材料形成了欧姆内阻并且在发生电化学反应的同时电池内部存在极化现象形成了极化内阻。欧姆内阻的大小是由组成锂电池的电解质以及正负极材料等因素决定的，极化内阻的形成原因是锂电池内部存在的极化反应。磷酸铁锂电池的极化现象主要分为两种，一种是浓差极化反应，另一种是活化极化反应。浓差极化是由于电池内部 离子扩散的速率小于在电池电极表面发生化学反应的速率引起的，活化极化主要是由于电池电极的电化学反应引起的。一般随着电池使用时间的增加，电池的欧姆内阻和极化内阻都会相应的增大。
+\item开路电压特性
+
+	磷酸铁锂电池处于非工作状态下，电池正负极之间的电压差叫做开路电压 。一般来说电池的开路电压是在锂电池充电或者放电后静置一段时间后测得的电池电压的稳定值，开路电压稳定的表征了锂电池的荷电状态，提高电池开路电压的测定的精确度就可以更好的估计电池的荷电状态。磷酸铁锂电池的OCV-SOC曲线呈现出来的特点是在开始和结尾都呈现出比较陡峭的形态，在整个曲线的中间会比较平坦。
+\item温度特性
+
+	锂电池组的温度特性主要受到环境温度、电池组热管理和电池自身化学反应释放热量的影响。磷酸铁锂电池组的容量特性、内阻特性和开路电压特性都受到温度特性的影响，温度越低内阻越大，锂电池组可以放出的电量则越小，高温时电池组的容量则会缓慢的增大。锂电池组的开路电压和荷电状态曲线也会随着温度的不同而有所变化。
+\end{enumerate}
+\section{磷酸铁锂电池等效电路模型}
+电池的模型可以描述其工作特性与环境、材料等影响因素的关系，合适的电池模型可以准确的描述电池的极化特性和响应特性，即锂电池组的开路电压、极化内阻、欧姆内阻、温度特性和锂电池组容量之间的内在关系。现在比较普遍的研究锂电池的模型主要有电化学模型、神经网络模型和等效电路模型。
+
+电化学模型主要研究锂电池在充放电过程中发生化学反应的电化学现象。一般通过复杂的偏微分方程来描述锂电池电压和电流的输入输出关系，锂电池的电化学模型主要是基于化学反应原理建立的，包括了电化学过程、固相扩散过程、液相扩散过程和热模型这几个部分，主要是从电池的微观组成上描述电池的特性。优点是锂电池的电化学模型精度非常高，缺点是计算相对复杂，很难用于锂电池组荷电状态的实时估计。锂电池的神经网络模型是在人工神经网络理论的基础上，通过大量的学习数据训练锂电池的模型，以此来表征锂电池的动态特性。神经网络模型的优点是表征非线性系统的性能好、自适应能力强，但是缺点是需要海量的学习数据进行训练，导致工程量的急剧增加。
+
+锂电池的等效电路模型是基于物理电路原理，采用电容、电阻等电路的基本元器件来模拟电池充放电过程的动态反应特性。对于锂电池的不同组成部分，采用相应额电子元件进行对应描述。在实际的工程应用中，等效电路模型可以方便的表示电池的工作状态，电池参数的计算量适中，不需要大量的数据进行训练，精度能够满足实际工程的要求。所以锂电池的等效电路模型是目前纯电动汽车管理系统研究使用最广泛的模型。在磷酸铁锂电池的荷电状态估计的研究中，经典的等效电路模型有Rint模型、一阶RC模型、PNGV模型和高阶RC模型等。
+\subsection{常见的等效电路模型}
+\begin{enumerate}
+\item一阶RC模型
+\pic[htbp]{一阶RC模型}{}{2-oneRCmodel} 
+
+一阶RC模型由一个RC并联电路、一个恒定电阻R2和一个电压源Voc组成。在电路模型中R2代表的是锂电池的欧姆内阻，R1代表电池的极化内阻，电压源Voc代表电池的开路电压。一阶RC模型对锂电池的极化特性进行了描述，可以比较准确的描述锂电池的动态特性，结构也比较简单。
+\item PNGV模型
+\pic[htbp]{PNGV模型}{}{2-PNGVmodel} 
+
+PNGV模型是2001年发表的《PNGV电池试验手册》中提出的标准电池等效电路模型，在一阶RC模型的基础上增加了一个电容C2，用来描述电流充放电过程中电极上的电压在时间上的累积变化，因此PNGV模型具有很好的动态特性，可以更准确的表述锂电池结构和反应特征。
+\item二阶RC模型
+\pic[htbp]{二阶RC模型}{}{2-twoRCmodel}
+
+二阶RC模型在一阶RC模型的基础上增加了一个RC环，对锂电池的电化学极化和浓差极化进行了分别建模，可以比较准确的描述电池的动态特性。
+\end{enumerate}
+\subsection{纯电动物流汽车SOC估计模型的选取}
+在上文中按照从易到难的顺序简单介绍了锂电池研究中采用的等效电路模型，二阶RC模型在表征电池的物理意义时特征明确，并且覆盖了锂电池的基本特性，二阶数的模型也在计算机处理能力的范围之内，在实际工程中可以实现模型参数的实时辨识，满足锂电池的动态特性，具有适合的工程实用价值。本文选用的是二阶RC模型，二阶RC模型的状态方程如下式：
+\begin{equation}\label{2.4}
+\left\{ \begin{array}{l}
+\mathop {{u_1}}\limits^ \bullet   = \frac{i}{{{C_1}}} - \frac{{{u_1}}}{{{R_1}{C_1}}}\\
+{V_t} = {V_{oc}} - {u_1} - {u_2} - i{R_0}\\
+\mathop {{u_2}}\limits^ \bullet   = \frac{i}{{{C_2}}} - \frac{{{u_2}}}{{{R_2}{C_2}}}
+\end{array} \right.
+\end{equation}
+
+其中C1表示由锂离子在电解质中转移的过程导致的电容，C2表示由锂离子自身的扩散过程引起的电容，R1由锂离子转移引起的电阻，R2由锂离子扩散引起的电阻。将式\ref{2.4}中的${u_1} + {u_2}$看成极化电阻的整体，则：
+\begin{equation}\label{2.5}
+{u_{RC}} = {u_1} + {u_2} = {V_t} - {V_{oc}} - i{R_0}
+\end{equation}
+
+将式\ref{2.5}中两个RC回路组成的阻抗进行离散化得到如下式的阻抗函数：
+\begin{equation}
+{Z_{rc}}(s) = \frac{{{R_1}}}{{1 + {\tau _1}s}} + \frac{{{R_2}}}{{1 + {\tau _2}s}} = \frac{{{b_0} + {b_1}s}}{{1 + {a_1}s + {a_2}{s^2}}}
+\end{equation}
+
+将阻抗函数的传输方程离散化，就可以得到离散的差分方程如下：
+\begin{equation}\label{2.7}
+{u_{rc}}(k) = {b_1}I(k - 1) + {b_2}I(k - 2) - {a_1}{u_{rc}}(k - 1) - {a_2}{u_{rc}}(k - 2)
+\end{equation}
+\begin{equation}
+\begin{array}{l}
+\left\{ \begin{array}{l}
+{a_1} = {a_1} * {T_s}/{a_2} - 2\\
+{a_2} = 1 + {T_s}^2/{a_2} + {a_1} * {T_s}/{a_2}\\
+{b_1} = {b_1} * {T_s}/{a_2}\\
+{b_2} = ({b_0} * {T_s} - {b_1}) * {T_s}/{a_2}
+\end{array} \right.\\
+\left\{ \begin{array}{l}
+{a_1} = {\tau _1} + {\tau _2}\\
+{a_2} = {\tau _1} * {\tau _2}\\
+{b_1} = {R_1} + {R_2}\\
+{b_2} = {R_1} * {\tau _2} + {R_2} * {\tau _1}
+\end{array} \right.
+\end{array}
+\end{equation}
+
+将式\label{2.7}转换为最小二乘法的标准形式：
+\begin{equation}
+{{u}_{rc}}(k)=[-{{u}_{rc}}(k-1)-{{u}_{rc}}(k-2)I(k-1)I(k-2)]{{[a_{1}^{'}a_{2}^{'}b_{1}^{'}b_{2}^{'}]}^{T}}+e(k)={{h}^{T}}(k)\theta +e(k)
+\end{equation}
+
+式中
+\begin{equation}
+h(k) = {\left[ {\begin{array}{*{20}{c}}
+{ - {u_{rc}}(k - 1)}&{ - {u_{rc}}(k - 2)}&{I(k - 1)}&{I(k - 2)}
+\end{array}} \right]^T}
+\end{equation}
+\begin{equation}
+\theta ={{\left[ a_{1}^{'}a_{2}^{'}b_{1}^{'}b_{2}^{'} \right]}^{T}}={{\left[ {{\theta }_{1}}{{\theta }_{2}}{{\theta }_{3}}{{\theta }_{4}} \right]}^{T}}
+\end{equation}
+
+对于采样数据为N的数据，由准则函数来保证$J\left( \theta  \right)$最小。
+\begin{equation}\label{2.12}
+J\left( \theta  \right) = \sum\limits_{k = 1}^N {\left[ {e(k)} \right]_{}^2}  = {\left( {{u_N} - {H_N}\theta } \right)^T}({u_N} - {H_N}\theta )
+\end{equation}
+
+其中，
+\begin{equation}
+{H_N} = {\left[ {\begin{array}{*{20}{c}}
+{{h^T}(1)}& \cdots &{{h^T}(k)}& \cdots &{{h^T}(N)}
+\end{array}} \right]^T}
+\end{equation}
+
+对式\ref{2.12}按照$\theta$求导等于0可得：
+\begin{equation}
+\widehat \theta  = {\left[ {H_N^T{H_N}} \right]^{ - 1}}H_N^T{u_N} = {\left[ {\sum\limits_{i = 1}^N {h(i){h^T}(i)} } \right]^{ - 1}}\left[ {\sum\limits_{i = 1}^N {h(i){u_{rc}}(i)} } \right]
+\end{equation}
+
+定义
+\begin{equation}
+{P^{ - 1}}(k) = H_k^T{H_k} = {\sum\limits_{i = 1}^k {h(i){h^T}(i),{H_{_k}} = \left[ {\begin{array}{*{20}{c}}
+{{h^T}(1)}&{{h^T}(2)}& \cdots &{{h^T}(k)}
+\end{array}} \right]} ^T}
+\end{equation}
+
+其中$h\left( i \right)$为列向量，二阶RC等效电路模型未知系数为4，这$P\left( k \right)$ 是$4 \times 4$的方阵。
+\begin{equation}
+{P^{ - 1}}(k) = {P^{ - 1}}(k - 1) + h(k){h^T}(k)
+\end{equation}
+
+则经过变换后得到系数递推估算值：
+\begin{equation}
+\begin{array}{l}
+\widehat \theta (k) =  - {\left[ {H_k^T{H_k}} \right]^{ - 1}}{({H_k})^T}{u_k}\\
+ = P(k)\left[ {\sum\limits_{i = 1}^k {h(i){u_{rc}}(i)} } \right] = \widehat \theta (k - 1) + P(k)h(k)\left[ {{u_{rc}}(k) - {h^T}(k)\widehat \theta (k - 1)} \right]
+\end{array}
+\end{equation}
+
+设定增益矩阵为$K\left( k \right) = P\left( k \right)I\left( k \right)$，经过上述变换得到系数的估算值：
+\begin{equation}
+\begin{array}{l}
+\widehat \theta (k) =  - {\left[ {H_k^T{H_k}} \right]^{ - 1}}{({H_k})^T}{u_k} = P(k)\left[ {\sum\limits_{i = 1}^k {h(i){u_{rc}}(i)} } \right]\\
+ = \widehat \theta (k - 1) + P(k)h(k)\left[ {{u_{rc}}(k) - {h^T}(k)\widehat \theta (k - 1)} \right]
+\end{array}
+\end{equation}
+
+ 求解K(k)和P(k)矩阵，可求解出二阶RC等效电路模型系数的估算值。
+\section{分数阶微积分基本理论}
+分数阶微积分始于Mandelbrot提出的分形学说，至今已经发展了300多年。分数阶理论是在整数阶微积分理论的基础上进行扩展，并且分数阶微积分理论已经在电化学、控制理论和图像处理等领域得到了很好的工程应用，具有相当的优越性。
+\subsection{分数阶微积分时域定义}
+分数阶微积分有三种常用的时域定义，他们分别为$Gr\ddot{u}nwald-Letnikov$定义、$Riemann-Liouville$定义、$Caputo$定义。不同的分数阶微积分时域定义之间既存在联系又相互区别。
+
+(一) $Gr\ddot{u}nwald-Letnikov$定义(G-L定义)
+
+G-L分数阶微分定义：
+\begin{equation}
+{}_{\alpha }^{G}D_{t}^{\nu }f(t)=\underset{h\to 0}{\mathop{\lim }}\,f_{h}^{(\nu )}\left( t \right)=\underset{\begin{smallmatrix} 
+ ~~~h\to 0 \\ 
+ nh\to t-\alpha  
+\end{smallmatrix}}{\mathop{\lim }}\,{{h}^{-\nu }}\sum\limits_{\gamma =0}^{n}{\left[ \begin{matrix}
+   \nu   \\
+   \gamma   \\
+\end{matrix} \right]}f\left( t-\gamma h \right)
+\end{equation}
+
+上式中，右边上标$\nu $表示分数阶微分阶数的正实数，下标$\alpha $和t分别表示积分的上下限，左边上标G表示是分数阶微积分的G-L定义，并且
+\begin{equation}
+\left[ \begin{matrix}
+   \nu   \\
+   \gamma   \\
+\end{matrix} \right]=\frac{\nu \left( \nu +1 \right)\ldots \left( v+\gamma -1 \right)}{\gamma }
+\end{equation}
+
+G-L分数阶积分定义：
+\begin{equation}
+{}_{\alpha }^{G}D_{t}^{\nu }f(t)=\sum\limits_{i=0}^{n}{\frac{{{f}^{\left( i \right)}}\left( \alpha  \right){{\left( t-\alpha  \right)}^{-\nu +i}}}{\Gamma \left( -\nu +i+1 \right)}+\frac{1}{\Gamma \left( -\nu +n+1 \right)}}\int_{\alpha }^{t}{{{\left( t-\tau  \right)}^{-\nu +n}}{{f}^{\left( n+1 \right)}}\left( \tau  \right)}d\tau 
+\end{equation}
+
+上式中，右边上标$\nu$表示分数阶积分阶数的负实数，$\Gamma \left( t \right)=\int_{0}^{\infty }{{{e}^{-x}}{{x}^{\alpha -1}}dx}$为Gamma函数，Gamma函数可以看成是阶乘函数的推广，定义域包括了整个实数域。Gamma函数性质如下：
+\begin{equation}
+\Gamma \left( 0 \right)=\pm \infty ,\Gamma \left( 1 \right)=1,\Gamma \left( n+1 \right)=n\Gamma \left( n \right),n=0,1,2\ldots 
+\end{equation}
+
+从上式中可以看出Gamma函数的迭代性质。
+
+(二) $Riemann-Liouville$定义(R-L定义)
+
+$Riemann-Liouville$定义是在G-L定义的基础上进行的改进，满足G-L定义中的交换律和线性可加性等性质，是工程运用更多的一种分数阶微积分定义。R-L分数阶微分定义：
+\begin{equation}
+{}_{\alpha }^{R}D_{t}^{\nu }f(t)=\left\{ \begin{matrix}
+   \frac{{{d}^{n}}f\left( t \right)}{d{{t}^{n}}},\nu =n\in N  \\
+   \frac{{{d}^{n}}}{d{{t}^{n}}}\frac{1}{\Gamma \left( n-\nu  \right)}\int_{\alpha }^{t}{\frac{f\left( \tau  \right)}{{{\left( t-\tau  \right)}^{\upsilon -n+1}}}d\tau ,0\le n-1<\nu <n}  \\
+\end{matrix} \right.
+\end{equation}
+
+从上式中可以看出，R-L定义的分数阶微分是先通过Gamma函数进行$n-\nu $阶积分的运算，然后再进行n阶的微分运算。R-L分数阶积分定义：
+\begin{equation}
+{}_{\alpha }^{R}D_{t}^{\nu }f(t)=\frac{1}{\Gamma \left( -\nu  \right)}\int_{\alpha }^{t}{{{\left( t-\tau  \right)}^{-\nu -1}}f\left( \tau  \right)}d\tau ,\nu <0
+\end{equation}
+
+(三)	Caputo定义
+
+为了达到更简洁的求解微分方程组的目的，对G-L定义进行改进，使得在求解传输函数的拉普拉斯变换时更加方便，提出了Caputo定义。与R-L定义不同，Caputo定义是先进行n阶的微分，然后再进行$n-\nu $阶的积分运算。Caputo定义便于对初始值得物理意义进行描述，更适合与工程实用。
+\begin{equation}
+{}_{\alpha }^{Caputo}D_{t}^{\nu }f(t)=\frac{1}{\Gamma \left( n-\nu  \right)}\int_{\alpha }^{t}{{{\left( t-\tau  \right)}^{n-\nu -1}}{{f}^{\left( n \right)}}\left( \tau  \right)}d\tau .0\le n-1<\nu <n,n\in R
+\end{equation}
+\subsection{分数阶微积分的拉氏变换域定义}
+传输函数的拉式变换时实际工程中重要的一种工具方法，特别是在对微分方程的求解中，通过将实数域中的微分方程组转化为复数域的代数方程组求解，往往可以有效的减少运算量。将分数阶微积分的定义${}_{\alpha }D_{t}^{-\nu }f(t)$简记为${{D}^{-v}}f(t)$，$f(t),t\in \left[ 0,t \right]$为实信号，则$f(t)$的拉氏变换为：
+\begin{equation}
+f(t)\overset{LT}{\longleftrightarrow}\widehat{f}\left( S \right)
+\end{equation}
+
+那么G-L定义阶数为$\nu $的分数阶微分的拉氏变换的表达式为：
+\begin{equation}
+{{D}^{v}}f(t)\overset{LT}{\longleftrightarrow}{{S}^{v}}\widehat{f}\left( S \right)
+\end{equation}
+
+则G-L定义阶数为$\nu $的分数阶积分的拉氏变换的表达式为：
+\begin{equation}
+{{D}^{-v}}f(t)\overset{LT}{\longleftrightarrow}{{S}^{-v}}\widehat{f}\left( S \right)
+\end{equation}
+	 
+R-L定义阶数为$\nu $的分数阶微分的拉氏变换的表达式为：
+\begin{equation}
+{{D}^{v}}f(t)\overset{LT}{\longleftrightarrow}{{S}^{v}}\widehat{f}\left( S \right)-\sum\limits_{i=0}^{n-1}{{{S}^{i}}{{\left[ D_{f}^{v-i-1}\left( t \right) \right]}_{t=0}},n-1\le v<n}
+\end{equation}
+	 
+Caputo定义阶数为$\nu $的分数阶微分的拉氏变换的表达式为：
+\begin{equation}
+{{D}^{v}}f(t)\overset{LT}{\longleftrightarrow}{{S}^{v}}\widehat{f}\left( S \right)-\sum\limits_{i=0}^{n-1}{{{S}^{v-i-1}}{{\left[ {{D}^{i}}f\left( t \right) \right]}_{t=0}},n-1\le v<n}
+\end{equation}
+	 
+从以上式子可以看出，如果实数信号$f(t)$在$t=0$时刻的初值为0并且$f(t)$在$t=0$时刻的各阶导数都为0，则可以得到：
+\begin{equation}
+{{D}^{v}}f(t)\overset{LT}{\longleftrightarrow}{{S}^{v}}\widehat{f}\left( S \right)
+\end{equation}
+\subsection{分数阶微分方程及解法}
+分数阶微分方程式整数阶微分方程的推广，分数阶微分方程在电化学理论、分形理论和分数阶控制系统等领域得到了广泛的应用。分数阶微分方程常见的表示形式如下：
+\begin{equation}
+{{a}_{n}}{{D}^{{{\lambda }_{n}}}}f+{{a}_{n-1}}{{D}^{{{\lambda }_{n-1}}}}f+\cdots +{{a}_{0}}{{D}^{{{\lambda }_{0}}}}f={{b}_{m}}{{D}^{{{\beta }_{m}}}}s+{{b}_{m-1}}{{D}^{{{\beta }_{m-1}}}}s+\cdots +{{b}_{0}}{{D}^{{{\beta }_{0}}}}s
+\end{equation}
+
+其中，${{D}^{\lambda }}$表示任意一种分数阶微分的定义，函数$s=s\left( x,y \right)$是系统的输入，函数$f=f\left( x,y \right)$是系统的输出，参数${{\lambda }_{i}}\left( i=0,1\cdots ,n \right)$和参数${{\beta }_{i}}\left( i=0,1\cdots ,n \right)$是任意的正实数。当输入和输出函数满足初值为0的初始条件时，对方程进行拉氏变换可以得到系统的传递函数为：
+\begin{equation}
+H\left( s \right)=\frac{{{b}_{m}}{{s}^{{{\beta }_{m}}}}+{{b}_{m-1}}{{s}^{{{\beta }_{m-1}}}}+\cdots +{{b}_{0}}{{s}^{{{\beta }_{0}}}}}{{{a}_{n}}{{s}^{{{\lambda }_{n}}}}+{{a}_{n-1}}{{s}^{{{\lambda }_{n-1}}}}+\cdots +{{a}_{0}}{{s}^{{{\lambda }_{0}}}}}
+\end{equation}
+
+分数阶微分方程组常用的解法有数值计算方法和离散近似方法。通用的离散近似方法是先通过拉氏变换得到系统的传输函数，然后将系统的输入信号与传输函数进行卷积运算，得到对时域卷积的离散近似计算结果。
+\section{基于分数阶理论的磷酸铁锂电池等效电路模型}
+在实际的磷酸铁锂电池的电化学特性的研究中，锂电池的活化极化特性和浓差极化特性更适合分数阶系统理论来表征，分数阶的表征使得模型更加的符合实际和准确。本节在分数阶微积分理论研究的基础上，对磷酸铁锂电池的极化特性进行分数阶表征的探索。
+\subsection{分数阶阻抗模型}
+S.Westerlund在1994年发表的电容理论一文中指出由于在实际生产过程中电容极板表面不规整和不对称等因素的影响，电容器模型更适合使用分数阶导数来描述，更能准确的反映电容器本身的动态特性，并且给出了分数阶电容阻抗如下：
+\begin{equation}
+Z\left( s \right)=\frac{1}{{{\left( s \right)}^{n}}C},0<n<1
+\end{equation}
+上式中，C表示电容的参数，n表示分数阶的阶次。磷酸铁锂电池的阻抗模型可以反应当不同频率的信号施加到电池上时，锂电池的性能特点。锂电池的阻抗模型和电池的内部结构密切相关，也是构造锂电池等效电路模型的基础，锂电池的阻抗分析是指在实验中将一系列不同频率的正弦信号施加到锂电池上，可以得到电池在不同频域下的电信号反馈结果。
+
+在磷酸铁锂电池的阻抗频谱中，高频率部分与实轴相交表示锂电池的欧姆内阻；中频率部分呈半圆状表示锂电池的活化极化内阻，表示电解质表面的电荷转移情况；低频率部分表示锂电池的浓差极化内阻，表征锂电池内部锂离子的扩散行为。
+\subsection{分数阶锂电池等效电路建模}
+磷酸铁锂电池是一个复杂的非线性电化学系统，并且表现出分数阶的极化特性。锂电池等效电路模型通过电阻、电容、电压源等元器件的综合来描述电池的物理特性，如图\ref{2-wholecircuit}所示。
+\pic[htbp]{锂电池分数阶等效电路模型}{}{2-wholecircuit} 
+
+其中，${{R}_{1}}$和${{C}_{1}}$并联表示磷酸铁锂电池的活化极化现象，${{V}_{1}}(t)$表示活化极化的分压；${{R}_{2}}$和${{C}_{2}}$并联表示的锂电池浓差极化现象，${{V}_{2}}(t)$表示浓差极化的分压；${{R}_{0}}$表示锂电池的欧姆内阻，${{V}_{0}}(t)$表示欧姆极化的分压。根据分数阶微积分的Caputo定义，则可以得到等效电路模型的方程组如下：
+\begin{equation}
+\left\{ \begin{array}{l}
+   {{V}_{oc}}(t)={{V}_{1}}(t)+{{V}_{2}}(t)+{{V}_{0}}(t)+{{V}_{t}}(t) \\ 
+  {{V}_{0}}(t)=I(t)\times {{R}_{0}} \\ 
+  {{C}_{1}}\times _{a}^{Caputo}D_{t}^{{{\lambda }_{1}}}{{V}_{1}}(t)+\frac{{{V}_{1}}(t)}{{{R}_{1}}}=I(t) \\ 
+  {{C}_{2}}\times _{a}^{Caputo}D_{t}^{{{\lambda }_{2}}}{{V}_{2}}(t)+\frac{{{V}_{2}}(t)}{{{R}_{2}}}=I(t) \\ 
+ \end{array} \right.
+\end{equation}
+
+通过上面的模型可以推导出磷酸铁锂电池的传输方程如下所示：
+\begin{equation}
+H(s)=\frac{V(s)}{I(s)}={{R}_{0}}+\frac{{{R}_{1}}}{1+{{R}_{1}}{{C}_{1}}{{s}^{{{\lambda }_{1}}}}}+\frac{{{R}_{2}}}{1+{{R}_{2}}{{C}_{2}}{{s}^{{{\lambda }_{2}}}}}
+\end{equation}	 
+
+由上式令${{\tau }_{1}}={{R}_{1}}{{C}_{1}}$和${{\tau }_{2}}={{R}_{2}}{{C}_{2}}$可以推出
+\begin{equation}
+H\left( s \right)=\frac{\left( {{R}_{0}}+{{R}_{1}}+{{R}_{2}} \right)+\left( {{R}_{2}}{{\tau }_{1}}+{{R}_{0}}{{\tau }_{1}} \right){{s}^{{{\lambda }_{1}}}}+\left( {{R}_{0}}{{\tau }_{2}}+{{R}_{1}}{{\tau }_{2}} \right){{s}^{{{\lambda }_{2}}}}+{{R}_{0}}{{\tau }_{1}}{{\tau }_{2}}{{s}^{{{\lambda }_{1}}+{{\lambda }_{2}}}}}{1+{{\tau }_{1}}{{s}^{{{\lambda }_{1}}}}+{{\tau }_{2}}{{s}^{{{\lambda }_{2}}}}+{{\tau }_{1}}{{\tau }_{2}}{{s}^{{{\lambda }_{1}}+{{\lambda }_{2}}}}}
+\end{equation}
+
+令${{a}_{0}}={{R}_{0}}+{{R}_{1}}+{{R}_{2}}$~${{a}_{1}}={{R}_{2}}{{\tau }_{1}}+{{R}_{0}}{{\tau }_{1}}$~${{a}_{2}}={{R}_{0}}{{\tau }_{2}}+{{R}_{1}}{{\tau }_{2}}$~${{a}_{3}}={{R}_{0}}{{\tau }_{1}}{{\tau }_{2}}$~${{b}_{0}}={{\tau }_{1}}$~${{b}_{1}}={{\tau }_{2}}$~${{b}_{3}}={{\tau }_{1}}{{\tau }_{2}}$则：
+\begin{equation}
+H\left( s \right)=\frac{{{a}_{0}}+{{a}_{1}}{{s}^{{{\lambda }_{1}}}}+{{a}_{2}}{{s}^{{{\lambda }_{2}}}}+{{a}_{3}}{{s}^{{{\lambda }_{1}}+{{\lambda }_{2}}}}}{1+{{b}_{0}}{{s}^{{{\lambda }_{1}}}}+{{b}_{1}}{{s}^{{{\lambda }_{2}}}}+{{b}_{2}}{{s}^{{{\lambda }_{1}}+{{\lambda }_{2}}}}}
+\end{equation}
+
+接下来要解决的问题是锂电池分数阶微分方程组的求解，求解的主要方法有解析求解法和数值求解法。解析法主要是根据分数阶微积分的定义通过数学公式的推导计算求得分数阶微分方程组的解，解析法由于要根据分数阶微积分的定义公式进行变换，所以变换过程复杂并且计算量巨大，往往不便于进一步进行求解分析，而且分数阶微分方程组有不存在解析解的情况。除此之外，本文需要对等效电路方程组的参数进行辨识，所以该分数阶微分方程组的具体函数事先是不确定的，没有办法进行分数阶微分方程的解析求解。
+
+数值求解方法是通过对分数阶微积分的算子通过离散近似的方法来求解方程组。数值求解方法的核心内容是离散近似的思想，采用不同的离散近似方法会得到不同的数值解值。总体来说，数值求解方法的离散化思想可以分为直接离散化和间接离散化。直接离散化是将目标函数$h\left( t \right)$根据采样函数$h\left( nT \right)$进行采样和生成函数$\omega \left( {{z}^{-1}} \right)$进行变换，以此达到近似目标函数的目的。
+\begin{equation}
+{{D}^{\lambda }}\approx {{f}^{-\lambda }}{{\left( \omega \left( {{z}^{-1}} \right) \right)}^{\lambda }}h\left( nT \right)
+\end{equation}
+
+其中，$\lambda $是分数阶的阶次，$T$是采样周期，$\omega \left( {{z}^{-1}} \right)$是离散变换的生成函数。
+
+间接离散法是将分数阶因子的${{s}^{\lambda }}$的传输方程首先近似为整数阶因子s的传输方程，然后再针对整数阶因子的传输方程做离散化处理。在众多的间接离散法中，Oustaloup离散递推滤波器具有出色的逼近性能，对于感兴趣的逼近频段$\left( {{w}_{a}},{{w}_{b}} \right)$，滤波器的表达式如下：
+\begin{equation}
+{{G}_{f}}\left( s \right)=K\prod\limits_{k=-N}^{N}{\frac{s+w_{k}^{'}}{s+{{w}_{k}}}}
+\end{equation}
+
+其中，$w_{k}^{'}$、${{w}_{k}}$和K的定义如下：
+\begin{equation}
+w_{k}^{'}={{w}_{a}}{{\left( \frac{{{w}_{b}}}{{{w}_{a}}} \right)}^{\frac{k+N+{}^{1}\!\!\diagup\!\!{}_{2}\;\left( 1-\lambda  \right)}{2N+1}}}
+\end{equation}
+\begin{equation}
+{{w}_{k}}={{w}_{a}}{{\left( \frac{{{w}_{b}}}{{{w}_{a}}} \right)}^{\frac{k+N+{}^{1}\!\!\diagup\!\!{}_{2}\;\left( 1+\lambda  \right)}{2N+1}}}
+\end{equation}
+\begin{equation}
+K=w_{b}^{\lambda }
+\end{equation}
+
+其中$\lambda $表示分数阶的阶次。当$\lambda =0.5$，逼近频段$\left( 0.01,21.3 \right)$，$N=1,2$则可以得到${{s}^{0.5}}$的滤波器为：
+\begin{equation}
+{{G}_{1}}\left( s \right)=\frac{4.615{{s}^{3}}+15.68{{s}^{2}}+3.821s+0.06678}{{{s}^{3}}+12.19{{s}^{2}}+10.65s+0.6678}
+\end{equation}
+\begin{equation}
+{{G}_{2}}\left( s \right)=\frac{4.615{{s}^{5}}+39.7{{s}^{4}}+60.53{{s}^{3}}+19.04{{s}^{2}}+1.236s+0.01422}{{{s}^{5}}+18.51{{s}^{4}}+60.74{{s}^{3}}+41.12{{s}^{2}}+5.744s+0.1422}
+\end{equation}
+
+滤波器的波特图如下所示：
+\pic[htbp]{离散滤波器的波特图}{}{2-Bode} 
+根据磷酸铁锂电池的传输方程和${{s}^{0.5}}$的近似滤波器可以推导得出：
+\begin{equation}
+H\left( s \right)=\frac{{{c}_{1}}{{s}^{4}}+{{c}_{2}}{{s}^{3}}+{{c}_{3}}{{s}^{2}}+{{c}_{4}}s+{{c}_{5}}}{{{d}_{1}}{{s}^{4}}+{{d}_{2}}{{s}^{3}}+{{d}_{3}}{{s}^{2}}+{{d}_{4}}s+{{d}_{5}}}
+\end{equation}
+
+其中：
+${{c}_{1}}={{a}_{3}}$~${{c}_{2}}={{a}_{0}}+4.615\left( {{a}_{1}}+{{a}_{2}} \right)+12.19{{a}_{3}}$~${{c}_{3}}=12.19{{a}_{0}}+15.68\left( {{a}_{1}}+{{a}_{2}} \right)+10.65{{a}_{3}}$~${{c}_{4}}=10.65{{a}_{0}}+3.821\left( {{a}_{1}}+{{a}_{2}} \right)+0.6678{{a}_{3}}$~${{c}_{5}}=0.6678{{a}_{0}}+0.06678\left( {{a}_{1}}+{{a}_{2}} \right)$~${{d}_{1}}={{b}_{2}}$~${{d}_{2}}=1+4.615\left( {{b}_{0}}+{{b}_{1}} \right)+12.19{{b}_{2}}$~${{d}_{3}}=12.19+15.68\left( {{b}_{0}}+{{b}_{1}} \right)+10.65{{b}_{2}}$~${{d}_{4}}=10.65+3.821\left( {{b}_{0}}+{{b}_{1}} \right)+0.6678{{b}_{2}}$~${{d}_{5}}=0.6678+0.06678\left( {{b}_{0}}+{{b}_{1}} \right)$
+\section{磷酸铁锂电池分数阶等效电路模型的参数辨识和验证}
+\subsection{最小二乘法参数估计理论}
+最小二乘法是现代估计理论的开山之作，该算法由高斯在1795年的星体运动轨迹研究报告中首次提出来，之后由于该算法自身具有的简单收敛速度快等优点，在实际的工程应用和理论研究领域都得到了长足的发展，极大的推动了系统辨识方法研究的进步。现在主流的最小二乘法包括了批出来最小二乘法、递推最小二乘法、递推增广最小二乘法以及一些递推最小二乘法的变形算法。
+
+本文在对锂电池SOC-OCV曲线进行标定以及磷酸铁锂电池模型的参数辨识时都将采用最小二乘法的理论思想，接下来对最小二乘法的用于系统参数估计的基本理论进行介绍。
+
+假设存在一个随机变量序列$\left\{ a\left( k \right),k\in \left( 1,2,\cdots ,n \right) \right\}$，并且该随机变量的均值函数为：
+\begin{equation}
+E\left\{ a\left( k \right) \right\}=\sum\limits_{k=1}^{n}{{{b}^{T}}\left( k \right)\theta }
+\end{equation}
+
+其中$\theta $为均值函数的参数，$b\left( k \right)$为待观测系统的数据组成的向量，则$a\left( k \right)$的最小平方误差准则函数$J\left( \theta  \right)$为：
+\begin{equation}
+J\left( \theta  \right)={{\sum\limits_{k=1}^{n}{\left[ a(k)-{{b}^{T}}(k)\theta  \right]}}^{2}}
+\end{equation}
+
+使最小平方误差准则函数$J\left( \theta  \right)$取值最小的$\theta$值则为参数的估计值，所以这种系统的参数估计方法被称为最小二乘法。从最小二乘法的表达式可以看出，最小二乘法在求系统模型参数的估计问题上，把平方和达到最小的那个估计值$\hat{\theta }$作为系统模型参数的辨识值。因为误差的平方和越小，表明实际值与估计值之间的距离就越小。
+
+最小二乘估计算法有两种基本的结构，一种是批处理结构，另一种是递推结构。批处理结构是指存在一组观测数据，然后重复的进行数据的批处理来获得模型参数的估计值；递推结构是指在已有上一时刻估计值的基础上，根据当前时刻的观测值对上一时刻的估计值进行修正，通过不停修正的方式来获得最佳的模型估计值。可以看出递推结构的特性是一种类似迭代的结构，很适合用于计算机程序的描述和计算，所以一般计算机的实时参数估计都是采用递推的结构。接下来主要介绍的是模型的递推最小二乘法结构。
+
+采用最小二乘法进行参数的估计时是需要一定的前提条件的，这些前提条件称为辨识问题的假设。带噪声的最小二乘法模型如下：
+\begin{equation}
+z\left( k \right)={{b}^{T}}(k)\theta +w(k)
+\end{equation}
+
+其中$w(k)$为系统模型的噪声，$\theta \text{=}\left[ \begin{matrix}
+   {{c}_{1}} & {{c}_{2}} & \cdots  & {{c}_{{{n}_{1}}}}\begin{matrix}
+   , & {{d}_{1}} & \cdots  & {{d}_{{{n}_{2}}}}  \\
+\end{matrix}  \\
+\end{matrix} \right]$为待估计的参数向量，$b(k)\text{=}\left[ \begin{matrix}
+   \text{-}z\left( k-1 \right) & \text{-}z\left( k-2 \right) & \cdots  & \text{-}z\left( k-{{n}_{1}} \right)\begin{matrix}
+   , & x\left( k-1 \right) & \cdots  & x\left( k-{{n}_{2}} \right)  \\
+\end{matrix}  \\
+\end{matrix} \right]$为系统的输入和延时，并且假设待辨识模型的阶次${{n}_{1}}$和${{n}_{2}}$是已经确定的。噪声的均值和方差可以表示为：
+\begin{equation}
+\left\{  \begin{array}{l}
+   E\left\{ {{w}_{n}} \right\}=0 \\ 
+  Cov\left\{ {{w}_{n}}w_{n}^{T} \right\}=\sigma _{n}^{2}{{I}_{n}} \\ 
+\end{array} \right.
+\end{equation}
+
+在这里虽然噪声$w(k)$的数学特性在最小二乘法辨识的推导过程中不是必需的，但是为了对最小二乘算法由很好的评价标准和统计特性，所以假设了噪声$w(k)$为高斯白噪声，即噪声的均值为0并且服从高斯正态分布。在以上假设的基础上还要假设输入和噪声是彼此独立的随机变量，它们都是平稳多态历经的并且互不相关。
+
+由以上的最小二乘法模型可以得到带噪声的准则函数为：
+\begin{equation}
+J\left( \theta  \right)={{\sum\limits_{k=1}^{n}{\Lambda \left( k \right)\left[ a(k)-{{b}^{T}}(k)\theta  \right]}}^{2}}
+\end{equation}
+
+上式中，$\Lambda \left( k \right)$被称为加权因子，加权因子的作用是对观测数据的置信度进行修正，这样就可以根据实验者的主观意志选择不同的加权因子来达到实验者的目的与要求。由微积分的知识可以知道对$J\left( \theta  \right)$进行求导并且令导数为0，在零点出能够得到准则函数的最小值，即：
+\begin{equation}
+\frac{\partial J\left( \theta  \right)}{\partial \theta }=\frac{\partial }{\partial \theta }{{\left( {{z}_{n}}-{{B}_{n}}\theta  \right)}^{T}}{{\Lambda }_{n}}\left( {{z}_{n}}-{{B}_{n}}\theta  \right)=0
+\end{equation}
+
+解上述方程可以得到使$J\left( \theta  \right)$最小的最小二乘估计值$\hat{\theta }$，根据递推最小二乘法的原理可以得到：
+\begin{equation}
+\hat{\theta }\left( k \right)={{\left( \sum\limits_{i=1}^{k}{b\left( i \right)b{{\left( i \right)}^{T}}} \right)}^{T}}\left( \sum\limits_{i=1}^{k}{b\left( i \right)z\left( i \right)} \right)
+\end{equation}
+
+在上式中令$R\left( k \right)=\frac{1}{k}\sum\limits_{i=1}^{k}{b\left( i \right)b{{\left( i \right)}^{T}}}$~$P\left( k \right)={{\left( \sum\limits_{i=1}^{k}{b\left( i \right)b{{\left( i \right)}^{T}}} \right)}^{-1}}$~$K\left( k \right)=P\left( k \right)b\left( k \right)$可以得到递推最小二乘法的递推公式为：
+\begin{equation}
+\hat{\theta }\left( k \right)\text{=}\hat{\theta }\left( k\text{-}1 \right)\text{+}K\left( k \right)\left[ z\left( k \right)-{{b}^{T}}\left( k \right)\hat{\theta }\left( k-1 \right) \right]
+\end{equation}
+\begin{equation}
+K\left( k \right)=P\left( k\text{-}1 \right)b\left( k \right){{\left[ {{h}^{T}}\left( k \right)P\left( k-1 \right)h\left( k \right)+1 \right]}^{-1}}
+\end{equation}
+\begin{equation}
+P\left( k \right)=\left[ I-K\left( k \right){{h}^{T}}\left( k \right) \right]P\left( k-1 \right)
+\end{equation}
+
+由上式可以看出当前时刻参数向量的估计值$\hat{\theta }\left( k \right)$是由上一时刻的估计值$\hat{\theta }\left( k\text{-}1 \right)$加上一部分修正项得到的。最小二乘法的数学统计特性主要包括无偏性、有效性、方差统计和一致性。参数估计的无偏性是一个重要的统计量，主要表征的是模型参数的估计值围绕在真实值两边波动的特性。有效性是指参数的估计值误差的协方差矩阵取得最小值，表征估计值的估计精度。估计值的协方差统计主要表征估计参数的散度。一致性也是估计过程中十分关注的一种特性，它表征了参数估计值是否以概率1向真实值收敛。
+\subsection{SOC-OCV曲线的标定}
+锂电池的开路电压是指电池离开工作状态处于长时间静置后，电池内部没有电流流过，此时电池正负极之间的电压被称为开路电压(OCV)。锂电池的工作电压是指将锂电池接入工作电路中，锂电池内部有电流流过时电池正负极之间的电压。由电路的基本知识可以知道，锂电池的工作电压总是小于锂电池的开路电压。因为开路电压只与锂电池的正负极材料以及电解质等电池的自身特性相关，所以通过锂电池的开路电压可以与电池的荷电状态之间建立紧密的联系。
+
+本文通过以下的实验对磷酸铁锂电池的SOC-OCV曲线进行标定，具体的实验步骤如下：
+
+第一步：实验初始化
+
+		32560磷酸铁锂电池，额定电压3.2V，放电截止电压2.0V，	充满电后电	压3.65V，额定容量5Ah。
+
+第二步：放电实验过程
+
+		以0.3C的恒流对电池进行放电，持续10S，并断电静止3分钟；并且重复	该步骤4次；
+
+		以0.2C的恒流对电池进行放电，持续10S，并断电静止3分钟；并且重复	该步骤6次；此时放出的总电量为3500mAh，电池的荷电状态为30$\% $。
+
+第三步：充电实验过程。
+
+		以0.2C的恒流对电池进行放电，持续10S，并断电静止3分钟；并且重复	该步骤6次；
+
+		以0.3C的恒流对电池进行放电，持续10S，并断电静止3分钟；并且重复	该步骤4次；此时放出的总电量为3000mAh，电池的荷电状态为90$\% $。
+
+通过上述的方式对磷酸铁锂电池进行充放电的实验，得到OCV-SOC关系标定实验的数据如下：
+
+\threelinetable[htbp]{testtable}{0.4\textwidth}{lcr}{充电/放电过程中各SOC的电压值}
+{SOC/$\%$&放电过程/$V$&充电过程/$V$\\
+}{
+96&	3.1025&	3.1086\\
+90&	3.0495&	3.0576\\
+84&	2.9999&	3.0088\\
+78&	2.9453&	2.9612\\
+72&	2.8912&	2.9186\\
+66&	2.8433&	2.8662\\
+62&	2.7890&	2.8126\\
+58&	2.7348&	2.7568\\
+54&	2.6791&	2.7041\\
+50&	2.6207&	2.6503\\
+46&	2.5658&	2.5962\\
+}{
+\item[] 
+}
+
+为了尽量提高辨识工况中${{V}_{oc}}(soc)$，采用$n=9$阶的多项式函数对OCV和SOC的对应关系进行拟合。标定数据的拟合过程如图\ref{2-ocvsocFIT}所示。对比验证不同阶次的拟合效果，不同阶次的拟合实验如图\ref{2-ocvsocDIFF}所示。
+\pic[htbp]{OCV-SOC多项式拟合曲线}{}{2-ocvsocFIT}
+\pic[htbp]{不同多项式拟合曲线}{}{2-ocvsocDIFF}
+
+9阶拟合得到的具体函数关系如下式:
+\begin{equation}
+\begin{array}{l}
+   V(soc)=0.1378e-14*so{{c}^{9}}-0.5523e-12*so{{c}^{8}}+0.9293e \\ 
+  -10*so{{c}^{7}}-0.8532e-8*so{{c}^{6}}+0.4646e-6*so{{c}^{5}}-0.1527e-4*so{{c}^{4}} \\ 
+ +0.2955e-3*so{{c}^{3}}-0.3129e-2*so{{c}^{2}}+0.1803e-1*soc+2.6462 \\ 
+\end{array}
+\end{equation}
+
+\subsection{磷酸铁锂电池的参数辨识}
+本文选用深圳市沃特玛电池有限公司生产的32560号电池作为实验对象，电池的参数如表\ref{batterytable}。
+
+\threelinetable[htbp]{batterytable}{0.4\textwidth}{lcr}{沃特玛电池参数表}
+{参数名称&参数值\\}
+{
+额定电压&	3.2v\\
+额定容量&	5Ah-6Ah\\
+尺寸&	直径32.2mm,高度70mm\\
+重量&	145g\\
+内阻&	 $\le 10\text{m}\Omega $\\
+工作电流&	6A充放,12.5A最大放电\\
+}
+{}
+
+根据32650号磷酸铁锂电池的参数选择合适的电池测试仪对电池进行充放电过程的实验，并记录实验过程中采集到的磷酸铁锂电池的电流和电压数据用于磷酸铁锂电池模型的参数辨识,电池测试系统如图\ref{2-shiyanshebei}所示。
+\pic[htbp]{锂电池充放电测试系统}{}{2-shiyanshebei}
+
+本实验的具体步骤如下：
+
+第一步：初始化实验设备
+
+		32560磷酸铁锂电池(外壳为钢壳)，额定电压3.2V，放电截止电压2.0V，充满电后电压3.65V。
+
+第二步：充放电实验
+
+		以5C的恒流对电池进行放电，持续30S，并断电静止3分钟；
+
+		以3C的恒流对电池进行充电，持续30S，并断电静止3分钟；
+
+		以4C的恒流对电池进行放电，持续30S，并断电静止3分钟；
+
+		以2C的恒流对电池进行充电，持续30S，并断电静止3分钟；
+
+		以3C的恒流对电池进行放电，持续30S，并断电静止3分钟；
+
+		以1C的恒流对电池进行充电，持续30S，并断电静止3分钟；
+
+第三步：循环第二步的充放电实验3次，完成实验。
+
+通过本实验对电池的工作电流和工作电压进行了准确的测定，测量得到的数据如表\ref{shiyanshuju}：
+\longthreelinetable{shiyanshuju}{充放电实验数据表}{3}{lcr}
+{时间/$S$&放电过程/$A$&充电过程/$V$\\
+}{
+0&	-0.5&	3.14\\
+30&	-0.5&	3.03\\
+60&	0.3&	3.31\\
+90&	-0.4&	3.05\\
+120&	0.2&	3.27\\
+150&	-0.3&	3.08\\
+180&	0.1&	3.21\\
+210&	-0.5&	3.00\\
+240&	0.3&	3.29\\
+270&	-0.4&	3.01\\
+300&	0.2&	3.25\\
+330&	-0.3&	3.04\\
+360&	0.1&	3.21\\
+390&	-0.5&	2.94\\
+420&	0.3&	3.23\\
+450&	-0.4&	2.99\\
+480&	0.2&	3.22\\
+510&	-0.3&	3.02\\
+540&	0.1&	3.20\\
+570&	-0.5&	2.95\\
+600&	0.3&	3.22\\
+630&	-0.4&	2.97\\
+660&	0.2&	3.21\\
+690&	-0.3&	3.02\\
+720&	0.1&	3.16\\
+750&	-0.5&	2.93\\
+780&	0.3&	3.22\\
+810&	-0.4&	2.98\\
+840&	0.2&	3.20\\
+870&	-0.3&	3.00\\
+900&	0.1&	3.14\\
+}
+
+通过测量的数据可以得到实际放电工况的电流和电压如图\ref{2-voltbattery}：
+\pic[htbp]{32560号磷酸铁锂电池充放电曲线}{}{2-voltbattery}
+
+在实验测试实际工况数据的基础上，根据电池的端电压和工作电流，应用最小二乘法对电池等效电路模型的参数进行辨识。其中，最小二乘法采用的模型是带自回归各态历经的ARX模型。磷酸铁锂电池系统的电流电压模型用差分方程表示为：
+\begin{equation}
+U\left( k \right)+{{a}_{1}}U(k-1)+\cdots +{{a}_{n}}U(k-n)={{b}_{1}}I\left( k-1 \right)+{{b}_{2}}I\left( k-2 \right)+\cdots +{{b}_{n}}I(k-n)
+\end{equation}
+
+对上式两边进行Z变换，可以得到模型的离散传输函数如下：
+\begin{equation}
+H\left( z \right)=\frac{Z\left\{ U\left( k \right) \right\}}{Z\left\{ I\left( k \right) \right\}}=\frac{{{b}_{1}}{{z}^{-1}}+{{b}_{2}}{{z}^{-2}}+\cdots +{{b}_{n}}{{z}^{-n}}}{1+{{a}_{1}}{{z}^{-1}}+{{a}_{2}}{{z}^{-2}}+\cdots +{{a}_{n}}{{z}^{-n}}}
+\end{equation}
+
+在上式中令$A\left( {{z}^{-1}} \right)=1+{{a}_{1}}z{}^{-1}+{{a}_{2}}{{z}^{-2}}+\cdots +{{a}_{n}}{{z}^{-n}}$~$B\left( {{z}^{-1}} \right)={{b}_{1}}{{z}^{-1}}+{{b}_{2}}{{z}^{-2}}+\cdots +{{b}_{n}}{{z}^{-n}}$，则可以得到：
+\begin{equation}
+A\left( {{z}^{-1}} \right)U\left( k \right)={{z}^{-d}}B\left( {{z}^{-1}} \right)I\left( k \right)
+\end{equation}
+
+其中，d表示滞后的步数。在加入噪声的影响可以得到：
+\begin{equation}
+A\left( {{z}^{-1}} \right)U\left( k \right)={{z}^{-d}}B\left( {{z}^{-1}} \right)I\left( k \right)\text{+}D\left( {{z}^{-1}} \right)e\left( k \right)
+\end{equation}
+
+其中$D\left( {{z}^{-1}} \right)=1+{{d}_{1}}{{z}^{-1}}+{{d}_{2}}{{z}^{-2}}+\cdots +{{d}_{n}}{{z}^{-n}}$，当$D\left( {{z}^{-1}} \right)=1$表示模型中的噪声为高斯白噪声，这时的差分方程模型为自回归各态历经$\left( \text{ARX} \right)$模型。
+	本文在确定选用ARX模型的基础上，通过MATLAB的参数辨识工具箱采用最小二乘法对电池等效电路模型进行参数辨识。MATLAB提供的参数辨识工具箱可以实现对各种系统进行未知参数辨识的功能，并且该工具箱提供了丰富的系统描述模型以供研究人员选用，该辨识工具箱的主要结构包括模型的建立和转换函数、递推参数估计、参数模型或者非参数模型的辨识、模型验证工具。参数辨识工具箱对模型进行参数辨识的方法主要包括最小二乘法、辅助变量法、几何网络法等，同时对模型可靠性的检验也是重要的步骤之一。磷酸铁锂电池的参数辨识实验的具体步骤如下：
+
+步骤一：辨识向量数据导入工作空间以及采样周期和起始时间的的确定，如图\ref{2-inputData}。
+\pic[htbp]{向量导入图}{}{2-inputData}
+
+步骤二：数据预处理
+
+数据的预处理主要包括消除趋势项、数据滤波以及从采样。在本文中主要是对采样的数据进行去趋势化的处理，如图\ref{2-yuchuli}和\ref{2-ququshihua}。
+\pic[htbp]{数据预处理图}{}{2-yuchuli}
+\pic[htbp]{电流和电压去趋势化图}{}{2-ququshihua}
+
+第三步：选用ARX模型，确定模型的阶次$na=4,nb=4,nk=1$，并进行电池等效电路模型的估计，如图\ref{2-ident}-图\ref{2-zaosheng}。
+\pic[htbp]{模型参数辨识界面}{}{2-ident}
+\pic[htbp]{模型估计输出曲线}{}{2-simuOutput}
+\pic[htbp]{输入和输出残差相关曲线}{}{2-cancha}
+\pic[htbp]{辨识系统的瞬态响应曲线}{}{2-shuntaixiangying}
+\pic[htbp]{辨识系统的频率响应曲线}{}{2-pinglvxiangyin}
+\pic[htbp]{差分方程的零极点图}{}{2-zeropoles}
+\pic[htbp]{差分方程的零极点图}{}{2-zaosheng}
+
+第四步：得到系统辨识的传递函数，由运行最小二乘法得到的辨识结果
+\begin{equation}
+A\left( q \right)=1+0.1435{{q}^{\wedge }}-1-0.05332{{q}^{\wedge }}-2+1.07{{q}^{\wedge }}-3-1.006{{q}^{\wedge }}-4
+\end{equation}
+\begin{equation}
+B\left( q \right)=-0.1487{{q}^{\wedge }}-1-0.03031{{q}^{\wedge }}-2+0.3464{{q}^{\wedge }}-3-0.2722{{q}^{\wedge }}-4
+\end{equation}
+
+从而得到系统模型辨识的传输函数为：
+\begin{equation}
+H\left( s \right)=\frac{-0.1487{{s}^{-1}}-0.03031{{s}^{-2}}+0.3464{{s}^{-3}}-0.2722{{s}^{-4}}}{1+0.1435{{s}^{-1}}-0.05332{{s}^{-2}}+1.07{{s}^{-3}}-1.006{{s}^{-4}}}
+\end{equation}	
+	  
+	基于得到的磷酸铁锂电池模型的传输函数，可以得到电池模型的动态参数${{R}_{0}}$、${{R}_{1}}$、${{R}_{2}}$、${{C}_{1}}$和${{C}_{2}}$。
+/section{本章小结}
+本章在开始部分对磷酸铁锂电池的工作原理以及基本特性进行了介绍与研究，然后根据锂电池的特性对各种主流使用的等效电路模型进行了对比，选定阶数合适的二阶RC等效电路模型作为本文研究电池的模型。考虑到锂电池在实际的充放电工况中表现出来的分数阶微积分特性，在接下来引入介绍了分数阶微积分的基本理论和时频域定义，通过使用分数阶微分来定义锂电池内部的极化特性，对锂电池分数阶模型的表示进行了探索性研究，推导出磷酸铁锂电池的分数阶模型，并且对分数阶等效电路模型的SOC-OCV曲线进行了标示，最后对锂电池的分数阶模型进行了参数辨识的的实验工作。
+
