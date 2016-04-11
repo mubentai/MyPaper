@@ -1,0 +1,1761 @@
+Model {
+  Name			  "rc"
+  Version		  6.0
+  GraphicalInterface {
+    NumRootInports	    2
+    Inport {
+      Name		      "power req'd into bus (W)"
+    }
+    Inport {
+      Name		      "mode temp"
+    }
+    NumRootOutports	    2
+    Outport {
+      BusObject		      ""
+      BusOutputAsStruct	      "off"
+      Name		      "SOC"
+    }
+    Outport {
+      BusObject		      ""
+      BusOutputAsStruct	      "off"
+      Name		      "pack open-circuit voltage"
+    }
+    ParameterArgumentNames  ""
+    ComputedModelVersion    "1.4"
+    NumModelReferences	    0
+    NumTestPointedSignals   0
+  }
+  SavedCharacterEncoding  "ibm-1386_P100-2002"
+  SaveDefaultBlockParams  on
+  SampleTimeColors	  off
+  LibraryLinkDisplay	  "none"
+  WideLines		  off
+  ShowLineDimensions	  off
+  ShowPortDataTypes	  off
+  ShowLoopsOnError	  on
+  IgnoreBidirectionalLines off
+  ShowStorageClass	  off
+  ShowTestPointIcons	  on
+  ShowViewerIcons	  on
+  SortedOrder		  off
+  ExecutionContextIcon	  off
+  ShowLinearizationAnnotations on
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovMetricSettings	  "dw"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  covSaveCumulativeToWorkspaceVar on
+  CovSaveSingleToWorkspaceVar on
+  CovCumulativeVarName	  "covCumulativeData"
+  CovCumulativeReport	  off
+  CovReportOnPause	  on
+  ScopeRefreshTime	  0.035000
+  OverrideScopeRefreshTime on
+  DisableAllScopes	  off
+  DataTypeOverride	  "UseLocalSettings"
+  MinMaxOverflowLogging	  "UseLocalSettings"
+  MinMaxOverflowArchiveMode "Overwrite"
+  BlockNameDataTip	  off
+  BlockParametersDataTip  off
+  BlockDescriptionStringDataTip	off
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks off
+  BrowserLookUnderMasks	  off
+  Created		  "Fri Apr 08 10:31:16 2016"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "zhou"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Sun Apr 10 12:39:01 2016"
+  ModelVersionFormat	  "1.%<AutoIncrement:4>"
+  ConfigurationManager	  "None"
+  LinearizationMsg	  "none"
+  Profile		  off
+  ParamWorkspaceSource	  "MATLABWorkspace"
+  AccelSystemTargetFile	  "accel.tlc"
+  AccelTemplateMakefile	  "accel_default_tmf"
+  AccelMakeCommand	  "make_rtw"
+  TryForcingSFcnDF	  off
+  ExtModeBatchMode	  off
+  ExtModeEnableFloating	  on
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "normal"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigDurationFloating "auto"
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  on
+  ExtModeSkipDownloadWhenConnect off
+  ExtModeLogAll		  on
+  ExtModeAutoUpdateStatusClock on
+  BufferReuse		  on
+  ProdHWDeviceType	  "32-bit Generic"
+  ShowModelReferenceBlockVersion off
+  ShowModelReferenceBlockIO off
+  Array {
+    Type		    "Handle"
+    Dimension		    1
+    Simulink.ConfigSet {
+      $ObjectID		      1
+      Version		      "1.0.4"
+      Array {
+	Type			"Handle"
+	Dimension		7
+	Simulink.SolverCC {
+	  $ObjectID		  2
+	  Version		  "1.0.4"
+	  StartTime		  "0.0"
+	  StopTime		  "10.0"
+	  AbsTol		  "auto"
+	  FixedStep		  "auto"
+	  InitialStep		  "auto"
+	  MaxNumMinSteps	  "-1"
+	  MaxOrder		  5
+	  ExtrapolationOrder	  4
+	  NumberNewtonIterations  1
+	  MaxStep		  "auto"
+	  MinStep		  "auto"
+	  RelTol		  "1e-3"
+	  SolverMode		  "Auto"
+	  Solver		  "ode45"
+	  ZeroCrossControl	  "UseLocalSettings"
+	  PositivePriorityOrder	  off
+	  AutoInsertRateTranBlk	  off
+	  SampleTimeConstraint	  "Unconstrained"
+	  RateTranMode		  "Deterministic"
+	}
+	Simulink.DataIOCC {
+	  $ObjectID		  3
+	  Version		  "1.0.4"
+	  Decimation		  "1"
+	  ExternalInput		  "[t, u]"
+	  FinalStateName	  "xFinal"
+	  InitialState		  "xInitial"
+	  LimitDataPoints	  on
+	  MaxDataPoints		  "1000"
+	  LoadExternalInput	  off
+	  LoadInitialState	  off
+	  SaveFinalState	  off
+	  SaveFormat		  "Array"
+	  SaveOutput		  on
+	  SaveState		  off
+	  SaveTime		  on
+	  StateSaveName		  "xout"
+	  TimeSaveName		  "tout"
+	  OutputSaveName	  "yout"
+	  SignalLoggingName	  "logsout"
+	  OutputOption		  "RefineOutputTimes"
+	  OutputTimes		  "[]"
+	  Refine		  "1"
+	}
+	Simulink.OptimizationCC {
+	  $ObjectID		  4
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    5
+	    Cell		    "ZeroExternalMemoryAtStartup"
+	    Cell		    "ZeroInternalMemoryAtStartup"
+	    Cell		    "InitFltsAndDblsToZero"
+	    Cell		    "OptimizeModelRefInitCode"
+	    Cell		    "NoFixptDivByZeroProtection"
+	    PropName		    "DisabledProps"
+	  }
+	  Version		  "1.0.4"
+	  BlockReduction	  on
+	  BooleanDataType	  on
+	  ConditionallyExecuteInputs on
+	  ConditionalExecOptimization "on_for_testing"
+	  InlineParams		  off
+	  InlineInvariantSignals  on
+	  OptimizeBlockIOStorage  on
+	  BufferReuse		  on
+	  EnforceIntegerDowncast  on
+	  ExpressionFolding	  on
+	  FoldNonRolledExpr	  on
+	  LocalBlockOutputs	  on
+	  ParameterPooling	  on
+	  RollThreshold		  5
+	  SystemCodeInlineAuto	  off
+	  StateBitsets		  off
+	  DataBitsets		  off
+	  UseTempVars		  off
+	  ZeroExternalMemoryAtStartup on
+	  ZeroInternalMemoryAtStartup on
+	  InitFltsAndDblsToZero	  on
+	  NoFixptDivByZeroProtection off
+	  OptimizeModelRefInitCode off
+	  LifeSpan		  "inf"
+	}
+	Simulink.DebuggingCC {
+	  $ObjectID		  5
+	  Version		  "1.0.4"
+	  ConsistencyChecking	  "none"
+	  ArrayBoundsChecking	  "none"
+	  AlgebraicLoopMsg	  "warning"
+	  ArtificialAlgebraicLoopMsg "warning"
+	  CheckSSInitialOutputMsg on
+	  CheckExecutionContextPreStartOutputMsg off
+	  CheckExecutionContextRuntimeOutputMsg	off
+	  SignalResolutionControl "TryResolveAllWithWarning"
+	  BlockPriorityViolationMsg "warning"
+	  MinStepSizeMsg	  "warning"
+	  SolverPrmCheckMsg	  "warning"
+	  InheritedTsInSrcMsg	  "warning"
+	  DiscreteInheritContinuousMsg "warning"
+	  MultiTaskRateTransMsg	  "error"
+	  SingleTaskRateTransMsg  "none"
+	  TasksWithSamePriorityMsg "warning"
+	  CheckMatrixSingularityMsg "none"
+	  IntegerOverflowMsg	  "warning"
+	  Int32ToFloatConvMsg	  "warning"
+	  ParameterDowncastMsg	  "error"
+	  ParameterOverflowMsg	  "error"
+	  ParameterPrecisionLossMsg "warning"
+	  UnderSpecifiedDataTypeMsg "none"
+	  UnnecessaryDatatypeConvMsg "none"
+	  VectorMatrixConversionMsg "none"
+	  InvalidFcnCallConnMsg	  "error"
+	  SignalLabelMismatchMsg  "none"
+	  UnconnectedInputMsg	  "warning"
+	  UnconnectedOutputMsg	  "warning"
+	  UnconnectedLineMsg	  "warning"
+	  SFcnCompatibilityMsg	  "none"
+	  UniqueDataStoreMsg	  "none"
+	  RootOutportRequireBusObject "warning"
+	  AssertControl		  "UseLocalSettings"
+	  EnableOverflowDetection off
+	  ModelReferenceIOMsg	  "none"
+	  ModelReferenceVersionMismatchMessage "none"
+	  ModelReferenceIOMismatchMessage "none"
+	  ModelReferenceCSMismatchMessage "none"
+	  ModelReferenceSimTargetVerbose off
+	  UnknownTsInhSupMsg	  "warning"
+	  ModelReferenceDataLoggingMessage "warning"
+	  ModelReferenceSymbolNameMessage "warning"
+	}
+	Simulink.HardwareCC {
+	  $ObjectID		  6
+	  Version		  "1.0.4"
+	  ProdBitPerChar	  8
+	  ProdBitPerShort	  16
+	  ProdBitPerInt		  32
+	  ProdBitPerLong	  32
+	  ProdIntDivRoundTo	  "Undefined"
+	  ProdEndianess		  "Unspecified"
+	  ProdWordSize		  32
+	  ProdShiftRightIntArith  on
+	  ProdHWDeviceType	  "32-bit Generic"
+	  TargetBitPerChar	  8
+	  TargetBitPerShort	  16
+	  TargetBitPerInt	  32
+	  TargetBitPerLong	  32
+	  TargetShiftRightIntArith on
+	  TargetIntDivRoundTo	  "Undefined"
+	  TargetEndianess	  "Unspecified"
+	  TargetWordSize	  32
+	  TargetTypeEmulationWarnSuppressLevel 0
+	  TargetPreprocMaxBitsSint 32
+	  TargetPreprocMaxBitsUint 32
+	  TargetHWDeviceType	  "Specified"
+	  TargetUnknown		  off
+	  ProdEqTarget		  on
+	}
+	Simulink.ModelReferenceCC {
+	  $ObjectID		  7
+	  Version		  "1.0.4"
+	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
+	  CheckModelReferenceTargetMessage "error"
+	  ModelReferenceNumInstancesAllowed "Multi"
+	  ModelReferencePassRootInputsByReference on
+	  ModelReferenceMinAlgLoopOccurrences off
+	}
+	Simulink.RTWCC {
+	  $BackupClass		  "Simulink.RTWCC"
+	  $ObjectID		  8
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    1
+	    Cell		    "IncludeHyperlinkInReport"
+	    PropName		    "DisabledProps"
+	  }
+	  Version		  "1.0.4"
+	  SystemTargetFile	  "grt.tlc"
+	  GenCodeOnly		  off
+	  MakeCommand		  "make_rtw"
+	  TemplateMakefile	  "grt_default_tmf"
+	  GenerateReport	  off
+	  SaveLog		  off
+	  RTWVerbose		  on
+	  RetainRTWFile		  off
+	  ProfileTLC		  off
+	  TLCDebug		  off
+	  TLCCoverage		  off
+	  TLCAssert		  off
+	  ProcessScriptMode	  "Default"
+	  ConfigurationMode	  "Optimized"
+	  ConfigAtBuild		  off
+	  IncludeHyperlinkInReport off
+	  LaunchReport		  off
+	  Array {
+	    Type		    "Handle"
+	    Dimension		    2
+	    Simulink.CodeAppCC {
+	      $ObjectID		      9
+	      Array {
+		Type			"Cell"
+		Dimension		9
+		Cell			"IgnoreCustomStorageClasses"
+		Cell			"InsertBlockDesc"
+		Cell			"SFDataObjDesc"
+		Cell			"SimulinkDataObjDesc"
+		Cell			"DefineNamingRule"
+		Cell			"SignalNamingRule"
+		Cell			"ParamNamingRule"
+		Cell			"InlinedPrmAccess"
+		Cell			"CustomSymbolStr"
+		PropName		"DisabledProps"
+	      }
+	      Version		      "1.0.4"
+	      ForceParamTrailComments off
+	      GenerateComments	      on
+	      IgnoreCustomStorageClasses on
+	      IncHierarchyInIds	      off
+	      MaxIdLength	      31
+	      PreserveName	      off
+	      PreserveNameWithParent  off
+	      ShowEliminatedStatement off
+	      IncAutoGenComments      off
+	      SimulinkDataObjDesc     off
+	      SFDataObjDesc	      off
+	      IncDataTypeInIds	      off
+	      PrefixModelToSubsysFcnNames on
+	      CustomSymbolStr	      "$R$N$M"
+	      MangleLength	      1
+	      DefineNamingRule	      "None"
+	      ParamNamingRule	      "None"
+	      SignalNamingRule	      "None"
+	      InsertBlockDesc	      off
+	      SimulinkBlockComments   on
+	      EnableCustomComments    off
+	      InlinedPrmAccess	      "Literals"
+	      ReqsInCode	      off
+	    }
+	    Simulink.GRTTargetCC {
+	      $BackupClass	      "Simulink.TargetCC"
+	      $ObjectID		      10
+	      Array {
+		Type			"Cell"
+		Dimension		12
+		Cell			"IncludeMdlTerminateFcn"
+		Cell			"CombineOutputUpdateFcns"
+		Cell			"SuppressErrorStatus"
+		Cell			"ERTCustomFileBanners"
+		Cell			"GenerateSampleERTMain"
+		Cell			"MultiInstanceERTCode"
+		Cell			"PurelyIntegerCode"
+		Cell			"SupportNonFinite"
+		Cell			"SupportComplex"
+		Cell			"SupportAbsoluteTime"
+		Cell			"SupportContinuousTime"
+		Cell			"SupportNonInlinedSFcns"
+		PropName		"DisabledProps"
+	      }
+	      Version		      "1.0.4"
+	      TargetFcnLib	      "ansi_tfl_tmw.mat"
+	      GenFloatMathFcnCalls    "ANSI_C"
+	      UtilityFuncGeneration   "Auto"
+	      GenerateFullHeader      on
+	      GenerateSampleERTMain   off
+	      IsPILTarget	      off
+	      ModelReferenceCompliant on
+	      IncludeMdlTerminateFcn  on
+	      CombineOutputUpdateFcns off
+	      SuppressErrorStatus     off
+	      IncludeFileDelimiter    "Auto"
+	      ERTCustomFileBanners    off
+	      SupportAbsoluteTime     on
+	      LogVarNameModifier      "rt_"
+	      MatFileLogging	      on
+	      MultiInstanceERTCode    off
+	      SupportNonFinite	      on
+	      SupportComplex	      on
+	      PurelyIntegerCode	      off
+	      SupportContinuousTime   on
+	      SupportNonInlinedSFcns  on
+	      ExtMode		      off
+	      ExtModeStaticAlloc      off
+	      ExtModeTesting	      off
+	      ExtModeStaticAllocSize  1000000
+	      ExtModeTransport	      0
+	      ExtModeMexFile	      "ext_comm"
+	      RTWCAPISignals	      off
+	      RTWCAPIParams	      off
+	      RTWCAPIStates	      off
+	      GenerateASAP2	      off
+	    }
+	    PropName		    "Components"
+	  }
+	}
+	PropName		"Components"
+      }
+      Name		      "Configuration"
+      SimulationMode	      "normal"
+      CurrentDlgPage	      "Solver"
+    }
+    PropName		    "ConfigurationSets"
+  }
+  Simulink.ConfigSet {
+    $PropName		    "ActiveConfigurationSet"
+    $ObjectID		    1
+  }
+  BlockDefaults {
+    Orientation		    "right"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+  }
+  BlockParameterDefaults {
+    Block {
+      BlockType		      Demux
+      Outputs		      "4"
+      DisplayOption	      "none"
+      BusSelectionMode	      off
+    }
+    Block {
+      BlockType		      Gain
+      Gain		      "1"
+      Multiplication	      "Element-wise(K.*u)"
+      ParameterDataTypeMode   "Same as input"
+      ParameterDataType	      "sfix(16)"
+      ParameterScalingMode    "Best Precision: Matrix-wise"
+      ParameterScaling	      "2^0"
+      OutDataTypeMode	      "Same as input"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Goto
+      IconDisplay	      "Tag"
+    }
+    Block {
+      BlockType		      Inport
+      BusObject		      "BusObject"
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      SampleTime	      "-1"
+      DataType		      "auto"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      Lookup
+      InputValues	      "[-4:5]"
+      OutputValues	      " rand(1,10)-0.5"
+      LookUpMeth	      "Interpolation-Extrapolation"
+      OutDataTypeMode	      "Same as input"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+      LUTDesignTableMode      "Redesign Table"
+      LUTDesignDataSource     "Block Dialog"
+      LUTDesignFunctionName   "sqrt(x)"
+      LUTDesignUseExistingBP  on
+      LUTDesignRelError	      "0.01"
+      LUTDesignAbsError	      "1e-6"
+    }
+    Block {
+      BlockType		      Memory
+      X0		      "0"
+      InheritSampleTime	      off
+      LinearizeMemory	      off
+      StateMustResolveToSignalObject off
+      RTWStateStorageClass    "Auto"
+    }
+    Block {
+      BlockType		      Mux
+      Inputs		      "4"
+      DisplayOption	      "none"
+      BusObject		      "BusObject"
+      NonVirtualBus	      off
+    }
+    Block {
+      BlockType		      Outport
+      Port		      "1"
+      BusObject		      "BusObject"
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      SampleTime	      "-1"
+      DataType		      "auto"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      Saturate
+      UpperLimit	      "0.5"
+      LowerLimit	      "-0.5"
+      LinearizeAsGain	      on
+      ZeroCross		      on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      "S-Function"
+      FunctionName	      "system"
+      PortCounts	      "[]"
+      SFunctionModules	      "''"
+    }
+    Block {
+      BlockType		      SubSystem
+      ShowPortLabels	      on
+      Permissions	      "ReadWrite"
+      PermitHierarchicalResolution "All"
+      SystemSampleTime	      "-1"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      SimViewingDevice	      off
+      DataTypeOverride	      "UseLocalSettings"
+      MinMaxOverflowLogging   "UseLocalSettings"
+    }
+    Block {
+      BlockType		      Terminator
+    }
+    Block {
+      BlockType		      ToWorkspace
+      VariableName	      "simulink_output"
+      MaxDataPoints	      "1000"
+      Decimation	      "1"
+      SampleTime	      "0"
+      FixptAsFi		      off
+    }
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  System {
+    Name		    "rc"
+    Location		    [381, 127, 850, 596]
+    Open		    on
+    ModelBrowserVisibility  off
+    ModelBrowserWidth	    200
+    ScreenColor		    "white"
+    PaperOrientation	    "portrait"
+    PaperPositionMode	    "auto"
+    PaperType		    "a4letter"
+    PaperUnits		    "centimeters"
+    ZoomFactor		    "100"
+    ReportName		    "simulink-default.rpt"
+    Block {
+      BlockType		      Inport
+      Name		      "power req'd\ninto bus (W)"
+      Position		      [75, 375, 95, 395]
+      Orientation	      "up"
+      NamePlacement	      "alternate"
+      FontName		      "Arial"
+      Port		      "1"
+      IconDisplay	      "Port number"
+      LatchInput	      off
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "mode temp"
+      Position		      [75, 425, 95, 445]
+      Orientation	      "up"
+      NamePlacement	      "alternate"
+      FontName		      "Arial"
+      Port		      "2"
+      IconDisplay	      "Port number"
+      LatchInput	      off
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Model Parameters1"
+      Ports		      [3, 3]
+      Position		      [60, 49, 155, 161]
+      AncestorBlock	      "lib_energy_storage/Ess Choices/energy\nstorage "
+"<ess>\nRC/Model Parameters"
+      TreatAsAtomicUnit	      off
+      MinAlgLoopOccurrences   off
+      RTWSystemCode	      "Auto"
+      System {
+	Name			"Model Parameters1"
+	Location		[185, 273, 552, 664]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"A4"
+	PaperUnits		"centimeters"
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "SOC"
+	  Position		  [45, 155, 65, 175]
+	  Port			  "1"
+	  IconDisplay		  "Port number"
+	  LatchInput		  off
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Ess Temp"
+	  Position		  [55, 40, 75, 60]
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	  LatchInput		  off
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Preq"
+	  Position		  [45, 335, 65, 355]
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	  LatchInput		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator"
+	  Position		  [95, 335, 115, 355]
+	}
+	Block {
+	  BlockType		  Lookup
+	  Name			  "cb"
+	  Position		  [175, 35, 205, 65]
+	  DialogController	  "Simulink.DDGSource"
+	  InputValues		  "ess_tmp"
+	  OutputValues		  "ess_cb"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "re"
+	  Ports			  [2, 1]
+	  Position		  [175, 148, 205, 172]
+	  ShowPortLabels	  off
+	  TreatAsAtomicUnit	  off
+	  MinAlgLoopOccurrences	  off
+	  RTWSystemCode		  "Auto"
+	  MaskType		  "2-D Table Lookup"
+	  MaskDescription	  "Two Dimensional Table Lookup\nThe first inp"
+"ut corresponds to X Index and the second input corresponds to the Y Index"
+	  MaskHelp		  "This block returns a linearly interpolated "
+"intersection from the table using the X index (which corresponds to the rows "
+"of the table) and the Y index (which corresponds to the columns of the table)"
+".  Extrapolation is used."
+	  MaskPromptString	  "X Index|Y Index|Table"
+	  MaskStyleString	  "edit,edit,edit"
+	  MaskTunableValueString  "on,on,on"
+	  MaskCallbackString	  "||"
+	  MaskEnableString	  "on,on,on"
+	  MaskVisibilityString	  "on,on,on"
+	  MaskToolTipString	  "on,on,on"
+	  MaskVarAliasString	  ",,"
+	  MaskInitialization	  "xindex=@1; yindex=@2; table=@3; sftab2chk(x"
+"index,yindex,table);"
+	  MaskDisplay		  "plot(-10,-10,110,110,[90,50,10],[90,40,30],"
+"[90,50,10],[50,26,20],[90,50,10],[22,13,10])"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskIconUnits		  "autoscale"
+	  MaskValueString	  "ess_tmp|ess_soc|ess_re"
+	  MaskTabNameString	  ",,"
+	  System {
+	    Name		    "re"
+	    Location		    [318, 265, 600, 419]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "A4"
+	    PaperUnits		    "centimeters"
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "x0"
+	      Position		      [20, 25, 40, 45]
+	      Port		      "1"
+	      IconDisplay	      "Port number"
+	      LatchInput	      off
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "y0"
+	      Position		      [20, 80, 40, 100]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	      LatchInput	      off
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux"
+	      Ports		      [2, 1]
+	      Position		      [90, 46, 120, 79]
+	      Inputs		      "2"
+	    }
+	    Block {
+	      BlockType		      "S-Function"
+	      Name		      "S-function"
+	      Ports		      [1, 1]
+	      Position		      [140, 52, 190, 78]
+	      FunctionName	      "sftable2"
+	      Parameters	      "xindex, yindex, table"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "table out"
+	      Position		      [215, 55, 235, 75]
+	      IconDisplay	      "Port number"
+	      BusOutputAsStruct	      off
+	      InitialOutput	      "0"
+	    }
+	    Line {
+	      SrcBlock		      "y0"
+	      SrcPort		      1
+	      Points		      [20, 0; 0, -20]
+	      DstBlock		      "Mux"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "S-function"
+	      SrcPort		      1
+	      DstBlock		      "table out"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "x0"
+	      SrcPort		      1
+	      Points		      [20, 0; 0, 20]
+	      DstBlock		      "Mux"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Mux"
+	      SrcPort		      1
+	      DstBlock		      "S-function"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "rt"
+	  Ports			  [2, 1]
+	  Position		  [175, 263, 205, 287]
+	  ShowPortLabels	  off
+	  TreatAsAtomicUnit	  off
+	  MinAlgLoopOccurrences	  off
+	  RTWSystemCode		  "Auto"
+	  MaskType		  "2-D Table Lookup"
+	  MaskDescription	  "Two Dimensional Table Lookup\nThe first inp"
+"ut corresponds to X Index and the second input corresponds to the Y Index"
+	  MaskHelp		  "This block returns a linearly interpolated "
+"intersection from the table using the X index (which corresponds to the rows "
+"of the table) and the Y index (which corresponds to the columns of the table)"
+".  Extrapolation is used."
+	  MaskPromptString	  "X Index|Y Index|Table"
+	  MaskStyleString	  "edit,edit,edit"
+	  MaskTunableValueString  "on,on,on"
+	  MaskCallbackString	  "||"
+	  MaskEnableString	  "on,on,on"
+	  MaskVisibilityString	  "on,on,on"
+	  MaskToolTipString	  "on,on,on"
+	  MaskVarAliasString	  ",,"
+	  MaskInitialization	  "xindex=@1; yindex=@2; table=@3; sftab2chk(x"
+"index,yindex,table);"
+	  MaskDisplay		  "plot(-10,-10,110,110,[90,50,10],[90,40,30],"
+"[90,50,10],[50,26,20],[90,50,10],[22,13,10])"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskIconUnits		  "autoscale"
+	  MaskValueString	  "ess_tmp|ess_soc|ess_rt"
+	  MaskTabNameString	  ",,"
+	  System {
+	    Name		    "rt"
+	    Location		    [316, 263, 598, 417]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "A4"
+	    PaperUnits		    "centimeters"
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "x0"
+	      Position		      [20, 25, 40, 45]
+	      Port		      "1"
+	      IconDisplay	      "Port number"
+	      LatchInput	      off
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "y0"
+	      Position		      [20, 80, 40, 100]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	      LatchInput	      off
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux"
+	      Ports		      [2, 1]
+	      Position		      [90, 46, 120, 79]
+	      Inputs		      "2"
+	    }
+	    Block {
+	      BlockType		      "S-Function"
+	      Name		      "S-function"
+	      Ports		      [1, 1]
+	      Position		      [140, 52, 190, 78]
+	      FunctionName	      "sftable2"
+	      Parameters	      "xindex, yindex, table"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "table out"
+	      Position		      [215, 55, 235, 75]
+	      IconDisplay	      "Port number"
+	      BusOutputAsStruct	      off
+	      InitialOutput	      "0"
+	    }
+	    Line {
+	      SrcBlock		      "y0"
+	      SrcPort		      1
+	      Points		      [20, 0; 0, -20]
+	      DstBlock		      "Mux"
+	      DstPort		      2
+	    }
+	    Line {
+	      SrcBlock		      "S-function"
+	      SrcPort		      1
+	      DstBlock		      "table out"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "x0"
+	      SrcPort		      1
+	      Points		      [20, 0; 0, 20]
+	      DstBlock		      "Mux"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Mux"
+	      SrcPort		      1
+	      DstBlock		      "S-function"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Cb"
+	  Position		  [255, 40, 275, 60]
+	  IconDisplay		  "Port number"
+	  BusOutputAsStruct	  off
+	  InitialOutput		  "0"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Re"
+	  Position		  [255, 150, 275, 170]
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	  BusOutputAsStruct	  off
+	  InitialOutput		  "0"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Rt"
+	  Position		  [255, 265, 275, 285]
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	  BusOutputAsStruct	  off
+	  InitialOutput		  "0"
+	}
+	Line {
+	  SrcBlock		  "Ess Temp"
+	  SrcPort		  1
+	  Points		  [60, 0]
+	  Branch {
+	    DstBlock		    "cb"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 105]
+	    Branch {
+	      DstBlock		      "re"
+	      DstPort		      1
+	    }
+	    Branch {
+	      Points		      [0, 115]
+	      DstBlock		      "rt"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Line {
+	  SrcBlock		  "Preq"
+	  SrcPort		  1
+	  DstBlock		  "Terminator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "SOC"
+	  SrcPort		  1
+	  Points		  [60, 0]
+	  Branch {
+	    DstBlock		    "re"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [0, 115]
+	    DstBlock		    "rt"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  SrcBlock		  "cb"
+	  SrcPort		  1
+	  DstBlock		  "Cb"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "rt"
+	  SrcPort		  1
+	  DstBlock		  "Rt"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "re"
+	  SrcPort		  1
+	  DstBlock		  "Re"
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Model Parameters2"
+      Ports		      [3, 2]
+      Position		      [60, 199, 155, 311]
+      AncestorBlock	      "lib_energy_storage/Ess Choices/energy\nstorage "
+"<ess>\nRC/Model Parameters"
+      TreatAsAtomicUnit	      off
+      MinAlgLoopOccurrences   off
+      RTWSystemCode	      "Auto"
+      System {
+	Name			"Model Parameters2"
+	Location		[194, 240, 561, 631]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"A4"
+	PaperUnits		"centimeters"
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "SOC"
+	  Position		  [45, 155, 65, 175]
+	  Port			  "1"
+	  IconDisplay		  "Port number"
+	  LatchInput		  off
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Ess Temp"
+	  Position		  [55, 40, 75, 60]
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	  LatchInput		  off
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Preq"
+	  Position		  [45, 335, 65, 355]
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	  LatchInput		  off
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator"
+	  Position		  [95, 335, 115, 355]
+	}
+	Block {
+	  BlockType		  Lookup
+	  Name			  "cc"
+	  Position		  [175, 85, 205, 115]
+	  DialogController	  "Simulink.DDGSource"
+	  InputValues		  "ess_tmp"
+	  OutputValues		  "ess_cc"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "rc"
+	  Ports			  [2, 1]
+	  Position		  [175, 203, 205, 227]
+	  ShowPortLabels	  off
+	  TreatAsAtomicUnit	  off
+	  MinAlgLoopOccurrences	  off
+	  RTWSystemCode		  "Auto"
+	  MaskType		  "2-D Table Lookup"
+	  MaskDescription	  "Two Dimensional Table Lookup\nThe first inp"
+"ut corresponds to X Index and the second input corresponds to the Y Index"
+	  MaskHelp		  "This block returns a linearly interpolated "
+"intersection from the table using the X index (which corresponds to the rows "
+"of the table) and the Y index (which corresponds to the columns of the table)"
+".  Extrapolation is used."
+	  MaskPromptString	  "X Index|Y Index|Table"
+	  MaskStyleString	  "edit,edit,edit"
+	  MaskTunableValueString  "on,on,on"
+	  MaskCallbackString	  "||"
+	  MaskEnableString	  "on,on,on"
+	  MaskVisibilityString	  "on,on,on"
+	  MaskToolTipString	  "on,on,on"
+	  MaskVarAliasString	  ",,"
+	  MaskInitialization	  "xindex=@1; yindex=@2; table=@3; sftab2chk(x"
+"index,yindex,table);"
+	  MaskDisplay		  "plot(-10,-10,110,110,[90,50,10],[90,40,30],"
+"[90,50,10],[50,26,20],[90,50,10],[22,13,10])"
+	  MaskIconFrame		  on
+	  MaskIconOpaque	  on
+	  MaskIconRotate	  "none"
+	  MaskIconUnits		  "autoscale"
+	  MaskValueString	  "ess_tmp|ess_soc|ess_rc"
+	  MaskTabNameString	  ",,"
+	  System {
+	    Name		    "rc"
+	    Location		    [316, 263, 598, 417]
+	    Open		    off
+	    ModelBrowserVisibility  off
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "A4"
+	    PaperUnits		    "centimeters"
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "x0"
+	      Position		      [20, 25, 40, 45]
+	      Port		      "1"
+	      IconDisplay	      "Port number"
+	      LatchInput	      off
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "y0"
+	      Position		      [20, 80, 40, 100]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	      LatchInput	      off
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux"
+	      Ports		      [2, 1]
+	      Position		      [90, 46, 120, 79]
+	      Inputs		      "2"
+	    }
+	    Block {
+	      BlockType		      "S-Function"
+	      Name		      "S-function"
+	      Ports		      [1, 1]
+	      Position		      [140, 52, 190, 78]
+	      FunctionName	      "sftable2"
+	      Parameters	      "xindex, yindex, table"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "table out"
+	      Position		      [215, 55, 235, 75]
+	      IconDisplay	      "Port number"
+	      BusOutputAsStruct	      off
+	      InitialOutput	      "0"
+	    }
+	    Line {
+	      SrcBlock		      "Mux"
+	      SrcPort		      1
+	      DstBlock		      "S-function"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "x0"
+	      SrcPort		      1
+	      Points		      [20, 0; 0, 20]
+	      DstBlock		      "Mux"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "S-function"
+	      SrcPort		      1
+	      DstBlock		      "table out"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "y0"
+	      SrcPort		      1
+	      Points		      [20, 0; 0, -20]
+	      DstBlock		      "Mux"
+	      DstPort		      2
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Cc"
+	  Position		  [255, 90, 275, 110]
+	  IconDisplay		  "Port number"
+	  BusOutputAsStruct	  off
+	  InitialOutput		  "0"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Rc"
+	  Position		  [255, 205, 275, 225]
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	  BusOutputAsStruct	  off
+	  InitialOutput		  "0"
+	}
+	Line {
+	  SrcBlock		  "Ess Temp"
+	  SrcPort		  1
+	  Points		  [60, 0; 0, 50]
+	  Branch {
+	    DstBlock		    "cc"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 110]
+	    DstBlock		    "rc"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Preq"
+	  SrcPort		  1
+	  DstBlock		  "Terminator"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "SOC"
+	  SrcPort		  1
+	  Points		  [60, 0; 0, 55]
+	  DstBlock		  "rc"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "cc"
+	  SrcPort		  1
+	  DstBlock		  "Cc"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "rc"
+	  SrcPort		  1
+	  DstBlock		  "Rc"
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "RC model"
+      Ports		      [7, 2]
+      Position		      [225, 58, 320, 192]
+      AncestorBlock	      "lib_energy_storage/Ess Choices/energy\nstorage "
+"<ess>\nRC/RC model"
+      TreatAsAtomicUnit	      off
+      MinAlgLoopOccurrences   off
+      RTWSystemCode	      "Auto"
+      System {
+	Name			"RC model"
+	Location		[148, 133, 1001, 669]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"A4"
+	PaperUnits		"centimeters"
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "Cb"
+	  Position		  [55, 40, 75, 60]
+	  Port			  "1"
+	  IconDisplay		  "Port number"
+	  LatchInput		  off
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Cc"
+	  Position		  [55, 75, 75, 95]
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	  LatchInput		  off
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Re"
+	  Position		  [55, 110, 75, 130]
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	  LatchInput		  off
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Rc"
+	  Position		  [55, 145, 75, 165]
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	  LatchInput		  off
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Rt"
+	  Position		  [55, 180, 75, 200]
+	  Port			  "5"
+	  IconDisplay		  "Port number"
+	  LatchInput		  off
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Preq"
+	  Position		  [55, 215, 75, 235]
+	  Port			  "6"
+	  IconDisplay		  "Port number"
+	  LatchInput		  off
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Ess Temp"
+	  Position		  [55, 250, 75, 270]
+	  Port			  "7"
+	  IconDisplay		  "Port number"
+	  LatchInput		  off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "#mods1"
+	  Position		  [525, 133, 675, 177]
+	  Gain			  "ess_module_num"
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "#mods3"
+	  Position		  [465, 223, 605, 267]
+	  Gain			  "ess_module_num"
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "#mods4"
+	  Position		  [465, 268, 605, 312]
+	  Gain			  "ess_module_num"
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "1/#mods"
+	  Position		  [100, 203, 250, 247]
+	  Gain			  "1/ess_module_num"
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  "Demux1"
+	  Ports			  [1, 9]
+	  Position		  [440, 41, 445, 449]
+	  BackgroundColor	  "black"
+	  ShowName		  off
+	  Outputs		  "9"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto <cs>1"
+	  Position		  [675, 235, 755, 255]
+	  DialogController	  "Simulink.DDGSource"
+	  GotoTag		  "ess_max_pwr"
+	  TagVisibility		  "global"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto <cs>2"
+	  Position		  [670, 280, 775, 300]
+	  DialogController	  "Simulink.DDGSource"
+	  GotoTag		  "ess_max_chg_pwr"
+	  TagVisibility		  "global"
+	}
+	Block {
+	  BlockType		  Memory
+	  Name			  "Memory1"
+	  Position		  [465, 100, 480, 120]
+	  ShowName		  off
+	  X0			  "ess_init_soc"
+	}
+	Block {
+	  BlockType		  Memory
+	  Name			  "Memory2"
+	  Position		  [625, 280, 640, 300]
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Memory
+	  Name			  "Memory3"
+	  Position		  [625, 235, 640, 255]
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Memory
+	  Name			  "Memory4"
+	  Position		  [245, 390, 260, 410]
+	  ShowName		  off
+	  X0			  "ess_init_soc"
+	}
+	Block {
+	  BlockType		  Memory
+	  Name			  "Memory5"
+	  Position		  [245, 425, 260, 445]
+	  ShowName		  off
+	  X0			  "-1"
+	}
+	Block {
+	  BlockType		  Memory
+	  Name			  "Memory6"
+	  Position		  [245, 285, 260, 305]
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Memory
+	  Name			  "Memory7"
+	  Position		  [245, 355, 260, 375]
+	  ShowName		  off
+	}
+	Block {
+	  BlockType		  Mux
+	  Name			  "Mux2"
+	  Ports			  [12, 1]
+	  Position		  [295, 31, 300, 454]
+	  ShowName		  off
+	  Inputs		  "12"
+	  DisplayOption		  "bar"
+	}
+	Block {
+	  BlockType		  "S-Function"
+	  Name			  "RC model\nof one module"
+	  Ports			  [1, 1]
+	  Position		  [340, 230, 400, 260]
+	  FunctionName		  "RC"
+	  Parameters		  "ess_min_volts,ess_max_volts,mc_min_volts/es"
+"s_module_num,ess_soc,ess_tmp,ess_voc,ess_init_soc,ess_mod_init_tmp,ess_max_ah"
+"_cap,time_step,ess_coulombic_eff"
+	}
+	Block {
+	  BlockType		  Saturate
+	  Name			  "Saturation"
+	  Position		  [495, 102, 510, 118]
+	  ShowName		  off
+	  UpperLimit		  "1"
+	  LowerLimit		  "0"
+	}
+	Block {
+	  BlockType		  ToWorkspace
+	  Name			  "To Workspace9"
+	  Position		  [680, 324, 755, 346]
+	  VariableName		  "ess_current"
+	  MaxDataPoints		  "inf"
+	  SampleTime		  "-1"
+	  SaveFormat		  "Array"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "SOC"
+	  Position		  [705, 100, 725, 120]
+	  IconDisplay		  "Port number"
+	  BusOutputAsStruct	  off
+	  InitialOutput		  "0"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Vout"
+	  Position		  [705, 145, 725, 165]
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	  BusOutputAsStruct	  off
+	  InitialOutput		  "0"
+	}
+	Line {
+	  SrcBlock		  "Saturation"
+	  SrcPort		  1
+	  Points		  [5, 0]
+	  Branch {
+	    DstBlock		    "SOC"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -100; -495, 0; 0, 320]
+	    DstBlock		    "Mux2"
+	    DstPort		    9
+	  }
+	}
+	Line {
+	  SrcBlock		  "RC model\nof one module"
+	  SrcPort		  1
+	  DstBlock		  "Demux1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "#mods1"
+	  SrcPort		  1
+	  DstBlock		  "Vout"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  3
+	  DstBlock		  "#mods1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  1
+	  Points		  [35, 0; 0, -40; -445, 0; 0, 270]
+	  DstBlock		  "Memory6"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "1/#mods"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  6
+	}
+	Line {
+	  SrcBlock		  "Preq"
+	  SrcPort		  1
+	  DstBlock		  "1/#mods"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Mux2"
+	  SrcPort		  1
+	  DstBlock		  "RC model\nof one module"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Rt"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "Rc"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "Re"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Cc"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Cb"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Ess Temp"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  7
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  7
+	  Points		  [145, 0]
+	  Branch {
+	    DstBlock		    "To Workspace9"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 190; -500, 0; 0, -160]
+	    DstBlock		    "Memory7"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  6
+	  DstBlock		  "#mods4"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Memory2"
+	  SrcPort		  1
+	  DstBlock		  "Goto <cs>2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  5
+	  DstBlock		  "#mods3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Memory3"
+	  SrcPort		  1
+	  DstBlock		  "Goto <cs>1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  2
+	  DstBlock		  "Memory1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  8
+	  Points		  [120, 0; 0, 125; -450, 0; 0, -105]
+	  DstBlock		  "Memory4"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Demux1"
+	  SrcPort		  9
+	  Points		  [95, 0; 0, 60; -400, 0; 0, -50]
+	  DstBlock		  "Memory5"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Memory6"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  8
+	}
+	Line {
+	  SrcBlock		  "Memory7"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  10
+	}
+	Line {
+	  SrcBlock		  "Memory4"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  11
+	}
+	Line {
+	  SrcBlock		  "Memory5"
+	  SrcPort		  1
+	  DstBlock		  "Mux2"
+	  DstPort		  12
+	}
+	Line {
+	  SrcBlock		  "Memory1"
+	  SrcPort		  1
+	  DstBlock		  "Saturation"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "#mods3"
+	  SrcPort		  1
+	  DstBlock		  "Memory3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "#mods4"
+	  SrcPort		  1
+	  DstBlock		  "Memory2"
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "To Workspace8"
+      Position		      [120, 375, 190, 395]
+      NamePlacement	      "alternate"
+      ShowName		      off
+      VariableName	      "ess_pwr_out_r"
+      MaxDataPoints	      "inf"
+      SampleTime	      "-1"
+      SaveFormat	      "Array"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "SOC"
+      Position		      [380, 85, 400, 105]
+      IconDisplay	      "Port number"
+      InitialOutput	      "0"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "pack open-circuit voltage"
+      Position		      [375, 150, 395, 170]
+      Port		      "2"
+      IconDisplay	      "Port number"
+      InitialOutput	      "0"
+    }
+    Line {
+      SrcBlock		      "Model Parameters1"
+      SrcPort		      1
+      Points		      [0, -5]
+      DstBlock		      "RC model"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Model Parameters1"
+      SrcPort		      2
+      DstBlock		      "RC model"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "Model Parameters1"
+      SrcPort		      3
+      Points		      [0, 5]
+      DstBlock		      "RC model"
+      DstPort		      5
+    }
+    Line {
+      Labels		      [2, 0]
+      SrcBlock		      "power req'd\ninto bus (W)"
+      SrcPort		      1
+      Points		      [0, 0; 0, -15]
+      Branch {
+	Points			[20, 0]
+	Branch {
+	  Points		  [75, 0; 0, -190]
+	  DstBlock		  "RC model"
+	  DstPort		  6
+	}
+	Branch {
+	  DstBlock		  "To Workspace8"
+	  DstPort		  1
+	}
+      }
+      Branch {
+	Points			[-45, 0; 0, -65]
+	Branch {
+	  Points		  [0, -150]
+	  DstBlock		  "Model Parameters1"
+	  DstPort		  3
+	}
+	Branch {
+	  DstBlock		  "Model Parameters2"
+	  DstPort		  3
+	}
+      }
+    }
+    Line {
+      SrcBlock		      "Model Parameters2"
+      SrcPort		      1
+      Points		      [45, 0; 0, -145]
+      DstBlock		      "RC model"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Model Parameters2"
+      SrcPort		      2
+      Points		      [40, 0; 0, -160]
+      DstBlock		      "RC model"
+      DstPort		      4
+    }
+    Line {
+      SrcBlock		      "mode temp"
+      SrcPort		      1
+      Points		      [0, -15; -70, 0; 0, -150]
+      Branch {
+	Points			[0, -150]
+	DstBlock		"Model Parameters1"
+	DstPort			2
+      }
+      Branch {
+	DstBlock		"Model Parameters2"
+	DstPort			2
+      }
+    }
+    Line {
+      SrcBlock		      "RC model"
+      SrcPort		      2
+      DstBlock		      "pack open-circuit voltage"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "RC model"
+      SrcPort		      1
+      Points		      [0, 0; 25, 0]
+      Branch {
+	DstBlock		"SOC"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, -80; -305, 0]
+	DstBlock		"Model Parameters1"
+	DstPort			1
+      }
+    }
+  }
+}
