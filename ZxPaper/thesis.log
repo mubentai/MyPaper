@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.3.15)  10 APR 2016 13:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.3.15)  22 MAY 2016 14:24
 entering extended mode
 **./thesis.tex
 (thesis.tex
@@ -2014,7 +2014,13 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <15.05624> not available
  [3
 
 
-]) [4] (thesis.toc
+])
+Overfull \hbox (10.6682pt too wide) in paragraph at lines 8--7
+\OT1/ptm/m/n/12.05 u-la-tion plat-form, the model was based on the pure elec-tr
+ic van truck CDW5070XXYH1PEV
+ []
+
+[4] (thesis.toc
 LaTeX Font Info:    Calculating math sizes for size <12.05> on input line 1.
 <<oml.cmap>><<oms.cmap>><<omx.cmap>>
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8.91705> not available
@@ -2030,7 +2036,8 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.23007> not available
 \tf@toc=\write8
 \openout8 = `thesis.toc'.
 
- [6] (thesis.acr) (thesis.gls)
+ [6] (thesis.acr)
+(thesis.gls)
 \tempsubpiccaptionbox=\box61
 \tempsubpiccaptionindent=\skip102
 \tempsubpiccaptionheadindent=\skip103
@@ -2051,17 +2058,17 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.05249> not available
 
 
 ] [2] [3] [4] [5] [6]
-<pics/1-studyroad.pdf, id=546, 342.07799pt x 552.36453pt>
+<pics/1-studyroad.pdf, id=534, 370.98604pt x 481.79584pt>
 File: pics/1-studyroad.pdf Graphic file (type pdf)
 
 <use pics/1-studyroad.pdf>
-Package pdftex.def Info: pics/1-studyroad.pdf used on input line 49.
-(pdftex.def)             Requested size: 342.07713pt x 552.36317pt.
+Package pdftex.def Info: pics/1-studyroad.pdf used on input line 52.
+(pdftex.def)             Requested size: 370.98512pt x 481.79466pt.
  [7] [8 <./pics/1-studyroad.pdf>]
-<pics/1-zuzhi.pdf, id=584, 342.02931pt x 260.961pt>
+<pics/1-zuzhi.pdf, id=568, 342.02931pt x 260.961pt>
 File: pics/1-zuzhi.pdf Graphic file (type pdf)
  <use pics/1-zuzhi.pdf>
-Package pdftex.def Info: pics/1-zuzhi.pdf used on input line 65.
+Package pdftex.def Info: pics/1-zuzhi.pdf used on input line 68.
 (pdftex.def)             Requested size: 342.02846pt x 260.96036pt.
 )
 [9 <./pics/1-zuzhi.pdf>]
@@ -2073,139 +2080,56 @@ Package pdftex.def Info: pics/1-zuzhi.pdf used on input line 65.
 
 
 
-] [11] <pics/2-SEI.pdf, id=649, 294.42119pt x 169.68814pt>
+] <pics/2-SEI.pdf, id=622, 294.42119pt x 169.68814pt>
 File: pics/2-SEI.pdf Graphic file (type pdf)
-
-<use pics/2-SEI.pdf>
-Package pdftex.def Info: pics/2-SEI.pdf used on input line 41.
+ <use pics/2-SEI.pdf>
+Package pdftex.def Info: pics/2-SEI.pdf used on input line 44.
 (pdftex.def)             Requested size: 294.42046pt x 169.68771pt.
- [12 <./pics/2-SEI.pdf>]
-<pics/2-oneRCmodel.png, id=692, 212.29312pt x 94.10156pt>
+
+[11] [12 <./pics/2-SEI.pdf>]
+<pics/2-oneRCmodel.png, id=673, 212.29312pt x 94.10156pt>
 File: pics/2-oneRCmodel.png Graphic file (type png)
 
 <use pics/2-oneRCmodel.png>
-Package pdftex.def Info: pics/2-oneRCmodel.png used on input line 53.
+Package pdftex.def Info: pics/2-oneRCmodel.png used on input line 56.
 (pdftex.def)             Requested size: 212.2926pt x 94.10132pt.
 
-<pics/2-PNGVmodel.png, id=693, 213.79875pt x 94.10156pt>
+Overfull \hbox (3.0439pt too wide) in paragraph at lines 58--59
+\C70/rm/m/n/12.05/75 5 \C70/rm/m/n/12.05/8d Ô \C70/rm/m/n/12.05/6a ! \C70/rm/m/
+n/12.05/57 ã \C70/rm/m/n/12.05/4e -\OT1/ptm/m/n/12.05 R2\C70/rm/m/n/12.05/4e „ 
+\C70/rm/m/n/12.05/88 h \C70/rm/m/n/12.05/76 Ñ \C70/rm/m/n/12.05/66 / \C70/rm/m/
+n/12.05/95  \C70/rm/m/n/12.05/75 5 \C70/rm/m/n/12.05/6c ` \C70/rm/m/n/12.05/76
+ Ñ \C70/rm/m/n/12.05/6b ' \C70/rm/m/n/12.05/59 ∆ \C70/rm/m/n/12.05/51 Ö \C70/rm
+/m/n/12.05/96 ;|\C70/rm/m/n/12.05/ff | \OT1/ptm/m/n/12.05 R1\C70/rm/m/n/12.05/
+4e „ \C70/rm/m/n/12.05/88 h \C70/rm/m/n/12.05/75 5 \C70/rm/m/n/12.05/6c ` \C70/
+rm/m/n/12.05/76 Ñ \C70/rm/m/n/12.05/67 Å \C70/rm/m/n/12.05/53  \C70/rm/m/n/12.
+05/51 Ö \C70/rm/m/n/12.05/96 ;|\C70/rm/m/n/12.05/ff | \C70/rm/m/n/12.05/75 5 \
+C70/rm/m/n/12.05/53 ã \C70/rm/m/n/12.05/6e ê\OT1/ptm/m/n/12.05 Voc\C70/rm/m/n/1
+2.05/4e „
+ []
+
+<pics/2-PNGVmodel.png, id=675, 213.79875pt x 94.10156pt>
 File: pics/2-PNGVmodel.png Graphic file (type png)
 
 <use pics/2-PNGVmodel.png>
-Package pdftex.def Info: pics/2-PNGVmodel.png used on input line 57.
+Package pdftex.def Info: pics/2-PNGVmodel.png used on input line 61.
 (pdftex.def)             Requested size: 213.79822pt x 94.10132pt.
-
-<pics/2-twoRCmodel.png, id=695, 218.31563pt x 132.495pt>
+ [13 <./pics/2-oneRCmodel.png> <./pics/2-PNGVmodel.png>] <pics/2-twoRCmodel.png
+, id=688, 218.31563pt x 132.495pt>
 File: pics/2-twoRCmodel.png Graphic file (type png)
 
 <use pics/2-twoRCmodel.png>
-Package pdftex.def Info: pics/2-twoRCmodel.png used on input line 61.
+Package pdftex.def Info: pics/2-twoRCmodel.png used on input line 66.
 (pdftex.def)             Requested size: 218.31508pt x 132.49466pt.
- [13 <./pics/2-oneRCmodel.png>] [14 <./pics/2-PNGVmodel.png> <./pics/2-twoRCmod
-el.png>]
-Overfull \hbox (25.29114pt too wide) detected at line 109
-[][]\OT1/cmr/m/n/12.05 (\OML/cmm/m/it/12.05 k\OT1/cmr/m/n/12.05 ) = [\OMS/cmsy/
-m/n/12.05  []\OT1/cmr/m/n/12.05 (\OML/cmm/m/it/12.05 k \OMS/cmsy/m/n/12.05   \O
-T1/cmr/m/n/12.05 1) \OMS/cmsy/m/n/12.05   []\OT1/cmr/m/n/12.05 (\OML/cmm/m/it/1
-2.05 k \OMS/cmsy/m/n/12.05   \OT1/cmr/m/n/12.05 2)\OML/cmm/m/it/12.05 I\OT1/cmr
-/m/n/12.05 (\OML/cmm/m/it/12.05 k \OMS/cmsy/m/n/12.05   \OT1/cmr/m/n/12.05 1)\O
-ML/cmm/m/it/12.05 I\OT1/cmr/m/n/12.05 (\OML/cmm/m/it/12.05 k \OMS/cmsy/m/n/12.0
-5   \OT1/cmr/m/n/12.05 2)][] + \OML/cmm/m/it/12.05 e\OT1/cmr/m/n/12.05 (\OML/cm
-m/m/it/12.05 k\OT1/cmr/m/n/12.05 ) = [](\OML/cmm/m/it/12.05 k\OT1/cmr/m/n/12.05
- )\OML/cmm/m/it/12.05  \OT1/cmr/m/n/12.05 + \OML/cmm/m/it/12.05 e\OT1/cmr/m/n/
-12.05 (\OML/cmm/m/it/12.05 k\OT1/cmr/m/n/12.05 )
- []
-
-[15]
-Overfull \hbox (54.69028pt too wide) in paragraph at lines 171--173
-[]\C70/rm/m/n/12.05/52  \C70/rm/m/n/12.05/65 p \C70/rm/m/n/12.05/96 6 \C70/rm/
-m/n/12.05/5f Æ \C70/rm/m/n/12.05/79 Ô \C70/rm/m/n/12.05/52  \C70/rm/m/n/12.05/
-65 ˆ \C70/rm/m/n/12.05/57 ﬂ \C70/rm/m/n/12.05/5b ö \C70/rm/m/n/12.05/4e I \C70/
-rm/m/n/12.05/52  \C70/rm/m/n/12.05/65 p \C70/rm/m/n/12.05/96 6 \C70/rm/m/n/12.
-05/5f Æ \C70/rm/m/n/12.05/79 Ô \C70/rm/m/n/12.05/52  \C70/rm/m/n/12.05/67 	 \C
-70/rm/m/n/12.05/4e 	 \C70/rm/m/n/12.05/79 Õ \C70/rm/m/n/12.05/5e 8 \C70/rm/m/n/
-12.05/75 ( \C70/rm/m/n/12.05/76 Ñ \C70/rm/m/n/12.05/65 ˆ \C70/rm/m/n/12.05/57 ﬂ
- \C70/rm/m/n/12.05/5b ö \C70/rm/m/n/12.05/4e I|\C70/rm/m/n/12.05/ff | \C70/rm/
-m/n/12.05/4e ÷ Ï \C70/rm/m/n/12.05/52  + \C70/rm/m/n/12.05/4e :$\OML/cmm/m/it/
-12.05 Gr[]nwald \OMS/cmsy/m/n/12.05  
- []
-
-[16]
-Overfull \hbox (6.72675pt too wide) detected at line 198
-[][][]\OML/cmm/m/it/12.05 D[]f\OT1/cmr/m/n/12.05 (\OML/cmm/m/it/12.05 t\OT1/cmr
-/m/n/12.05 ) = [] [] [][] []\OML/cmm/m/it/12.05 d
- []
-
-
-Overfull \hbox (1.01675pt too wide) in paragraph at lines 217--218
-[]\C70/rm/m/n/12.05/4e Œ 
- \C70/rm/m/n/12.05/5f  \C70/rm/m/n/12.05/4e - \C70/rm/m/n/12.05/53 Ô \C70/rm/m
-/n/12.05/4e Â \C70/rm/m/n/12.05/77  \C70/rm/m/n/12.05/51 ˙|\C70/rm/m/n/12.05/f
-f | \OT1/ptm/m/n/12.05 R-L\C70/rm/m/n/12.05/5b ö \C70/rm/m/n/12.05/4e I \C70/r
-m/m/n/12.05/76 Ñ \C70/rm/m/n/12.05/52  \C70/rm/m/n/12.05/65 p \C70/rm/m/n/12.0
-5/96 6 \C70/rm/m/n/12.05/5f Æ \C70/rm/m/n/12.05/52  \C70/rm/m/n/12.05/66 / \C7
-0/rm/m/n/12.05/51 H \C70/rm/m/n/12.05/90  \C70/rm/m/n/12.05/8f «\OT1/ptm/m/n/1
-2.05 Gamma\C70/rm/m/n/12.05/51 ˝ \C70/rm/m/n/12.05/65 p \C70/rm/m/n/12.05/8f € 
-\C70/rm/m/n/12.05/88 L$\OML/cmm/m/it/12.05 n \OMS/cmsy/m/n/12.05   \OML/cmm/m/i
-t/12.05 $\C70/rm/m/n/12.05/96 6
- []
-
-
-Overfull \hbox (10.04892pt too wide) in paragraph at lines 228--230
-\C70/rm/m/n/12.05/65 p \C70/rm/m/n/12.05/96 6 \C70/rm/m/n/12.05/5f Æ \C70/rm/m/
-n/12.05/79 Ô \C70/rm/m/n/12.05/52  \C70/rm/m/n/12.05/76 Ñ \C70/rm/m/n/12.05/5b
- ö \C70/rm/m/n/12.05/4e I$[][]\OML/cmm/m/it/12.05 D[]f\OT1/cmr/m/n/12.05 (\OML/
-cmm/m/it/12.05 t\OT1/cmr/m/n/12.05 )$\C70/rm/m/n/12.05/7b Ä \C70/rm/m/n/12.05/8
-b ∞ \C70/rm/m/n/12.05/4e :$[]\OML/cmm/m/it/12.05 f\OT1/cmr/m/n/12.05 (\OML/cmm/
-m/it/12.05 t\OT1/cmr/m/n/12.05 )$|\C70/rm/m/n/12.05/ff | $\OML/cmm/m/it/12.05 
-f\OT1/cmr/m/n/12.05 (\OML/cmm/m/it/12.05 t\OT1/cmr/m/n/12.05 )\OML/cmm/m/it/12.
-05 ; t \OMS/cmsy/m/n/12.05 2 []$\C70/rm/m/n/12.05/4e : \C70/rm/m/n/12.05/5b û \
-C70/rm/m/n/12.05/4f · \C70/rm/m/n/12.05/53 ˜|\C70/rm/m/n/12.05/ff | \C70/rm/m/
-n/12.05/52 $\OML/cmm/m/it/12.05 f\OT1/cmr/m/n/12.05 (\OML/cmm/m/it/12.05 t\OT1
-/cmr/m/n/12.05 )$\C70/rm/m/n/12.05/76 Ñ
- []
-
-[17]
-Overfull \hbox (4.34525pt too wide) in paragraph at lines 254--255
-[]\C70/rm/m/n/12.05/4e Œ Â 
- \C70/rm/m/n/12.05/5f  \C70/rm/m/n/12.05/5b P \C70/rm/m/n/12.05/53 Ô \C70/rm/m
-/n/12.05/4e Â \C70/rm/m/n/12.05/77  \C70/rm/m/n/12.05/51 ˙|\C70/rm/m/n/12.05/f
-f | \C70/rm/m/n/12.05/59 Ç \C70/rm/m/n/12.05/67 ú \C70/rm/m/n/12.05/5b û \C70/
-rm/m/n/12.05/65 p \C70/rm/m/n/12.05/4f · \C70/rm/m/n/12.05/53 ˜$\OML/cmm/m/it/1
-2.05 f\OT1/cmr/m/n/12.05 (\OML/cmm/m/it/12.05 t\OT1/cmr/m/n/12.05 )$\C70/rm/m/n
-/12.05/57 ($\OML/cmm/m/it/12.05 t \OT1/cmr/m/n/12.05 = 0$\C70/rm/m/n/12.05/65 ˆ
- \C70/rm/m/n/12.05/52 ; \C70/rm/m/n/12.05/76 Ñ \C70/rm/m/n/12.05/52  \C70/rm/m
-/n/12.05/50 < \C70/rm/m/n/12.05/4e :\OT1/ptm/m/n/12.05 0\C70/rm/m/n/12.05/5e v 
-\C70/rm/m/n/12.05/4e $\OML/cmm/m/it/12.05 f\OT1/cmr/m/n/12.05 (\OML/cmm/m/it/1
-2.05 t\OT1/cmr/m/n/12.05 )$\C70/rm/m/n/12.05/57 ($\OML/cmm/m/it/12.05 t \OT1/cm
-r/m/n/12.05 =
- []
-
-
-Overfull \hbox (2.16945pt too wide) detected at line 262
-[][][]\OML/cmm/m/it/12.05 f \OT1/cmr/m/n/12.05 + [][]\OML/cmm/m/it/12.05 f \OT1
-/cmr/m/n/12.05 + [] + [][]\OML/cmm/m/it/12.05 f \OT1/cmr/m/n/12.05 = [][]\OML/c
-mm/m/it/12.05 s \OT1/cmr/m/n/12.05 + [][]\OML/cmm/m/it/12.05 s \OT1/cmr/m/n/12.
-05 + [] + [][]\OML/cmm/m/it/12.05 s
- []
-
-
-Overfull \hbox (10.07364pt too wide) in paragraph at lines 264--265
-\C70/rm/m/n/12.05/51 ˝ \C70/rm/m/n/12.05/65 p$\OML/cmm/m/it/12.05 f \OT1/cmr/m/
-n/12.05 = \OML/cmm/m/it/12.05 f []$\C70/rm/m/n/12.05/66 / \C70/rm/m/n/12.05/7c 
-˚ \C70/rm/m/n/12.05/7e ﬂ \C70/rm/m/n/12.05/76 Ñ \C70/rm/m/n/12.05/8f ì \C70/rm/
-m/n/12.05/51 ˙|\C70/rm/m/n/12.05/ff | \C70/rm/m/n/12.05/53 ¬ \C70/rm/m/n/12.05
-/65 p$[] []$\C70/rm/m/n/12.05/54 å \C70/rm/m/n/12.05/53 ¬ \C70/rm/m/n/12.05/65 
-p$[] []$\C70/rm/m/n/12.05/66 /
- []
-
-[18] <pics/2-wholecircuit.pdf, id=797, 398.99063pt x 169.38281pt>
+ [14 <./pics/2-twoRCmodel.png>] [15] [16] [17]
+[18] <pics/2-wholecircuit.pdf, id=772, 360.89313pt x 160.30336pt>
 File: pics/2-wholecircuit.pdf Graphic file (type pdf)
 
 <use pics/2-wholecircuit.pdf>
-Package pdftex.def Info: pics/2-wholecircuit.pdf used on input line 283.
-(pdftex.def)             Requested size: 398.98965pt x 169.38239pt.
+Package pdftex.def Info: pics/2-wholecircuit.pdf used on input line 294.
+(pdftex.def)             Requested size: 360.89224pt x 160.30295pt.
  [19] [20 <./pics/2-wholecircuit.pdf>]
-Overfull \hbox (5.20062pt too wide) in paragraph at lines 341--342
+Overfull \hbox (5.20062pt too wide) in paragraph at lines 352--353
 []\C70/rm/m/n/12.05/5b ˘ \C70/rm/m/n/12.05/4e é \C70/rm/m/n/12.05/95  \C70/rm/
 m/n/12.05/75 5 \C70/rm/m/n/12.05/6c ` \C70/rm/m/n/12.05/76 Ñ \C70/rm/m/n/12.05/
 6d S \C70/rm/m/n/12.05/5d Ó \C70/rm/m/n/12.05/67 Å \C70/rm/m/n/12.05/53  \C70/
@@ -2218,41 +2142,41 @@ ML/cmm/m/it/12.05 :\OT1/cmr/m/n/12.05 5$|\C70/rm/m/n/12.05/ff | $\OML/cmm/m/it
 /12.05 N \OT1/cmr/m/n/12.05 =
  []
 
-[21] <pics/2-BodeOne.pdf, id=864, 370.98601pt x 188.705pt>
+[21] <pics/2-BodeOne.pdf, id=814, 370.98601pt x 188.705pt>
 File: pics/2-BodeOne.pdf Graphic file (type pdf)
 
 <use pics/2-BodeOne.pdf>
-Package pdftex.def Info: pics/2-BodeOne.pdf used on input line 350.
+Package pdftex.def Info: pics/2-BodeOne.pdf used on input line 361.
 (pdftex.def)             Requested size: 370.98509pt x 188.70453pt.
- <pics/2-BodeTwo.pdf, id=866, 370.98598pt x 188.705pt>
+ <pics/2-BodeTwo.pdf, id=816, 370.98598pt x 188.705pt>
 File: pics/2-BodeTwo.pdf Graphic file (type pdf)
 
 <use pics/2-BodeTwo.pdf>
-Package pdftex.def Info: pics/2-BodeTwo.pdf used on input line 361.
+Package pdftex.def Info: pics/2-BodeTwo.pdf used on input line 372.
 (pdftex.def)             Requested size: 370.98506pt x 188.70453pt.
- <pics/2-Bode.pdf, id=868, 370.98604pt x 188.70502pt>
+ <pics/2-Bode.pdf, id=818, 370.98601pt x 188.705pt>
 File: pics/2-Bode.pdf Graphic file (type pdf)
 
 <use pics/2-Bode.pdf>
-Package pdftex.def Info: pics/2-Bode.pdf used on input line 364.
-(pdftex.def)             Requested size: 370.98512pt x 188.70454pt.
- [22 <./pics/2-BodeOne.pdf>] [23 <./pics/2-BodeTwo.pdf> <./pics/2-Bode.pdf
+Package pdftex.def Info: pics/2-Bode.pdf used on input line 375.
+(pdftex.def)             Requested size: 370.98509pt x 188.70453pt.
+ [22 <./pics/2-BodeOne.pdf> <./pics/2-BodeTwo.pdf
 
-pdfTeX warning: pdflatex (file ./pics/2-Bode.pdf): PDF inclusion: multiple pdfs
- with page group included in a single page
->]
-Overfull \hbox (2.19931pt too wide) in paragraph at lines 391--400
+pdfTeX warning: pdflatex (file ./pics/2-BodeTwo.pdf): PDF inclusion: multiple p
+dfs with page group included in a single page
+>] [23 <./pics/2-Bode.pdf>]
+Overfull \hbox (2.19931pt too wide) in paragraph at lines 402--411
 \C70/rm/m/n/12.05/53 ¬ \C70/rm/m/n/12.05/65 p \C70/rm/m/n/12.05/54  \C70/rm/m/
 n/12.05/91 œ|\C70/rm/m/n/12.05/ff | $\OML/cmm/m/it/12.05 b\OT1/cmr/m/n/12.05 (
 \OML/cmm/m/it/12.05 k\OT1/cmr/m/n/12.05 )[] []$ 
  []
 
-[24]
-Overfull \hbox (4.97488pt too wide) in paragraph at lines 407--408
+
+Overfull \hbox (4.97488pt too wide) in paragraph at lines 418--419
 \C70/rm/m/n/12.05/76 Ñ|\C70/rm/m/n/12.05/ff | \C70/rm/m/n/12.05/4f F \C70/rm/m
 /n/12.05/66 / \C70/rm/m/n/12.05/4e : Ü \C70/rm/m/n/12.05/5b ˘ \C70/rm/m/n/12.05
 /67   \C70/rm/m/n/12.05/5c  \C70/rm/m/n/12.05/4e å X \C70/rm/m/n/12.05/7b ó \C
-70/rm/m/n/12.05/6c ’ \C70/rm/m/n/12.05/75 1 \C70/rm/m/n/12.05/5f à \C70/rm/m/n/
+70/rm/m/n/12.05/6c ’ \C70/rm/m/n/12.05/67 	 \C70/rm/m/n/12.05/5f à \C70/rm/m/n/
 12.05/59 } \C70/rm/m/n/12.05/76 Ñ \C70/rm/m/n/12.05/8b ƒ \C70/rm/m/n/12.05/4e ˜
  \C70/rm/m/n/12.05/68  \C70/rm/m/n/12.05/51 ∆ \C70/rm/m/n/12.05/54 å \C70/rm/m
 /n/12.05/7e ﬂ \C70/rm/m/n/12.05/8b ° \C70/rm/m/n/12.05/72 y \C70/rm/m/n/12.05/6
@@ -2262,8 +2186,8 @@ rm/m/n/12.05/50 G \C70/rm/m/n/12.05/8b æ \C70/rm/m/n/12.05/4e Ü \C70/rm/m/n/12.
 m/m/it/12.05 k\OT1/cmr/m/n/12.05 )$ 
  []
 
-
-Overfull \hbox (2.43648pt too wide) in paragraph at lines 435--436
+[24]
+Overfull \hbox (2.43648pt too wide) in paragraph at lines 446--447
 []\C70/rm/m/n/12.05/75 1 \C70/rm/m/n/12.05/4e 
  \C70/rm/m/n/12.05/5f  \C70/rm/m/n/12.05/53 Ô \C70/rm/m/n/12.05/4e Â \C70/rm/m
 /n/12.05/77  \C70/rm/m/n/12.05/51 ˙ \C70/rm/m/n/12.05/5f S \C70/rm/m/n/12.05/5
@@ -2275,8 +2199,8 @@ m/m/n/12.05/65 p \C70/rm/m/n/12.05/54  \C70/rm/m/n/12.05/91 œ \C70/rm/m/n/12.0
 /m/n/12.05/4f 0 \C70/rm/m/n/12.05/8b ° \C70/rm/m/n/12.05/50 <$[] []$ 
  []
 
-[25]
-Overfull \hbox (7.68317pt too wide) in paragraph at lines 443--444
+
+Overfull \hbox (7.68317pt too wide) in paragraph at lines 454--455
 []\OT1/ptm/m/n/12.05 32560\C70/rm/m/n/12.05/78 ˜ \C70/rm/m/n/12.05/91 x \C70/rm
 /m/n/12.05/94 ¡ \C70/rm/m/n/12.05/95  \C70/rm/m/n/12.05/75 5 \C70/rm/m/n/12.05
 /6c `|\C70/rm/m/n/12.05/ff | \C70/rm/m/n/12.05/98 ù \C70/rm/m/n/12.05/5b ö \C7
@@ -2288,26 +2212,26 @@ Overfull \hbox (7.68317pt too wide) in paragraph at lines 443--444
 rm/m/n/12.05/53 ã\OT1/ptm/m/n/12.05 3.65V|\C70/rm/m/n/12.05/ff |
  []
 
-
-Overfull \hbox (4.65236pt too wide) in alignment at lines 475--475
+[25]
+Overfull \hbox (4.65236pt too wide) in alignment at lines 486--486
 [][][] 
  []
 
-<pics/2-ocvsocFIT.pdf, id=1016, 342.07799pt x 200.75pt>
+<pics/2-ocvsocFIT.pdf, id=966, 342.07799pt x 200.75pt>
 File: pics/2-ocvsocFIT.pdf Graphic file (type pdf)
 
 <use pics/2-ocvsocFIT.pdf>
-Package pdftex.def Info: pics/2-ocvsocFIT.pdf used on input line 478.
+Package pdftex.def Info: pics/2-ocvsocFIT.pdf used on input line 489.
 (pdftex.def)             Requested size: 342.07713pt x 200.7495pt.
 
-<pics/2-ocvsocDIFF.pdf, id=1017, 342.07799pt x 200.75pt>
+<pics/2-ocvsocDIFF.pdf, id=967, 342.07799pt x 200.75pt>
 File: pics/2-ocvsocDIFF.pdf Graphic file (type pdf)
 
 <use pics/2-ocvsocDIFF.pdf>
-Package pdftex.def Info: pics/2-ocvsocDIFF.pdf used on input line 479.
+Package pdftex.def Info: pics/2-ocvsocDIFF.pdf used on input line 490.
 (pdftex.def)             Requested size: 342.07713pt x 200.7495pt.
 
-Overfull \hbox (1.85992pt too wide) in paragraph at lines 477--480
+Overfull \hbox (1.85992pt too wide) in paragraph at lines 488--491
 []\C70/rm/m/n/12.05/4e : Ü \C70/rm/m/n/12.05/5c = \C70/rm/m/n/12.05/91 œ \C70/r
 m/m/n/12.05/63 – \C70/rm/m/n/12.05/9a ÿ \C70/rm/m/n/12.05/8f ® \C70/rm/m/n/12.0
 5/8b ∆ \C70/rm/m/n/12.05/5d Â \C70/rm/m/n/12.05/51 µ \C70/rm/m/n/12.05/4e -$[]\
@@ -2319,128 +2243,106 @@ T1/cmr/m/n/12.05 = 9$\C70/rm/m/n/12.05/96 6 \C70/rm/m/n/12.05/76 Ñ \C70/rm/m/n/
 /12.05/54 å\OT1/ptm/m/n/12.05 SOC\C70/rm/m/n/12.05/76 Ñ
  []
 
-[26] [27 <./pics/2-ocvsocFIT.pdf>]
-Overfull \hbox (2.01723pt too wide) in alignment at lines 503--503
+[26] [27 <./pics/2-ocvsocFIT.pdf> <./pics/2-ocvsocDIFF.pdf
+
+pdfTeX warning: pdflatex (file ./pics/2-ocvsocDIFF.pdf): PDF inclusion: multipl
+e pdfs with page group included in a single page
+>]
+Overfull \hbox (2.01723pt too wide) in alignment at lines 514--514
 [][][]
  []
 
-<pics/2-shiyanshebei.png, id=1059, 321.2pt x 240.9pt>
+<pics/2-shiyanshebei.png, id=1037, 321.2pt x 240.9pt>
 File: pics/2-shiyanshebei.png Graphic file (type png)
 
 <use pics/2-shiyanshebei.png>
-Package pdftex.def Info: pics/2-shiyanshebei.png used on input line 506.
+Package pdftex.def Info: pics/2-shiyanshebei.png used on input line 517.
 (pdftex.def)             Requested size: 321.19922pt x 240.8994pt.
- [28 <./pics/2-ocvsocDIFF.pdf>] [29 <./pics/2-shiyanshebei.png>] <pics/2-voltba
-ttery.pdf, id=1105, 342.07799pt x 260.975pt>
+ [28] [29 <./pics/2-shiyanshebei.png>]
+<pics/2-voltbattery.pdf, id=1053, 342.07799pt x 260.975pt>
 File: pics/2-voltbattery.pdf Graphic file (type pdf)
 
 <use pics/2-voltbattery.pdf>
-Package pdftex.def Info: pics/2-voltbattery.pdf used on input line 569.
+Package pdftex.def Info: pics/2-voltbattery.pdf used on input line 580.
 (pdftex.def)             Requested size: 342.07713pt x 260.97437pt.
- [30]
-Overfull \hbox (1.09882pt too wide) in paragraph at lines 581--582
+ [30 <./pics/2-voltbattery.pdf>]
+Overfull \hbox (1.09882pt too wide) in paragraph at lines 592--593
 []\C70/rm/m/n/12.05/57 ( \C70/rm/m/n/12.05/4e 
  \C70/rm/m/n/12.05/5f  \C70/rm/m/n/12.05/4e - ‰$\OML/cmm/m/it/12.05 A [] \OT1/
 cmr/m/n/12.05 = 1 + []\OML/cmm/m/it/12.05 z[][] \OT1/cmr/m/n/12.05 + [][] + [] 
 + [][]$ $\OML/cmm/m/it/12.05 B [] \OT1/cmr/m/n/12.05 = [][] + [][] +
  []
 
-[31 <./pics/2-voltbattery.pdf>]
-<pics/2-inputData.png, id=1132, 264.23718pt x 324.46219pt>
+<pics/2-inputData.png, id=1071, 264.23718pt x 324.46219pt>
 File: pics/2-inputData.png Graphic file (type png)
 
 <use pics/2-inputData.png>
-Package pdftex.def Info: pics/2-inputData.png used on input line 595.
+Package pdftex.def Info: pics/2-inputData.png used on input line 606.
 (pdftex.def)             Requested size: 264.23653pt x 324.46138pt.
 
-<pics/2-yuchuli.png, id=1135, 248.42813pt x 195.73125pt>
+<pics/2-yuchuli.png, id=1074, 248.42813pt x 195.73125pt>
 File: pics/2-yuchuli.png Graphic file (type png)
 
 <use pics/2-yuchuli.png>
-Package pdftex.def Info: pics/2-yuchuli.png used on input line 600.
+Package pdftex.def Info: pics/2-yuchuli.png used on input line 611.
 (pdftex.def)             Requested size: 248.42752pt x 195.73076pt.
 
-<pics/2-ququshihua.pdf, id=1136, 370.98601pt x 251.57889pt>
+<pics/2-ququshihua.pdf, id=1075, 370.98601pt x 251.57889pt>
 File: pics/2-ququshihua.pdf Graphic file (type pdf)
 
 <use pics/2-ququshihua.pdf>
-Package pdftex.def Info: pics/2-ququshihua.pdf used on input line 601.
+Package pdftex.def Info: pics/2-ququshihua.pdf used on input line 612.
 (pdftex.def)             Requested size: 370.98509pt x 251.57826pt.
 
-<pics/2-ident.png, id=1139, 324.46219pt x 255.20343pt>
+<pics/2-ident.png, id=1078, 324.46219pt x 255.20343pt>
 File: pics/2-ident.png Graphic file (type png)
  <use pics/2-ident.png>
-Package pdftex.def Info: pics/2-ident.png used on input line 604.
+Package pdftex.def Info: pics/2-ident.png used on input line 615.
 (pdftex.def)             Requested size: 324.46138pt x 255.2028pt.
 
-<pics/2-simuOutput.pdf, id=1140, 342.07799pt x 260.975pt>
+<pics/2-simuOutput.pdf, id=1079, 342.07799pt x 260.975pt>
 File: pics/2-simuOutput.pdf Graphic file (type pdf)
 
 <use pics/2-simuOutput.pdf>
-Package pdftex.def Info: pics/2-simuOutput.pdf used on input line 607.
+Package pdftex.def Info: pics/2-simuOutput.pdf used on input line 618.
 (pdftex.def)             Requested size: 170.71393pt x 130.24426pt.
 
-<pics/2-cancha.pdf, id=1141, 342.07799pt x 260.975pt>
+<pics/2-cancha.pdf, id=1080, 342.07799pt x 260.975pt>
 File: pics/2-cancha.pdf Graphic file (type pdf)
  <use pics/2-cancha.pdf>
-Package pdftex.def Info: pics/2-cancha.pdf used on input line 608.
+Package pdftex.def Info: pics/2-cancha.pdf used on input line 619.
 (pdftex.def)             Requested size: 170.71393pt x 130.24426pt.
 
-<pics/2-shuntaixiangying.pdf, id=1142, 342.07802pt x 260.975pt>
+<pics/2-shuntaixiangying.pdf, id=1081, 342.07802pt x 260.975pt>
 File: pics/2-shuntaixiangying.pdf Graphic file (type pdf)
 
 <use pics/2-shuntaixiangying.pdf>
-Package pdftex.def Info: pics/2-shuntaixiangying.pdf used on input line 609.
+Package pdftex.def Info: pics/2-shuntaixiangying.pdf used on input line 620.
 (pdftex.def)             Requested size: 170.71393pt x 130.24426pt.
 
-<pics/2-pinglvxiangyin.pdf, id=1143, 342.07799pt x 260.97504pt>
+<pics/2-pinglvxiangyin.pdf, id=1082, 342.07799pt x 260.97504pt>
 File: pics/2-pinglvxiangyin.pdf Graphic file (type pdf)
 
 <use pics/2-pinglvxiangyin.pdf>
-Package pdftex.def Info: pics/2-pinglvxiangyin.pdf used on input line 610.
+Package pdftex.def Info: pics/2-pinglvxiangyin.pdf used on input line 621.
 (pdftex.def)             Requested size: 170.71393pt x 130.24428pt.
 
-<pics/2-zeropoles.pdf, id=1144, 342.07799pt x 260.97498pt>
+<pics/2-zeropoles.pdf, id=1083, 342.07799pt x 260.97498pt>
 File: pics/2-zeropoles.pdf Graphic file (type pdf)
 
 <use pics/2-zeropoles.pdf>
-Package pdftex.def Info: pics/2-zeropoles.pdf used on input line 611.
+Package pdftex.def Info: pics/2-zeropoles.pdf used on input line 622.
 (pdftex.def)             Requested size: 170.71393pt x 130.24425pt.
 
-<pics/2-zaosheng.pdf, id=1145, 342.07799pt x 260.975pt>
+<pics/2-zaosheng.pdf, id=1084, 342.07799pt x 260.975pt>
 File: pics/2-zaosheng.pdf Graphic file (type pdf)
 
 <use pics/2-zaosheng.pdf>
-Package pdftex.def Info: pics/2-zaosheng.pdf used on input line 612.
+Package pdftex.def Info: pics/2-zaosheng.pdf used on input line 623.
 (pdftex.def)             Requested size: 170.71393pt x 130.24426pt.
- [32 <./pics/2-inputData.png>] [33 <./pics/2-yuchuli.png> <./pics/2-ququshihua.
-pdf>]
-<pics/2-Re.pdf, id=1174, 370.98601pt x 260.96587pt>
-File: pics/2-Re.pdf Graphic file (type pdf)
- <use pics/2-Re.pdf>
-Package pdftex.def Info: pics/2-Re.pdf used on input line 631.
-(pdftex.def)             Requested size: 370.98509pt x 260.96523pt.
-
-<pics/2-RC.pdf, id=1175, 368.97354pt x 260.975pt>
-File: pics/2-RC.pdf Graphic file (type pdf)
- <use pics/2-RC.pdf>
-Package pdftex.def Info: pics/2-RC.pdf used on input line 632.
-(pdftex.def)             Requested size: 368.97263pt x 260.97437pt.
-
-Overfull \hbox (2.06715pt too wide) in paragraph at lines 630--633
-[]\C70/rm/m/n/12.05/57 ˙ \C70/rm/m/n/12.05/4e é \C70/rm/m/n/12.05/5f ó \C70/rm/
-m/n/12.05/52 0 \C70/rm/m/n/12.05/76 Ñ \C70/rm/m/n/12.05/78 ˜ \C70/rm/m/n/12.05/
-91 x \C70/rm/m/n/12.05/94 ¡ \C70/rm/m/n/12.05/95  \C70/rm/m/n/12.05/75 5 \C70/
-rm/m/n/12.05/6c ` \C70/rm/m/n/12.05/6a ! \C70/rm/m/n/12.05/57 ã \C70/rm/m/n/12.
-05/76 Ñ \C70/rm/m/n/12.05/4f   \C70/rm/m/n/12.05/8f ì \C70/rm/m/n/12.05/51 ˝ \C
-70/rm/m/n/12.05/65 p|\C70/rm/m/n/12.05/ff | \C70/rm/m/n/12.05/53 Ô \C70/rm/m/n
-/12.05/4e Â \C70/rm/m/n/12.05/5f ó \C70/rm/m/n/12.05/52 0 \C70/rm/m/n/12.05/75 
-5 \C70/rm/m/n/12.05/6c ` \C70/rm/m/n/12.05/6a ! \C70/rm/m/n/12.05/57 ã \C70/rm/
-m/n/12.05/76 Ñ \C70/rm/m/n/12.05/52 ® \C70/rm/m/n/12.05/60  \C70/rm/m/n/12.05/
-53 ¬ \C70/rm/m/n/12.05/65 p$[]$|\C70/rm/m/n/12.05/30 |
- []
-
-[34 <./pics/2-ident.png>] [35 <./pics/2-simuOutput.pdf> <./pics/2-cancha.pdf
+ [31] [32 <./pics/2-inputData.png> <./pics/2-yuchuli.png>] [33 <./pics/2-quqush
+ihua.pdf> <./pics/2-ident.png>] [34 <./pics/2-simuOutput.pdf> <./pics/2-cancha.
+pdf
 
 pdfTeX warning: pdflatex (file ./pics/2-cancha.pdf): PDF inclusion: multiple pd
 fs with page group included in a single page
@@ -2460,10 +2362,56 @@ pdfTeX warning: pdflatex (file ./pics/2-zeropoles.pdf): PDF inclusion: multiple
 
 pdfTeX warning: pdflatex (file ./pics/2-zaosheng.pdf): PDF inclusion: multiple 
 pdfs with page group included in a single page
->] [36 <./pics/2-Re.pdf> <./pics/2-RC.pdf
+>] <pics/2-Re.pdf, id=1249, 370.98601pt x 260.96587pt>
+File: pics/2-Re.pdf Graphic file (type pdf)
+ <use pics/2-Re.pdf>
+Package pdftex.def Info: pics/2-Re.pdf used on input line 641.
+(pdftex.def)             Requested size: 370.98509pt x 260.96523pt.
 
-pdfTeX warning: pdflatex (file ./pics/2-RC.pdf): PDF inclusion: multiple pdfs w
-ith page group included in a single page
+<pics/2-RC.pdf, id=1250, 368.97354pt x 260.975pt>
+File: pics/2-RC.pdf Graphic file (type pdf)
+ <use pics/2-RC.pdf>
+Package pdftex.def Info: pics/2-RC.pdf used on input line 642.
+(pdftex.def)             Requested size: 368.97263pt x 260.97437pt.
+
+Overfull \hbox (2.06715pt too wide) in paragraph at lines 640--643
+[]\C70/rm/m/n/12.05/57 ˙ \C70/rm/m/n/12.05/4e é \C70/rm/m/n/12.05/5f ó \C70/rm/
+m/n/12.05/52 0 \C70/rm/m/n/12.05/76 Ñ \C70/rm/m/n/12.05/78 ˜ \C70/rm/m/n/12.05/
+91 x \C70/rm/m/n/12.05/94 ¡ \C70/rm/m/n/12.05/95  \C70/rm/m/n/12.05/75 5 \C70/
+rm/m/n/12.05/6c ` \C70/rm/m/n/12.05/6a ! \C70/rm/m/n/12.05/57 ã \C70/rm/m/n/12.
+05/76 Ñ \C70/rm/m/n/12.05/4f   \C70/rm/m/n/12.05/8f ì \C70/rm/m/n/12.05/51 ˝ \C
+70/rm/m/n/12.05/65 p|\C70/rm/m/n/12.05/ff | \C70/rm/m/n/12.05/53 Ô \C70/rm/m/n
+/12.05/4e Â \C70/rm/m/n/12.05/5f ó \C70/rm/m/n/12.05/52 0 \C70/rm/m/n/12.05/75 
+5 \C70/rm/m/n/12.05/6c ` \C70/rm/m/n/12.05/6a ! \C70/rm/m/n/12.05/57 ã \C70/rm/
+m/n/12.05/76 Ñ \C70/rm/m/n/12.05/52 ® \C70/rm/m/n/12.05/60  \C70/rm/m/n/12.05/
+53 ¬ \C70/rm/m/n/12.05/65 p$[]$|\C70/rm/m/n/12.05/30 |
+ []
+
+<pics/2-fenping.pdf, id=1252, 370.98601pt x 188.705pt>
+File: pics/2-fenping.pdf Graphic file (type pdf)
+
+<use pics/2-fenping.pdf>
+Package pdftex.def Info: pics/2-fenping.pdf used on input line 648.
+(pdftex.def)             Requested size: 370.98509pt x 188.70453pt.
+
+Overfull \hbox (15.39513pt too wide) in paragraph at lines 647--649
+\C70/rm/m/n/12.05/54  \C70/rm/m/n/12.05/5b ˘ \C70/rm/m/n/12.05/75 5 \C70/rm/m/
+n/12.05/6c ` \C70/rm/m/n/12.05/8f € \C70/rm/m/n/12.05/88 L \C70/rm/m/n/12.05/60
+ R \C70/rm/m/n/12.05/6d A \C70/rm/m/n/12.05/65 > \C70/rm/m/n/12.05/75 5 \C70/rm
+/m/n/12.05/6d K \C70/rm/m/n/12.05/8b ’|\C70/rm/m/n/12.05/ff | \C70/rm/m/n/12.0
+5/8b ∞ \C70/rm/m/n/12.05/5f U \C70/rm/m/n/12.05/65 > \C70/rm/m/n/12.05/75 5 \C7
+0/rm/m/n/12.05/76 Ñ \C70/rm/m/n/12.05/65 ˆ \C70/rm/m/n/12.05/95 Ù|\C70/rm/m/n/1
+2.05/30 | \C70/rm/m/n/12.05/75 5 \C70/rm/m/n/12.05/6d A \C70/rm/m/n/12.05/54 å
+ \C70/rm/m/n/12.05/75 5 \C70/rm/m/n/12.05/53 ã \C70/rm/m/n/12.05/65 p \C70/rm/m
+/n/12.05/63 n|\C70/rm/m/n/12.05/ff | \C70/rm/m/n/12.05/65 ˆ \C70/rm/m/n/12.05/
+95 Ù \C70/rm/m/n/12.05/63  \C70/rm/m/n/12.05/7e Ì\OT1/ptm/m/n/12.05 30min\C70/
+rm/m/n/12.05/4e -|\C70/rm/m/n/12.05/ff |
+ []
+
+[35 <./pics/2-Re.pdf>] [36 <./pics/2-RC.pdf> <./pics/2-fenping.pdf
+
+pdfTeX warning: pdflatex (file ./pics/2-fenping.pdf): PDF inclusion: multiple p
+dfs with page group included in a single page
 >]) [37]
 \openout2 = `chapters/THREE.aux'.
 
@@ -2473,14 +2421,14 @@ ith page group included in a single page
 
 
 
-] [39] [40] <pics/3-UT.pdf, id=1436, 380.17032pt x 145.29282pt>
+] [39] [40] <pics/3-UT.pdf, id=1432, 380.17032pt x 145.29282pt>
 File: pics/3-UT.pdf Graphic file (type pdf)
 
 <use pics/3-UT.pdf>
-Package pdftex.def Info: pics/3-UT.pdf used on input line 122.
+Package pdftex.def Info: pics/3-UT.pdf used on input line 129.
 (pdftex.def)             Requested size: 380.16939pt x 145.29245pt.
 
-Overfull \hbox (5.43185pt too wide) in paragraph at lines 128--129
+Overfull \hbox (5.43185pt too wide) in paragraph at lines 135--136
 []\C70/rm/m/n/12.05/68 9 \C70/rm/m/n/12.05/63 n \C70/rm/m/n/12.05/96 è \C70/rm/
 m/n/12.05/67 : \C70/rm/m/n/12.05/54  \C70/rm/m/n/12.05/91 œ\OT1/ptm/m/n/12.05 
 X\C70/rm/m/n/12.05/76 Ñ \C70/rm/m/n/12.05/57 G \C70/rm/m/n/12.05/50 <$[]$\C70/r
@@ -2493,7 +2441,7 @@ rm/m/n/12.05/96 ∆ $[] []
  []
 
 
-Overfull \hbox (2.12402pt too wide) in paragraph at lines 137--138
+Overfull \hbox (2.12402pt too wide) in paragraph at lines 144--145
 []\C70/rm/m/n/12.05/5e v \C70/rm/m/n/12.05/4e  \C70/rm/m/n/12.05/90  \C70/rm/
 m/n/12.05/8f « \C70/rm/m/n/12.05/8b ° \C70/rm/m/n/12.05/7b ó \C70/rm/m/n/12.05/
 5f ó \C70/rm/m/n/12.05/52 0 \C70/rm/m/n/12.05/70 π$[]$\C70/rm/m/n/12.05/76 Ñ \C
@@ -2507,37 +2455,30 @@ m/n/12.05/50 <$\OML/cmm/m/it/12.05 W[]$|\C70/rm/m/n/12.05/ff | \C70/rm/m/n/12.
  []
 
 [41] [42 <./pics/3-UT.pdf>] [43] [44] [45] [46]
-<pics/3-EKF.pdf, id=1516, 342.07799pt x 104.96297pt>
+<pics/3-EKF.pdf, id=1512, 342.07799pt x 104.96297pt>
 File: pics/3-EKF.pdf Graphic file (type pdf)
  <use pics/3-EKF.pdf>
-Package pdftex.def Info: pics/3-EKF.pdf used on input line 371.
+Package pdftex.def Info: pics/3-EKF.pdf used on input line 380.
 (pdftex.def)             Requested size: 342.07713pt x 104.9627pt.
 
-<pics/3-A-EKF.pdf, id=1518, 342.07799pt x 263.87257pt>
+<pics/3-A-EKF.pdf, id=1514, 342.07799pt x 263.87257pt>
 File: pics/3-A-EKF.pdf Graphic file (type pdf)
  <use pics/3-A-EKF.pdf>
-Package pdftex.def Info: pics/3-A-EKF.pdf used on input line 375.
+Package pdftex.def Info: pics/3-A-EKF.pdf used on input line 384.
 (pdftex.def)             Requested size: 170.71393pt x 131.69034pt.
 
-<pics/3-V-EKF.pdf, id=1519, 342.07799pt x 266.04202pt>
+<pics/3-V-EKF.pdf, id=1515, 342.07799pt x 266.04202pt>
 File: pics/3-V-EKF.pdf Graphic file (type pdf)
  <use pics/3-V-EKF.pdf>
-Package pdftex.def Info: pics/3-V-EKF.pdf used on input line 376.
+Package pdftex.def Info: pics/3-V-EKF.pdf used on input line 385.
 (pdftex.def)             Requested size: 170.71393pt x 132.77304pt.
 
-<pics/3-Result-EKF.pdf, id=1521, 370.98604pt x 188.705pt>
+<pics/3-Result-EKF.pdf, id=1517, 341.27502pt x 188.705pt>
 File: pics/3-Result-EKF.pdf Graphic file (type pdf)
 
 <use pics/3-Result-EKF.pdf>
-Package pdftex.def Info: pics/3-Result-EKF.pdf used on input line 380.
-(pdftex.def)             Requested size: 370.98512pt x 188.70453pt.
-
-<pics/3-Error-EKF.pdf, id=1523, 370.98604pt x 188.705pt>
-File: pics/3-Error-EKF.pdf Graphic file (type pdf)
-
-<use pics/3-Error-EKF.pdf>
-Package pdftex.def Info: pics/3-Error-EKF.pdf used on input line 382.
-(pdftex.def)             Requested size: 370.98512pt x 188.70453pt.
+Package pdftex.def Info: pics/3-Result-EKF.pdf used on input line 390.
+(pdftex.def)             Requested size: 341.27419pt x 188.70453pt.
  [47 <./pics/3-EKF.pdf>] [48 <./pics/3-A-EKF.pdf> <./pics/3-V-EKF.pdf
 
 pdfTeX warning: pdflatex (file ./pics/3-V-EKF.pdf): PDF inclusion: multiple pdf
@@ -2546,8 +2487,14 @@ s with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./pics/3-Result-EKF.pdf): PDF inclusion: multipl
 e pdfs with page group included in a single page
->] [49 <./pics/3-Error-EKF.pdf>]
-Overfull \hbox (1.77887pt too wide) in paragraph at lines 389--390
+>] <pics/3-Error-EKF.pdf, id=1636, 341.27496pt x 188.68434pt>
+File: pics/3-Error-EKF.pdf Graphic file (type pdf)
+
+<use pics/3-Error-EKF.pdf>
+Package pdftex.def Info: pics/3-Error-EKF.pdf used on input line 393.
+(pdftex.def)             Requested size: 341.27412pt x 188.68387pt.
+ [49 <./pics/3-Error-EKF.pdf>]
+Overfull \hbox (1.77887pt too wide) in paragraph at lines 400--401
 []\OT1/ptm/m/n/12.05 UT\C70/rm/m/n/12.05/53 ÿ \C70/rm/m/n/12.05/63 b \C70/rm/m/
 n/12.05/67   \C70/rm/m/n/12.05/51 s \C70/rm/m/n/12.05/95 . \C70/rm/m/n/12.05/76
  Ñ \C70/rm/m/n/12.05/59  \C70/rm/m/n/12.05/74  \C70/rm/m/n/12.05/66 / \C70/rm
@@ -2561,55 +2508,59 @@ n/12.05/5b f \C70/rm/m/n/12.05/80  \C70/rm/m/n/12.05/5d Ú \C70/rm/m/n/12.05/7e
  []
 
 
-Overfull \hbox (9.2941pt too wide) in alignment at lines 399--399
+Overfull \hbox (9.2941pt too wide) in alignment at lines 410--410
 [][][][] 
  []
 
-<pics/3-qiehuan.pdf, id=1697, 251.70575pt x 260.975pt>
+<pics/3-qiehuan.pdf, id=1669, 251.70575pt x 260.975pt>
 File: pics/3-qiehuan.pdf Graphic file (type pdf)
 
 <use pics/3-qiehuan.pdf>
-Package pdftex.def Info: pics/3-qiehuan.pdf used on input line 405.
+Package pdftex.def Info: pics/3-qiehuan.pdf used on input line 416.
 (pdftex.def)             Requested size: 251.70512pt x 260.97437pt.
 
-Overfull \hbox (46.04266pt too wide) detected at line 421
-[]\OML/cmm/m/it/12.05 X [] \OT1/cmr/m/n/12.05 = \OML/cmm/m/it/12.05 f [] \OT1/c
-mr/m/n/12.05 + \OML/cmm/m/it/12.05 u [] [] [] \OT1/cmr/m/n/12.05 = [] + \OML/cm
-m/m/it/12.05 u []
- []
+<pics/3-qiehuanduibi.pdf, id=1671, 342.07799pt x 188.70502pt>
+File: pics/3-qiehuanduibi.pdf Graphic file (type pdf)
 
-[50] [51 <./pics/3-qiehuan.pdf>] [52]
-<pics/3-UKF.pdf, id=1737, 342.07799pt x 260.975pt>
+<use pics/3-qiehuanduibi.pdf>
+Package pdftex.def Info: pics/3-qiehuanduibi.pdf used on input line 419.
+(pdftex.def)             Requested size: 342.07713pt x 188.70454pt.
+ [50] [51 <./pics/3-qiehuan.pdf> <./pics/3-qiehuanduibi.pdf
+
+pdfTeX warning: pdflatex (file ./pics/3-qiehuanduibi.pdf): PDF inclusion: multi
+ple pdfs with page group included in a single page
+>] [52] [53] <pics/3-UKF.pdf, id=1739, 342.07799pt x 260.975pt>
 File: pics/3-UKF.pdf Graphic file (type pdf)
- <use pics/3-UKF.pdf>
-Package pdftex.def Info: pics/3-UKF.pdf used on input line 541.
+
+<use pics/3-UKF.pdf>
+Package pdftex.def Info: pics/3-UKF.pdf used on input line 551.
 (pdftex.def)             Requested size: 342.07713pt x 260.97437pt.
-
-<pics/3-A-UKF.pdf, id=1739, 342.07799pt x 263.87257pt>
+ <pics/3-A-UKF.pdf, id=1741, 342.07799pt x 263.87257pt>
 File: pics/3-A-UKF.pdf Graphic file (type pdf)
- <use pics/3-A-UKF.pdf>
-Package pdftex.def Info: pics/3-A-UKF.pdf used on input line 545.
-(pdftex.def)             Requested size: 170.71393pt x 131.69034pt.
 
-<pics/3-V-UKF.pdf, id=1740, 337.26pt x 262.29494pt>
+<use pics/3-A-UKF.pdf>
+Package pdftex.def Info: pics/3-A-UKF.pdf used on input line 555.
+(pdftex.def)             Requested size: 170.71393pt x 131.69034pt.
+ <pics/3-V-UKF.pdf, id=1742, 337.26pt x 262.29494pt>
 File: pics/3-V-UKF.pdf Graphic file (type pdf)
- <use pics/3-V-UKF.pdf>
-Package pdftex.def Info: pics/3-V-UKF.pdf used on input line 546.
+
+<use pics/3-V-UKF.pdf>
+Package pdftex.def Info: pics/3-V-UKF.pdf used on input line 556.
 (pdftex.def)             Requested size: 170.71393pt x 132.76807pt.
 
-[53] <pics/3-Result-UKF.pdf, id=1756, 370.98604pt x 188.705pt>
+<pics/3-Result-UKF.pdf, id=1745, 289.01674pt x 188.705pt>
 File: pics/3-Result-UKF.pdf Graphic file (type pdf)
 
 <use pics/3-Result-UKF.pdf>
-Package pdftex.def Info: pics/3-Result-UKF.pdf used on input line 550.
-(pdftex.def)             Requested size: 370.98512pt x 188.70453pt.
+Package pdftex.def Info: pics/3-Result-UKF.pdf used on input line 560.
+(pdftex.def)             Requested size: 289.01602pt x 188.70453pt.
 
-<pics/3-Error-UKF.pdf, id=1757, 370.98604pt x 188.705pt>
+<pics/3-Error-UKF.pdf, id=1746, 341.275pt x 188.70499pt>
 File: pics/3-Error-UKF.pdf Graphic file (type pdf)
 
 <use pics/3-Error-UKF.pdf>
-Package pdftex.def Info: pics/3-Error-UKF.pdf used on input line 551.
-(pdftex.def)             Requested size: 370.98512pt x 188.70453pt.
+Package pdftex.def Info: pics/3-Error-UKF.pdf used on input line 561.
+(pdftex.def)             Requested size: 341.27415pt x 188.70451pt.
  [54 <./pics/3-UKF.pdf>] [55 <./pics/3-A-UKF.pdf> <./pics/3-V-UKF.pdf
 
 pdfTeX warning: pdflatex (file ./pics/3-V-UKF.pdf): PDF inclusion: multiple pdf
@@ -2623,14 +2574,14 @@ e pdfs with page group included in a single page
 
  (chapters/Four.tex
 Á¨¨ÂõõÁ´†
-<pics/4-ADVISOR.jpg, id=1939, 320.69812pt x 176.91093pt>
+<pics/4-ADVISOR.jpg, id=1902, 320.69812pt x 176.91093pt>
 File: pics/4-ADVISOR.jpg Graphic file (type jpg)
 
 <use pics/4-ADVISOR.jpg>
 Package pdftex.def Info: pics/4-ADVISOR.jpg used on input line 7.
 (pdftex.def)             Requested size: 320.69733pt x 176.91049pt.
 
-<pics/4-whole.jpg, id=1941, 320.69812pt x 100.12407pt>
+<pics/4-whole.jpg, id=1904, 320.69812pt x 100.12407pt>
 File: pics/4-whole.jpg Graphic file (type jpg)
  <use pics/4-whole.jpg>
 Package pdftex.def Info: pics/4-whole.jpg used on input line 10.
@@ -2641,107 +2592,99 @@ Package pdftex.def Info: pics/4-whole.jpg used on input line 10.
 
 
  <./pics/4-ADVISOR.jpg>] [58 <./pics/4-whole.jpg>] [59]
-<pics/4-vehicle.pdf, id=1970, 370.98601pt x 230.63406pt>
+<pics/4-vehicle.pdf, id=1931, 370.98601pt x 230.63406pt>
 File: pics/4-vehicle.pdf Graphic file (type pdf)
 
 <use pics/4-vehicle.pdf>
-Package pdftex.def Info: pics/4-vehicle.pdf used on input line 103.
+Package pdftex.def Info: pics/4-vehicle.pdf used on input line 107.
 (pdftex.def)             Requested size: 370.98509pt x 230.63348pt.
  [60]
-<pics/4-Rint.pdf, id=1980, 370.98601pt x 188.59349pt>
+<pics/4-Rint.pdf, id=1939, 370.98601pt x 188.59349pt>
 File: pics/4-Rint.pdf Graphic file (type pdf)
  <use pics/4-Rint.pdf>
-Package pdftex.def Info: pics/4-Rint.pdf used on input line 107.
+Package pdftex.def Info: pics/4-Rint.pdf used on input line 111.
 (pdftex.def)             Requested size: 370.98509pt x 188.59302pt.
 
-<pics/4-neizu.pdf, id=1982, 342.07799pt x 188.64067pt>
+<pics/4-neizu.pdf, id=1941, 342.07799pt x 188.64067pt>
 File: pics/4-neizu.pdf Graphic file (type pdf)
  <use pics/4-neizu.pdf>
-Package pdftex.def Info: pics/4-neizu.pdf used on input line 112.
+Package pdftex.def Info: pics/4-neizu.pdf used on input line 117.
 (pdftex.def)             Requested size: 342.07713pt x 188.64021pt.
 
-<pics/4-rc.pdf, id=1984, 371.08601pt x 188.58849pt>
+<pics/4-rc.pdf, id=1943, 371.08601pt x 188.58849pt>
 File: pics/4-rc.pdf Graphic file (type pdf)
  <use pics/4-rc.pdf>
-Package pdftex.def Info: pics/4-rc.pdf used on input line 115.
+Package pdftex.def Info: pics/4-rc.pdf used on input line 120.
 (pdftex.def)             Requested size: 371.0851pt x 188.58801pt.
 
 [61 <./pics/4-vehicle.pdf>] [62 <./pics/4-Rint.pdf> <./pics/4-neizu.pdf
 
 pdfTeX warning: pdflatex (file ./pics/4-neizu.pdf): PDF inclusion: multiple pdf
 s with page group included in a single page
->] <pics/4-rintsoc.pdf, id=2508, 370.88254pt x 180.39659pt>
+>] <pics/4-rintsoc.pdf, id=2466, 370.88254pt x 180.39659pt>
 File: pics/4-rintsoc.pdf Graphic file (type pdf)
 
 <use pics/4-rintsoc.pdf>
-Package pdftex.def Info: pics/4-rintsoc.pdf used on input line 119.
+Package pdftex.def Info: pics/4-rintsoc.pdf used on input line 125.
 (pdftex.def)             Requested size: 370.88162pt x 180.39613pt.
 
-<pics/4-RCSOC.pdf, id=2511, 342.04366pt x 188.71544pt>
+<pics/4-RCSOC.pdf, id=2469, 342.04366pt x 188.71544pt>
 File: pics/4-RCSOC.pdf Graphic file (type pdf)
  <use pics/4-RCSOC.pdf>
-Package pdftex.def Info: pics/4-RCSOC.pdf used on input line 122.
+Package pdftex.def Info: pics/4-RCSOC.pdf used on input line 128.
 (pdftex.def)             Requested size: 342.04282pt x 188.71497pt.
-
-Overfull \hbox (0.59789pt too wide) in paragraph at lines 121--123
-[]\C70/rm/m/n/12.05/4e Œ \C70/rm/m/n/12.05/56 ˛[]\OT1/ptm/m/n/12.05 4-7[]\C70/r
-m/m/n/12.05/53 Ô \C70/rm/m/n/12.05/4e Â \C70/rm/m/n/12.05/77  \C70/rm/m/n/12.0
-5/51 ˙ \C70/rm/m/n/12.05/6a ! \C70/rm/m/n/12.05/57 ã \C70/rm/m/n/12.05/66 / \C7
-0/rm/m/n/12.05/68 9 \C70/rm/m/n/12.05/63 n \C70/rm/m/n/12.05/5b â \C70/rm/m/n/1
-2.05/65 ˆ \C70/rm/m/n/12.05/6c ’ \C70/rm/m/n/12.05/90  \C70/rm/m/n/12.05/8f « 
-\C70/rm/m/n/12.05/4e  \C70/rm/m/n/12.05/65 ≠ \C70/rm/m/n/12.05/8f Ì \C70/rm/m/
-n/12.05/4e „ \C70/rm/m/n/12.05/76 Ñ \C70/rm/m/n/12.05/65 π \C70/rm/m/n/12.05/5f
-  \C70/rm/m/n/12.05/8b ° \C70/rm/m/n/12.05/7b ó \C70/rm/m/n/12.05/75 5 \C70/rm
-/m/n/12.05/6c ` \C70/rm/m/n/12.05/76 Ñ\OT1/ptm/m/n/12.05 SOC\C70/rm/m/n/12.05/5
-0 <|\C70/rm/m/n/12.05/ff |
- []
 
 [63 <./pics/4-rc.pdf> <./pics/4-rintsoc.pdf
 
 pdfTeX warning: pdflatex (file ./pics/4-rintsoc.pdf): PDF inclusion: multiple p
 dfs with page group included in a single page
->] <pics/4-code.jpg, id=2649, 386.94562pt x 71.51718pt>
+>] <pics/4-code.jpg, id=2606, 386.94562pt x 71.51718pt>
 File: pics/4-code.jpg Graphic file (type jpg)
  <use pics/4-code.jpg>
-Package pdftex.def Info: pics/4-code.jpg used on input line 125.
+Package pdftex.def Info: pics/4-code.jpg used on input line 131.
 (pdftex.def)             Requested size: 386.94467pt x 71.517pt.
 
-<pics/4-total.pdf, id=2651, 341.24203pt x 260.93004pt>
+<pics/4-total.pdf, id=2608, 341.24203pt x 260.93004pt>
 File: pics/4-total.pdf Graphic file (type pdf)
  <use pics/4-total.pdf>
-Package pdftex.def Info: pics/4-total.pdf used on input line 128.
+Package pdftex.def Info: pics/4-total.pdf used on input line 134.
 (pdftex.def)             Requested size: 341.2412pt x 260.9294pt.
 
-[64 <./pics/4-RCSOC.pdf> <./pics/4-code.jpg>]
-<pics/4-Road.png, id=2821, 347.79938pt x 176.91093pt>
+Underfull \hbox (badness 10000) in alignment at lines 155--155
+[][] 
+ []
+
+<pics/4-Road.png, id=2612, 347.79938pt x 176.91093pt>
 File: pics/4-Road.png Graphic file (type png)
  <use pics/4-Road.png>
-Package pdftex.def Info: pics/4-Road.png used on input line 153.
+Package pdftex.def Info: pics/4-Road.png used on input line 158.
 (pdftex.def)             Requested size: 347.79852pt x 176.91049pt.
 
-<pics/4-Speed.png, id=2822, 347.79938pt x 176.91093pt>
+<pics/4-Speed.png, id=2613, 347.79938pt x 176.91093pt>
 File: pics/4-Speed.png Graphic file (type png)
  <use pics/4-Speed.png>
-Package pdftex.def Info: pics/4-Speed.png used on input line 154.
+Package pdftex.def Info: pics/4-Speed.png used on input line 159.
 (pdftex.def)             Requested size: 347.79852pt x 176.91049pt.
 
-<pics/4-Result.pdf, id=2825, 370.98604pt x 188.705pt>
+[64 <./pics/4-RCSOC.pdf> <./pics/4-code.jpg>] [65 <./pics/4-total.pdf>]
+[66 <./pics/4-Road.png> <./pics/4-Speed.png>]
+<pics/4-Result.pdf, id=2906, 370.98601pt x 188.705pt>
 File: pics/4-Result.pdf Graphic file (type pdf)
  <use pics/4-Result.pdf>
-Package pdftex.def Info: pics/4-Result.pdf used on input line 159.
-(pdftex.def)             Requested size: 370.98512pt x 188.70453pt.
-
-<pics/4-Error.pdf, id=2826, 370.98601pt x 188.705pt>
-File: pics/4-Error.pdf Graphic file (type pdf)
- <use pics/4-Error.pdf>
-Package pdftex.def Info: pics/4-Error.pdf used on input line 160.
+Package pdftex.def Info: pics/4-Result.pdf used on input line 164.
 (pdftex.def)             Requested size: 370.98509pt x 188.70453pt.
 
-Overfull \vbox (304.60374pt too high) has occurred while \output is active []
+<pics/4-Error.pdf, id=2907, 370.98601pt x 188.705pt>
+File: pics/4-Error.pdf Graphic file (type pdf)
+ <use pics/4-Error.pdf>
+Package pdftex.def Info: pics/4-Error.pdf used on input line 165.
+(pdftex.def)             Requested size: 370.98509pt x 188.70453pt.
 
+[67 <./pics/4-Result.pdf> <./pics/4-Error.pdf
 
-[65 <./pics/4-total.pdf> <./pics/4-Road.png>] [66 <./pics/4-Speed.png> <./pics/
-4-Result.pdf>]) [67 <./pics/4-Error.pdf>]
+pdfTeX warning: pdflatex (file ./pics/4-Error.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>]) [68]
 \openout2 = `chapters/FIVE.aux'.
 
  (chapters/FIVE.tex
@@ -2760,11 +2703,11 @@ C70/rm/m/n/12.05/5b ö \C70/rm/m/n/12.05/76 Ñ \C70/rm/m/n/12.05/8d ! \C70/rm/m/n
 /95  \C70/rm/m/n/12.05/75 5 \C70/rm/m/n/12.05/6c `\OT1/ptm/m/n/12.05 SOC
  []
 
-[68
+[69
 
 
 
-]) [69] [70]
+]) [70] [71]
 \tf@thm=\write9
 \openout9 = `thesis.thm'.
 
@@ -2782,63 +2725,49 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \kern 6.025pt
 (hyperref)                replaced by space on input line 13.
 
-(contents/acknowledgements.tex) [71
+(contents/acknowledgements.tex) [72
 
 
-] (thesis.bbl [72
+] (thesis.bbl [73
 
-] [73])
-(contents/appendix.tex) [74]
-*************************************************
-* ctex warning: "deprecated-command"
-* 
-* Command \CTEXoptions is deprecated.
-* \ctexset {  bibname={\publicationsname@degree } } is set.
-*************************************************
-(publications.bbl
-
-Package natbib Warning: Empty `thebibliography' environment on input line 9.
-
-)
+] [74])
+(contents/appendix.tex)
 Package atenddvi Info: Last page = 81.
- [75
-
-
-]
+ [75]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 13.
 Package atveryend Info: Executing hook `AfterLastShipout' on input line 13.
- (thesis.aux (contents/Cabstract.aux) (contents/Eabstract.aux)
-(chapters/ONE.aux) (chapters/TWO.aux) (chapters/THREE.aux) (chapters/Four.aux)
-(chapters/FIVE.aux))
+ (thesis.aux (contents/Cabstract.aux)
+(contents/Eabstract.aux) (chapters/ONE.aux) (chapters/TWO.aux)
+(chapters/THREE.aux) (chapters/Four.aux) (chapters/FIVE.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 13.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 13.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 9B88341E9FBFBD6600EDC86254EA2055;9259.
+(rerunfilecheck)             Checksum: 2818BA042529C4525109D4C973881ECB;9080.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 33125 strings out of 493622
- 544345 string characters out of 3143647
- 619757 words of memory out of 3000000
- 34875 multiletter control sequences out of 15000+200000
- 114437 words of font info for 377 fonts, out of 3000000 for 9000
+ 33069 strings out of 493622
+ 543725 string characters out of 3143647
+ 619674 words of memory out of 3000000
+ 34849 multiletter control sequences out of 15000+200000
+ 113087 words of font info for 372 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 56i,19n,95p,10579b,785s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,19n,95p,10579b,789s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/s
 imhei.ttf><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS
 /Fonts/simsun.ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:
 /WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simhei
 .ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Font
 s/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WIND
-OWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simsun.ttc>
-<C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/sim
-hei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/F
+OWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf>
+<C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/sim
+hei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/F
 onts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/W
-INDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simhei.t
-tf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/
+INDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.t
+tc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/
 simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOW
 S/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C
 :/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhe
@@ -2847,12 +2776,12 @@ ts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WIN
 DOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf
 ><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/si
 mhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/
-Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simsun.ttc><C:/
-WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.
+Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/
+WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.
 ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts
-/simhei.ttf>{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/WI
-NDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.tt
-f><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/s
+/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf>{C:/Program Files/MiKTeX 2.9/fonts/enc
+/dvips/fontname/8r.enc}<C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.tt
+f><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/s
 imsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS
 /Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:
 /WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun
@@ -2876,26 +2805,26 @@ Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/
 WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.
 ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts
 /simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDO
-WS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><
-C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/sims
-un.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cmextra/cmex9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmm
-i12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><
-C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Progra
-m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8
-.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pf
-b><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
-Output written on thesis.pdf (81 pages, 3362902 bytes).
+WS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/simhei.ttf><
+C:/WINDOWS/Fonts/simhei.ttf><C:/WINDOWS/Fonts/simsun.ttc><C:/WINDOWS/Fonts/sims
+un.ttc><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Program Files/MiKTeX 2.
+9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw
+/times/utmr8a.pfb>
+Output written on thesis.pdf (81 pages, 3528762 bytes).
 PDF statistics:
- 3649 PDF objects out of 4296 (max. 8388607)
- 412 named destinations out of 1000 (max. 500000)
- 1041 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3659 PDF objects out of 4296 (max. 8388607)
+ 389 named destinations out of 1000 (max. 500000)
+ 1031 words of extra memory for PDF output out of 10000 (max. 10000000)
 
